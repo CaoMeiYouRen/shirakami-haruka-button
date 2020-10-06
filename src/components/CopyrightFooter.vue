@@ -3,6 +3,7 @@
         padless
         app
         inset
+        absolute
     >
         <v-card
             class="app-footer flex text-center"

@@ -6,8 +6,8 @@ import vuetify from './plugins/vuetify'
 import i18n from './plugins/i18n'
 import './plugins/composition-api'
 import './components'
-import 'normalize.css'
-import 'animate.css'
+// import 'normalize.css'
+// import 'animate.css'
 import './styles/index.scss'
 
 Vue.config.productionTip = false
