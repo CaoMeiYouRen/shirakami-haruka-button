@@ -1,0 +1,93 @@
+{
+  "name": "shirakami-haruka-button",
+  "version": "0.1.0",
+  "private": true,
+  "author": "CaoMeiYouRen",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "cross-env NODE_ENV=production eslint src --fix --ext .js,.ts,.vue",
+    "commit": "git add . && git cz && git pull && git push",
+    "changelog": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",
+    "release": "semantic-release"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CaoMeiYouRen/shirakami-haruka-button.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues"
+  },
+  "homepage": "https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme",
+  "dependencies": {
+    "@vue/composition-api": "^1.0.0-beta.15",
+    "axios": "^0.20.0",
+    "core-js": "^3.6.5",
+    "lodash": "^4.17.20",
+    "normalize.css": "^8.0.1",
+    "vue": "^2.6.11",
+    "vue-composable": "^1.0.0-beta.10",
+    "vue-router": "^3.4.5",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^8.0.1",
+    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/github": "^7.0.7",
+    "@semantic-release/npm": "^7.0.5",
+    "@semantic-release/release-notes-generator": "^9.0.1",
+    "@types/lodash": "^4.14.161",
+    "@typescript-eslint/eslint-plugin": "^4.3.0",
+    "@typescript-eslint/parser": "^4.3.0",
+    "@vue/cli-plugin-babel": "^4.5.6",
+    "@vue/cli-plugin-eslint": "^4.5.6",
+    "@vue/cli-plugin-router": "^4.5.6",
+    "@vue/cli-plugin-typescript": "^4.5.6",
+    "@vue/cli-plugin-vuex": "^4.5.6",
+    "@vue/cli-service": "^4.5.6",
+    "@vue/eslint-config-airbnb": "^5.1.0",
+    "@vue/eslint-config-typescript": "^5.1.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
+    "commitizen": "^4.1.2",
+    "conventional-changelog-cli": "^2.0.34",
+    "conventional-changelog-cmyr-config": "^1.2.3",
+    "cross-env": "^7.0.2",
+    "eslint": "^7.10.0",
+    "eslint-config-cmyr": "^0.8.2",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-vue": "^7.0.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.4.0",
+    "sass": "^1.26.11",
+    "sass-loader": "^10.0.0",
+    "semantic-release": "^17.0.8",
+    "stylelint": "^13.7.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.1.0",
+    "stylelint-scss": "^3.18.0",
+    "stylelint-webpack-plugin": "^2.1.0",
+    "typescript": "^4.0.3",
+    "validate-commit-msg": "^2.14.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "validate-commit-msg"
+    }
+  },
+  "changelog": {
+    "language": "zh"
+  }
+}
