@@ -1,36 +1,37 @@
 <template>
-    <div id="app">
-        <div id="nav">
-            <router-link to="/">
-                Home
-            </router-link> |
-            <router-link to="/about">
-                About
-            </router-link>
-        </div>
+    <div>
         <router-view />
     </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import { defineComponent, onMounted, ref, computed, watch } from '@vue/composition-api'
+import { useTitle, useLanguage, useI18n } from 'vue-composable'
+export default defineComponent({
+    name: 'App',
+    setup(props){
+        const { language } = useLanguage()
+        const locale = ref('zh')
+        if (/zh|cn|han/i.test(language.value)){
+            locale.value = 'zh'
+        } else {
+            locale.value = 'en'
+        }
+        return {
+            locale,
+        }
+    },
+    watch: {
+        '$i18n.locale' (val) {
+            document.title = this.$t('title') as string
+        },
+    },
+    created() {
+        this.$i18n.locale = this.locale
+        document.title = this.$t('title') as string
+    },
+})
+</script>
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<style lang="scss" scoped>
 </style>

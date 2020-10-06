@@ -1,5 +1,6 @@
 const pkg = require('./package.json')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+const appConfig = require('./config')
 
 module.exports = {
     publicPath: '/',
@@ -12,7 +13,7 @@ module.exports = {
     productionSourceMap: process.env.NODE_ENV === 'development', // 移除生产环境的 source map
     chainWebpack: (config) => {
         config.plugin('html').tap(([options]) => {
-            options.title = pkg.name
+            options.title = appConfig.title
             return [options]
         })
     },
@@ -26,5 +27,8 @@ module.exports = {
                 fix: true,
             }),
         )
-    }
+    },
+    transpileDependencies: [
+        'vuetify',
+    ],
 }

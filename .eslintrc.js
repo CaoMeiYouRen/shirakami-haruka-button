@@ -21,8 +21,6 @@ module.exports = {
         ecmaFeatures: {
             modules: true,
         },
-        project: './tsconfig.json',
-        tsconfigRootDir: __dirname,
     },
     parser: 'vue-eslint-parser',
     rules: {
