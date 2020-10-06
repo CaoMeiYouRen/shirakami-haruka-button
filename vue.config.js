@@ -1,6 +1,5 @@
 const pkg = require('./package.json')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
-const appConfig = require('./config')
 
 module.exports = {
     publicPath: '/',
@@ -13,7 +12,7 @@ module.exports = {
     productionSourceMap: process.env.NODE_ENV === 'development', // 移除生产环境的 source map
     chainWebpack: (config) => {
         config.plugin('html').tap(([options]) => {
-            options.title = appConfig.title
+            options.title = '豹按钮 (:3っ)∋'
             return [options]
         })
     },
