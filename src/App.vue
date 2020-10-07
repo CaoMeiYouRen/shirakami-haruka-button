@@ -1,12 +1,13 @@
 <template>
     <div>
         <router-view />
+        <!-- <div>{{ height + ' - ' + width }}</div> -->
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed, watch } from '@vue/composition-api'
-import { useTitle, useLanguage, useI18n } from 'vue-composable'
+import { useTitle, useLanguage, useI18n, useOnResize } from 'vue-composable'
 export default defineComponent({
     name: 'App',
     setup(props){
@@ -17,8 +18,11 @@ export default defineComponent({
         } else {
             locale.value = 'en'
         }
+        const { height, width } = useOnResize(document.body)
         return {
             locale,
+            height,
+            width,
         }
     },
     watch: {

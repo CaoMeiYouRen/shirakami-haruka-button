@@ -1,12 +1,27 @@
 <template>
     <span class="haruka-button">
         <v-btn
+            v-if="title.length < 14"
             color="primary"
             rounded
             @click="play"
         >
-            {{ title }}
+            {{ title | strLint }}
         </v-btn>
+        <v-tooltip v-else top>
+            <template #activator="{on,attrs}">
+                <v-btn
+                    color="primary"
+                    rounded
+                    v-bind="attrs"
+                    @click="play"
+                    v-on="on"
+                >
+                    {{ title | strLint }}
+                </v-btn>
+            </template>
+            <span>{{ title }}</span>
+        </v-tooltip>
         <span v-if="playList.length">
             <span
                 v-for="(e) in playList"
@@ -23,6 +38,14 @@
 import { computed, defineComponent, Ref, ref } from '@vue/composition-api'
 export default defineComponent({
     name: 'HarukaButton',
+    filters: {
+        strLint(val: string, max: number = 14){
+            if (val && val.length > max){
+                return `${val.slice(0, max)}…`
+            }
+            return val
+        },
+    },
     props: {
         /**
          * 音声路径
@@ -79,11 +102,13 @@ export default defineComponent({
 
 .haruka-button {
     position: relative;
+    display: inline-block;
+    box-sizing: border-box;
     margin-right: 15px;
+    margin-bottom: 15px;
 
     .v-btn {
         // margin-right: 15px;
-        margin-bottom: 15px;
         text-transform: none;
         box-shadow: 0px 0px 7px $haruka-primary !important;
     }
@@ -91,11 +116,12 @@ export default defineComponent({
 
 .process-mask {
     position: absolute;
-    top: -14px;
+    top: 0px;
     left: 0px;
+    box-sizing: border-box;
     height: 36px;
-    overflow: hidden !important;
-    background-color: rgba(0, 0, 0, 0.2) !important;
+    // overflow: hidden !important;
+    background-color: rgba(0, 0, 0, 0.2);
     border-top-left-radius: 28px;
     border-bottom-left-radius: 28px;
     cursor: pointer;
