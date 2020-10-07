@@ -36,6 +36,7 @@
 
 <script lang="ts">
 import { computed, defineComponent, Ref, ref } from '@vue/composition-api'
+import { messages } from '@/locales'
 export default defineComponent({
     name: 'HarukaButton',
     filters: {
@@ -91,7 +92,19 @@ export default defineComponent({
     computed: {
         title(): string {
             const locale = this.$i18n.locale
-            return this.messages[locale]
+            let title = this.messages[locale]
+            if (title){
+                return title
+            }
+            const langs = Object.keys(messages)
+            for (let i = 0; i < langs.length; i++) {
+                const lang = langs[i]
+                title = this.messages[lang]
+                if (title){
+                    return title
+                }
+            }
+            return this.messages['zh']
         },
     },
 })

@@ -9,6 +9,8 @@ export default {
         Other: 'Other',
         Tone: 'Tone',
         Peach: 'Peach',
+        Belly: 'Belly',
+        Death: 'SeekDeath',
     },
     ProjectAddress: 'ProjectAddress',
 }

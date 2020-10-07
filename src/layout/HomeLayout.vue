@@ -60,6 +60,9 @@
                     <v-list-item @click="switchLang('en')">
                         <v-list-item-title>English</v-list-item-title>
                     </v-list-item>
+                    <v-list-item @click="switchLang('ja')">
+                        <v-list-item-title>日本語</v-list-item-title>
+                    </v-list-item>
                 </v-list>
             </v-menu>
         </v-app-bar>
