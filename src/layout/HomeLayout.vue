@@ -12,7 +12,9 @@
                 <div v-for="(item,index) in menuList" :key="item.name">
                     <v-list-item @click="item.fun? item.fun() : $router.push(item.path)">
                         <v-list-item-action>
-                            <v-icon>{{ item.icon }}</v-icon>
+                            <v-icon :color="item.color">
+                                {{ item.icon }}
+                            </v-icon>
                         </v-list-item-action>
                         <v-list-item-content>
                             <v-list-item-title>{{ item.name }}</v-list-item-title>
@@ -100,6 +102,13 @@ export default defineComponent({
                     icon: 'home',
                     name: this.$t('menu.Home'),
                     path: '/',
+                },
+                {
+                    icon: 'iconfont icon-bilibili2',
+                    name: this.$t('menu.Bilibili'),
+                    fun(){
+                        window.open('https://space.bilibili.com/477332594/')
+                    },
                 },
                 {
                     icon: 'code',

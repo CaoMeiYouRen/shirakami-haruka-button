@@ -26,7 +26,12 @@
                             >
                                 欢迎来到 “豹按钮(:3っ)∋” 项目，这是一个从
                                 <a target="_blank" href="https://vtbbtn.org/">https://vtbbtn.org/</a>
-                                获得灵感的项目。感觉很有意思，不过目前只是立个项，什么时候写完看心情，也许会弃坑。
+                                获得灵感的项目。感觉很有意思，不过目前只是立个项，什么时候写完看心情，也许会弃坑。<br />
+                                诚邀日语、英语翻译，本人全靠机翻；诚邀剪辑man，一个人实在剪辑不过来<br />
+                                <b>新增音声</b>：如果会编程的可以直接上
+                                <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">GitHub</a>
+                                fork，修改完后提 pull request ，不会编程的可以提个 issue<br />
+                                更多内容请参考 <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme" target="_blank">README</a>
                             </v-col>
                         </v-row>
                     </v-card-text>
@@ -34,10 +39,12 @@
             </v-col>
         </v-row>
         <v-row algin="start" justify="start">
-            <v-col cols="12">
+            <v-col
+                v-for="(item,tag) in voicesGroup"
+                :key="tag"
+                cols="12"
+            >
                 <HarukaCard
-                    v-for="(item,tag) in voicesGroup"
-                    :key="tag"
                     :tag="tag"
                 >
                     <HarukaButton
@@ -55,6 +62,7 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import _ from 'lodash'
+import markdownIt from 'markdown-it'
 import baobao from '@/assets/shabao.jpg'
 import voices from '@/config/voices'
 
@@ -75,6 +83,9 @@ export default defineComponent({
         voicesGroup(): any {
             return _.groupBy(this.voices, 'tag')
         },
+    },
+    methods: {
+
     },
 })
 </script>

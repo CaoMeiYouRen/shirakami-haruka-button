@@ -4,9 +4,10 @@
         app
         inset
         absolute
+        class="app-footer"
     >
         <v-card
-            class="app-footer flex text-center"
+            class="card flex text-center"
             flat
             tile
         >
@@ -58,6 +59,8 @@ a:hover {
 }
 
 .app-footer {
-    background-color: #424242 !important;
+    .card {
+        background-color: #424242 !important;
+    }
 }
 </style>

@@ -14,8 +14,8 @@
                             <a target="_blank" href="https://github.com/CaoMeiYouRen">
                                 github
                             </a>、
-                            <v-icon size="21" color="#00a1d6">
-                                iconfont icon-bilibili1
+                            <v-icon size="24" color="#00a1d6">
+                                iconfont icon-bilibili2
                             </v-icon>
                             <a target="_blank" href="https://space.bilibili.com/10822025">
                                 bilibili

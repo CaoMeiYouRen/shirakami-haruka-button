@@ -105,7 +105,7 @@ export default defineComponent({
 <style lang="scss">
 @keyframes playing {
     from {
-        width: 5%;
+        width: 18px;
     }
 
     to {
