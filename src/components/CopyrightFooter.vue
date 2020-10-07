@@ -11,7 +11,7 @@
             tile
         >
             <v-card-text>
-                <p title="关于本网站">
+                <p title="About">
                     <a @click.prevent="$router.push('/about')">
                         Copyright &copy;2020 - {{ new Date().getFullYear() }}
                         <strong>CaoMeiYouRen</strong> All Rights Rese.
@@ -20,7 +20,7 @@
                 <p>
                     <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">
                         <v-icon color="primary">iconfont icon-github</v-icon>
-                        项目地址
+                        {{ $t('ProjectAddress') }}
                     </a>
                 </p>
             </v-card-text>

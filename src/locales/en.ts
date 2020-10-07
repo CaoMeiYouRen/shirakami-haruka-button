@@ -4,4 +4,9 @@ export default {
         Home: 'Home',
         About: 'About',
     },
+    tags: {
+        Other: 'Other',
+        Tone: 'Tone',
+    },
+    ProjectAddress: 'ProjectAddress',
 }

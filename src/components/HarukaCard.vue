@@ -14,13 +14,18 @@ import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
     name: 'HarukaCard',
     props: {
-        title: {
+        tag: {
             type: String,
         },
     },
     setup(props, ctx){
         return {
         }
+    },
+    computed: {
+        title(): string {
+            return this.$t(`tags.${this.tag}`) as string
+        },
     },
 })
 </script>

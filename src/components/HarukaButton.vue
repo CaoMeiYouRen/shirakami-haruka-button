@@ -7,17 +7,20 @@
         >
             {{ title }}
         </v-btn>
-        <span
-            v-if="isPlay"
-            :style="style"
-            class="process-mask"
-            @click="play"
-        />
+        <span v-if="playList.length">
+            <span
+                v-for="(e) in playList"
+                :key="e"
+                :style="style"
+                class="process-mask"
+                @click="play"
+            />
+        </span>
     </span>
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref } from '@vue/composition-api'
+import { computed, defineComponent, Ref, ref } from '@vue/composition-api'
 export default defineComponent({
     name: 'HarukaButton',
     props: {
@@ -38,32 +41,28 @@ export default defineComponent({
     },
     setup(props, ctx){
         const publicPath = process.env.BASE_URL || ''
-        const audio = ref(new Audio())
-        const isPlay = ref(false)
-        const duration = computed(() => audio.value.duration)
-        audio.value.preload = 'meta'
-        audio.value.src = `${publicPath}voices/${props.path}`
+        const playList = ref([]) as Ref<number[]>
         const style = ref({
             animation: '',
         })
-        function play(){
-            audio.value.load()
-            audio.value.oncanplay = (e) => {
-                isPlay.value = true
-                style.value.animation = `playing ${audio.value.duration}s linear forwards`
-
-                audio.value.play()
+        function play(event, item){
+            const audio = new Audio()
+            audio.preload = 'meta'
+            audio.src = `${publicPath}voices/${props.path}`
+            audio.load()
+            audio.oncanplay = (e) => {
+                style.value.animation = `playing ${audio.duration}s linear forwards`
+                playList.value.push(Date.now())
+                audio.play()
             }
-            audio.value.onended = (e) => {
-                isPlay.value = false
+            audio.onended = (e) => {
+                playList.value.shift()
             }
         }
         return {
-            audio,
             play,
-            duration,
-            isPlay,
             style,
+            playList,
         }
     },
     computed: {

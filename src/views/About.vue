@@ -6,7 +6,22 @@
                     <v-card-text>
                         <h2>关于</h2>
                         <br>
-                        <h3>本网站由 <a target="_blank" href="https://github.com/CaoMeiYouRen">草梅友仁</a> 开发并提供技术支持</h3>
+                        <h3>
+                            本网站由 草梅友仁(
+                            <v-icon size="24">
+                                iconfont icon-github
+                            </v-icon>
+                            <a target="_blank" href="https://github.com/CaoMeiYouRen">
+                                github
+                            </a>、
+                            <v-icon size="21" color="#00a1d6">
+                                iconfont icon-bilibili1
+                            </v-icon>
+                            <a target="_blank" href="https://space.bilibili.com/10822025">
+                                bilibili
+                            </a>
+                            ) 开发并提供技术支持
+                        </h3>
                     </v-card-text>
                     <v-card-text>
                         <h2>使用技术</h2>
@@ -48,7 +63,13 @@
 </template>
 
 <script lang="ts">
+import Vue from 'vue'
+import Vuetify from 'vuetify'
 import { defineComponent } from '@vue/composition-api'
+import _ from 'lodash'
+import VueI18n from 'vue-i18n'
+import { VERSION as VueComposableVersion } from 'vue-composable'
+
 export default defineComponent({
     name: 'About',
     props: {},
@@ -60,7 +81,7 @@ export default defineComponent({
         return {
             useList: [
                 {
-                    msg: '框架：Vue', // `框架：Vue (${Vue.version})`
+                    msg: `框架：Vue (${Vue.version})`,
                     url: 'https://cn.vuejs.org/',
                 },
                 {
@@ -68,12 +89,24 @@ export default defineComponent({
                     url: 'https://cli.vuejs.org/zh/',
                 },
                 {
-                    msg: 'UI：Vuetify', // `UI：Vuetify (${Vuetify.version})`
+                    msg: `UI：Vuetify (${Vuetify.version})`,
                     url: 'https://vuetifyjs.com/zh-Hans/',
+                },
+                {
+                    msg: `组合式API：vue-composable (${VueComposableVersion})`,
+                    url: 'https://pikax.me/vue-composable/',
+                },
+                {
+                    msg: `国际化：vue-i18n (${VueI18n.version})`,
+                    url: 'https://kazupon.github.io/vue-i18n/zh/',
                 },
                 {
                     msg: '语言：TypeScript',
                     url: 'https://www.typescriptlang.org/',
+                },
+                {
+                    msg: `工具库：Lodash (${_.VERSION})`,
+                    url: 'https://www.lodashjs.com/',
                 },
                 {
                     msg: '图标：阿里巴巴矢量图标库',

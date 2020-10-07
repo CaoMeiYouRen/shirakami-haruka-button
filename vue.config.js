@@ -33,7 +33,7 @@ module.exports = {
             `https://cdn.jsdelivr.net/npm/@mdi/font@${dependencies['@mdi/font']}/css/materialdesignicons.min.css`,
             `https://cdn.jsdelivr.net/npm/material-design-icons-iconfont@${dependencies['material-design-icons-iconfont']}/dist/material-design-icons.min.css`,
             `https://cdn.jsdelivr.net/npm/vuetify@${dependencies['vuetify']}/dist/vuetify.min.css`,
-            'https://at.alicdn.com/t/font_2115084_ucpp86rljbi.css',
+            // 'https://at.alicdn.com/t/font_2115084_k8i40dlea3.css',
         ]
         const js = [
             `https://cdn.jsdelivr.net/npm/lodash@${dependencies['lodash']}/lodash.min.js`,
