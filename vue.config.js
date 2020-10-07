@@ -1,3 +1,4 @@
+process.env.VUE_APP_VERSION = require('./package.json').version
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 function verFormat(ver) {
     const list = ver.split('.')
@@ -102,7 +103,7 @@ module.exports = {
             }
         }
     },
-    transpileDependencies: [
-        'vuetify',
-    ],
+    // transpileDependencies: [
+    //     'vuetify',
+    // ],
 }
