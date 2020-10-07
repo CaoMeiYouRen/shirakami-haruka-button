@@ -1,6 +1,10 @@
 <template>
-    <v-card>
-        <v-card-title v-if="title" primary-title>
+    <v-card
+        flat
+        rounded="xl"
+        class="haruka-card"
+    >
+        <v-card-title v-if="!disableTitle && title" primary-title>
             {{ title }}
         </v-card-title>
         <v-card-text>
@@ -17,6 +21,10 @@ export default defineComponent({
         tag: {
             type: String,
         },
+        disableTitle: {
+            type: Boolean,
+            default: false,
+        },
     },
     setup(props, ctx){
         return {
@@ -31,4 +39,9 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/index.scss';
+
+.haruka-card {
+    box-shadow: 1px 5px 22px rgb(255, 174, 166, 0.6) !important;
+}
 </style>

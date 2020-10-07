@@ -1,5 +1,8 @@
 export default {
     title: 'Haruka Button (:3っ)∋',
+    appBar: {
+        SwitchLanguage: 'SwitchLanguage',
+    },
     menu: {
         Home: 'Home',
         Bilibili: 'Bilibili',
@@ -13,4 +16,5 @@ export default {
         Death: 'SeekDeath',
     },
     ProjectAddress: 'ProjectAddress',
+    BackToTop: 'BackToTop',
 }

@@ -1,7 +1,7 @@
 <template>
     <span class="haruka-button">
         <v-btn
-            v-if="title.length < 14"
+            v-if="title.length < 16"
             color="primary"
             rounded
             @click="play"
@@ -40,7 +40,7 @@ import { messages } from '@/locales'
 export default defineComponent({
     name: 'HarukaButton',
     filters: {
-        strLint(val: string, max: number = 14){
+        strLint(val: string, max: number = 16){
             if (val && val.length > max){
                 return `${val.slice(0, max)}…`
             }

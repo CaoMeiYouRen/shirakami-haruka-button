@@ -1,5 +1,8 @@
 export default {
     title: 'ヒョウボタン (:3っ)∋',
+    appBar: {
+        SwitchLanguage: '言語を切り替え',
+    },
     menu: {
         Home: 'ホームページ',
         Bilibili: 'ビリビリ',
@@ -13,4 +16,5 @@ export default {
         Death: '死を遂げる',
     },
     ProjectAddress: 'プロジェクトのアドレス',
+    BackToTop: 'トップに戻る',
 }

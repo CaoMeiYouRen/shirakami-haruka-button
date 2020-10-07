@@ -12,7 +12,7 @@
                 <div v-for="(item,index) in menuList" :key="item.name">
                     <v-list-item @click="item.fun? item.fun() : $router.push(item.path)">
                         <v-list-item-action>
-                            <v-icon :color="item.color">
+                            <v-icon :color="item.color || 'primary'">
                                 {{ item.icon }}
                             </v-icon>
                         </v-list-item-action>
@@ -50,7 +50,7 @@
                                 <v-icon>translate</v-icon>
                             </v-btn>
                         </template>
-                        <span>{{ '切换语言' }}</span>
+                        <span>{{ $t('appBar.SwitchLanguage') }}</span>
                     </v-tooltip>
                 </template>
                 <v-list>
@@ -78,19 +78,44 @@
                     <router-view />
                 </keep-alive>
             </transition>
+            <v-tooltip top>
+                <template #activator="{on}">
+                    <v-fab-transition>
+                        <v-btn
+                            v-show="isShowBackTop"
+                            color="primary"
+                            dark
+                            fixed
+                            bottom
+                            right
+                            fab
+                            v-on="on"
+                            @click="backTop"
+                        >
+                            <v-icon>mdi-chevron-up</v-icon>
+                        </v-btn>
+                    </v-fab-transition>
+                </template>
+                <span>{{ $t('BackToTop') }}</span>
+            </v-tooltip>
         </v-main>
     </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, onMounted, ref, computed, watch } from '@vue/composition-api'
-import { useTitle, useLanguage, useI18n } from 'vue-composable'
+import { useTitle, useLanguage, useI18n, useOnScroll, useOnResize } from 'vue-composable'
 export default defineComponent({
     name: 'HomeLayout',
     props: {},
     setup(){
+        const { scrollTop } = useOnScroll()
+        const { height } = useOnResize(document.body)
+        const isShowBackTop = computed(() => scrollTop.value >= height.value / 3)
         return {
             title: useTitle(),
+            scrollTop,
+            isShowBackTop,
         }
     },
     data() {
@@ -124,6 +149,11 @@ export default defineComponent({
     methods: {
         switchLang(locale){
             this.$i18n.locale = locale
+        },
+        backTop(){
+            this.$vuetify.goTo(0, {
+                duration: 500,
+            })
         },
     },
 })

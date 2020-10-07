@@ -1,5 +1,8 @@
 export default {
     title: '豹按钮 (:3っ)∋', // 网页标题
+    appBar: {
+        SwitchLanguage: '切换语言',
+    },
     menu: { // 侧边栏菜单
         Home: '主页',
         Bilibili: '哔哩哔哩',
@@ -13,4 +16,5 @@ export default {
         Death: '作死',
     },
     ProjectAddress: '项目地址',
+    BackToTop: '返回顶部',
 }
