@@ -14,6 +14,7 @@ export default {
         Peach: 'Peach',
         Belly: 'Belly',
         Death: 'SeekDeath',
+        ShakeM: 'ShakeM',
     },
     ProjectAddress: 'ProjectAddress',
     BackToTop: 'BackToTop',

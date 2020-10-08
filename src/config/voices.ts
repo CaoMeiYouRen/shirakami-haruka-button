@@ -12,17 +12,29 @@ interface VoiceInfo {
      */
     path: string
     /**
-     * 分类标签，i18n 路径
+     * 分类标签，i18n 路径。
+     * 会根据这个 tag 进行分类。
+     * tag 的翻译在 locales 文件夹下 zh/en/ja 文件中的 tags 字段中设置
      */
     tag: string
 }
 const voices: VoiceInfo[] = [
     {
         messages: {
-            zh: '阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴',
-            en: 'aba aba aba aba aba aba aba aba aba',
+            zh: '阿巴阿巴阿巴阿巴阿巴阿巴阿巴',
+            en: 'aba aba aba aba aba aba aba aba',
+            ja: 'アルバアバアバアバアバアバアバア',
         },
-        path: '阿巴阿巴阿巴.mp3',
+        path: '阿巴阿巴阿巴阿巴阿巴阿巴阿巴.mp3',
+        tag: 'Tone',
+    },
+    {
+        messages: {
+            zh: '阿巴阿巴阿巴阿巴阿巴阿巴(超长)',
+            en: 'aba aba aba aba aba aba (long)',
+            ja: 'アルバアバアバアバアバアバアバア(超長)',
+        },
+        path: '阿巴阿巴阿巴阿巴阿巴阿巴(超长).mp3',
         tag: 'Tone',
     },
     {
@@ -35,6 +47,22 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
+            zh: '豹叫',
+            en: '',
+        },
+        path: '豹叫.mp3',
+        tag: 'Tone',
+    },
+    {
+        messages: {
+            zh: '豹式呼吸',
+            en: '',
+        },
+        path: '豹式呼吸.mp3',
+        tag: 'Tone',
+    },
+    {
+        messages: {
             zh: '我是个锤子gamer',
             en: '',
         },
@@ -43,8 +71,44 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
+            zh: '我一个巴掌呼死你',
+            en: '',
+        },
+        path: '我一个巴掌呼死你.mp3',
+        tag: 'Tone',
+    },
+    {
+        messages: {
+            zh: '八嘎 hentai 无路赛',
+            en: '',
+            ja: 'バカ 変態 うるさい',
+        },
+        path: '八嘎hentai无路赛.mp3',
+        tag: 'ShakeM',
+    },
+    {
+        messages: {
+            zh: '八嘎 hentai 无路赛2',
+            en: '',
+            ja: 'バカ 変態 うるさい2',
+        },
+        path: '八嘎hentai无路赛2.mp3',
+        tag: 'ShakeM',
+    },
+    {
+        messages: {
+            zh: '变恋！一群变恋！',
+            en: '',
+            ja: '',
+        },
+        path: '变恋！一群变恋！.mp3',
+        tag: 'ShakeM',
+    },
+    {
+        messages: {
             zh: '我爱你(日语)',
             en: 'I love you (Japanese)',
+            ja: '爱してる(日本語)',
         },
         path: '阿姨洗铁路.mp3',
         tag: 'Peach',
@@ -53,6 +117,7 @@ const voices: VoiceInfo[] = [
         messages: {
             zh: '我爱你(英文)',
             en: 'I love you(English)',
+            ja: '爱してる(英語)',
         },
         path: 'I love you.mp3',
         tag: 'Peach',
@@ -61,6 +126,7 @@ const voices: VoiceInfo[] = [
         messages: {
             zh: '我爱你(中文)',
             en: 'I love you (Chinese)',
+            ja: '爱してる(中国語)',
         },
         path: '我爱你.mp3',
         tag: 'Peach',
@@ -103,7 +169,8 @@ const voices: VoiceInfo[] = [
             en: 'Wuhu, take off',
         },
         path: '芜湖，起飞.mp3',
-        tag: 'Other',
+        tag: 'Tone',
     },
+
 ]
 export default voices

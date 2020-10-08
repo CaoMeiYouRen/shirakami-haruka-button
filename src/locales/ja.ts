@@ -14,6 +14,7 @@ export default {
         Peach: '桃を食べる',
         Belly: '腹を探る',
         Death: '死を遂げる',
+        ShakeM: 'ドM',
     },
     ProjectAddress: 'プロジェクトのアドレス',
     BackToTop: 'トップに戻る',

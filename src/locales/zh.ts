@@ -14,6 +14,7 @@ export default {
         Peach: '吃桃',
         Belly: '摸肚皮',
         Death: '作死',
+        ShakeM: '抖M',
     },
     ProjectAddress: '项目地址',
     BackToTop: '返回顶部',

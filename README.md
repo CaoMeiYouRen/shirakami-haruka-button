@@ -42,7 +42,7 @@ npm run dev
 
 文件名称最好为音频内容，如果太长可以简略。
 
-所有音频在 `src\config\voices.ts` 中配置，只要增加符合以下格式的对象即可
+所有音频在 `src\config\voices.ts` 中配置，只要增加符合以下格式的对象即可，相同 tag 的放在一起，不要分开配置
 
 ```ts
 interface VoiceInfo {
@@ -52,13 +52,14 @@ interface VoiceInfo {
     messages: {
         zh: string
         en?: string
+        ja?: string
     }
     /**
      * 音声路径。相对于 public/voices 的路径
      */
     path: string
     /**
-     * 分类标签，i18n 路径
+     * 分类标签，i18n 路径。会根据这个 tag 进行分类，tag 的翻译在 locales 文件夹下 zh/en/ja 文件中的 tags 字段中设置
      */
     tag: string
 }
@@ -71,6 +72,7 @@ interface VoiceInfo {
      messages: {
          zh: '阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴',
          en: 'aba aba aba aba aba aba aba aba aba',
+         ja: 'アルバアバアバアバアバアバアバアバアバアバアバ'
      },
      path: '阿巴阿巴阿巴.mp3',
      tag: 'Tone',
@@ -88,6 +90,14 @@ npm run build
 ```
 npm run lint
 ```
+
+## commit
+
+```
+npm run commit
+```
+
+本项目的 git commit 遵循 `commitizen` 规范，使用 `conventional-changelog-cli` 生成 git commit 。
 
 ## 作者
 

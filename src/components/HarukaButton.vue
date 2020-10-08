@@ -1,7 +1,7 @@
 <template>
     <span class="haruka-button">
         <v-btn
-            v-if="title.length < 16"
+            v-if="title.length < maxLength"
             color="primary"
             rounded
             @click="play"
@@ -37,10 +37,12 @@
 <script lang="ts">
 import { computed, defineComponent, Ref, ref } from '@vue/composition-api'
 import { messages } from '@/locales'
+const maxLength = 18
 export default defineComponent({
     name: 'HarukaButton',
     filters: {
-        strLint(val: string, max: number = 16){
+        strLint(val: string){
+            const max = maxLength
             if (val && val.length > max){
                 return `${val.slice(0, max)}…`
             }
@@ -87,6 +89,7 @@ export default defineComponent({
             play,
             style,
             playList,
+            maxLength,
         }
     },
     computed: {
