@@ -11,6 +11,7 @@
                             lg="2"
                         >
                             <v-img
+                                class="rounded-lg"
                                 :src="baobao"
                                 width="200px"
                                 contain
