@@ -103,18 +103,30 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed, watch } from '@vue/composition-api'
+import { defineComponent, onMounted, onUnmounted, ref, computed, watch } from '@vue/composition-api'
 import { useTitle, useLanguage, useI18n, useOnScroll, useOnResize } from 'vue-composable'
 export default defineComponent({
     name: 'HomeLayout',
     props: {},
     setup(){
-        const { scrollTop } = useOnScroll()
-        const { height } = useOnResize(document.body)
+        function getWindowHeight() {
+            return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+        }
+        const { scrollTop, remove } = useOnScroll()
+        const height = ref(getWindowHeight())
+        window.onresize = () => {
+            height.value = getWindowHeight()
+        }
         const isShowBackTop = computed(() => scrollTop.value >= height.value / 3)
+
+        onUnmounted(() => {
+            remove()
+            window.onresize = null
+        })
         return {
             title: useTitle(),
             scrollTop,
+            height,
             isShowBackTop,
         }
     },
