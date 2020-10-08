@@ -1,6 +1,11 @@
 <h1 align="center">shirakami-haruka-button(豹按钮(:3っ)∋) </h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.0-blue.svg?cacheSeconds=2592000" />
+  <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button" target="_blank">
+    <img alt="Version" src="https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button">
+  </a>
+  <!-- <a href="https://travis-ci.com/CaoMeiYouRen/shirakami-haruka-button" target="_blank">
+    <img alt="build" src="https://travis-ci.com/CaoMeiYouRen/shirakami-haruka-button.svg?branch=master" />
+  </a> -->
   <img src="https://img.shields.io/badge/node-%3E%3D12-blue.svg" />
   <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -14,6 +19,8 @@
 </p>
 
 > 豹按钮(:3っ)∋)  - 最近看到 [https://vtbbtn.org/](https://vtbbtn.org/) 这个网站，感觉很有意思，就想着能不能给 [白神遥Haruka](https://space.bilibili.com/477332594/) 也安排一个。目前只是立个项，什么时候写完看心情，也许会弃坑。
+>
+> 诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来
 
 ### 🏠 [主页](https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme)
 
@@ -42,7 +49,7 @@ npm run dev
 
 文件名称最好为音频内容，如果太长可以简略。
 
-所有音频在 `src\config\voices.ts` 中配置，只要增加符合以下格式的对象即可，相同 tag 的放在一起，不要分开配置
+所有音频在 `src\config\voices.ts` 中配置，只要增加符合以下格式的对象即可，相同的 tag 最好放在一起配置
 
 ```ts
 interface VoiceInfo {
@@ -93,11 +100,22 @@ npm run lint
 
 ## commit
 
-```
-npm run commit
+本项目遵从严格的 git commit 约束，这将用于自动化生成日志，所以请勿直接提交 git commit。
+
+本项目使用 cz-conventional-changelog 工具来生成 git commit，使用 husky 约束 git commit
+
+```sh
+npm run commit 
+#请勿直接提交git commit
+#若觉得修改太多也可分开提交。先 git add 一部分，执行 git cz 提交后再提交另外一部分
 ```
 
-本项目的 git commit 遵循 `commitizen` 规范，使用 `conventional-changelog-cli` 生成 git commit 。
+关于选项，参考 [semantic-release](https://github.com/semantic-release/semantic-release) 的文档
+
+-   若为BUG修复，则选择 `fix`
+-   若为新增功能，则选择 `feat`，新增音声可以按这个提交。
+-   若为移除某些功能，则选择 `perf`  或填写 `BREAKING CHANGE`
+    -    `perf` 和其他破坏性更新，若不是为了修复BUG，原则上将拒绝该PR
 
 ## 作者
 

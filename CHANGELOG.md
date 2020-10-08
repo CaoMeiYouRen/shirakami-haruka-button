@@ -1,4 +1,20 @@
-# 0.1.0 (2020-10-07)
+# [0.3.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v0.2.0...v0.3.0) (2020-10-07)
+
+
+### ✨ 新功能
+
+* 1.优化卡片边框弧度和阴影；2.新增返回顶部按钮；3.优化部分翻译 ([511f475](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/511f475))
+* 新增音声；新增日文翻译 ([e8a6913](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/e8a6913))
+
+
+### 🐛 Bug 修复
+
+* 优化音频 ([5fed1de](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/5fed1de))
+* 修复按钮遮罩层偏移 ([577dd11](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/577dd11))
+
+
+
+# [0.2.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/04bfb7b...v0.2.0) (2020-10-07)
 
 
 ### ✨ 新功能
