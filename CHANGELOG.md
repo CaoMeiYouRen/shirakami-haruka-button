@@ -1,3 +1,18 @@
+# [0.4.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v0.3.0...v0.4.0) (2020-10-09)
+
+
+### ✨ 新功能
+
+* 新增音声；优化按钮最大字数限制；优化部分文档 ([192d1d7](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/192d1d7))
+
+
+### 🐛 Bug 修复
+
+* 优化 图片边框 ([d36a6de](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d36a6de))
+* 修复返回顶部按钮 bug ([70c1972](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/70c1972))
+
+
+
 # [0.3.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v0.2.0...v0.3.0) (2020-10-07)
 
 
@@ -14,7 +29,7 @@
 
 
 
-# [0.2.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/04bfb7b...v0.2.0) (2020-10-07)
+# [0.2.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v0.1.0...v0.2.0) (2020-10-07)
 
 
 ### ✨ 新功能
@@ -24,6 +39,10 @@
 * 完成主要界面的设计；完成核心组件的设计；初步完成国际化 ([d7b37c1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d7b37c1))
 * 新增 i18n 配置；修改 CI 配置 ([04bfb7b](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/04bfb7b))
 * 新增 音声；优化按钮动画；优化 Home 页面；重写 README ([d51af3b](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d51af3b))
+
+
+
+# 0.1.0 (2020-10-06)
 
 
 
