@@ -30,9 +30,9 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
-            zh: '阿巴阿巴阿巴阿巴阿巴阿巴(超长)',
-            en: 'aba aba aba aba aba aba (long)',
-            ja: 'アルバアバアバアバアバアバアバア(超長)',
+            zh: '阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴阿巴(超长)',
+            en: 'aba aba aba aba aba aba aba aba aba aba aba (long)',
+            ja: 'アルバアバアバアバアバアバアバアアルバアバアバア(超長)',
         },
         path: '阿巴阿巴阿巴阿巴阿巴阿巴(超长).mp3',
         tag: 'Tone',

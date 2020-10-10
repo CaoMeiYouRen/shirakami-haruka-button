@@ -14,12 +14,15 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { computed, defineComponent } from '@vue/composition-api'
+import i18n from '@/plugins/i18n'
+
 export default defineComponent({
     name: 'HarukaCard',
     props: {
         tag: {
             type: String,
+            default: 'Other',
         },
         disableTitle: {
             type: Boolean,
@@ -27,13 +30,10 @@ export default defineComponent({
         },
     },
     setup(props, ctx){
+        const title = computed(() => i18n.t(`tags.${props.tag}`))
         return {
+            title,
         }
-    },
-    computed: {
-        title(): string {
-            return this.$t(`tags.${this.tag}`) as string
-        },
     },
 })
 </script>

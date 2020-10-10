@@ -19,6 +19,10 @@
                     </a>
                 </p>
                 <p>
+                    <a href="http://www.beian.miit.gov.cn/" target="_blank">{{ ICP }}</a> ||
+                    <a href="http://www.beian.gov.cn/" target="_blank">{{ POLICE }}</a>
+                </p>
+                <p>
                     <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">
                         <v-icon color="primary">iconfont icon-github</v-icon>
                         {{ $t('ProjectAddress') }}
@@ -36,6 +40,8 @@ export default defineComponent({
     props: {},
     setup(props, ctx){
         return {
+            POLICE: '浙公安备33102302000270号',
+            ICP: '浙ICP备18041571-3号',
         }
     },
 })
@@ -44,21 +50,18 @@ export default defineComponent({
 <style lang="scss" scoped>
 @import '@/styles/index.scss';
 
-a {
-    font-family: "微软雅黑";
-}
-
-.p-white,
-a {
-    color: $haruka-primary !important;
-    text-decoration: none;
-}
-
-a:hover {
-    color: #039be5 !important;
-}
-
 .app-footer {
+    a,
+    p {
+        color: $haruka-primary !important;
+        font-family: "微软雅黑";
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #039be5 !important;
+    }
+
     .card {
         background-color: #424242 !important;
     }

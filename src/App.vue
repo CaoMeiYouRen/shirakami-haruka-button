@@ -1,13 +1,14 @@
 <template>
     <div>
         <router-view />
-        <!-- <div>{{ height + ' - ' + width }}</div> -->
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed, watch } from '@vue/composition-api'
+import { defineComponent, onMounted, ref, computed, watch, watchEffect} from '@vue/composition-api'
 import { useTitle, useLanguage, useI18n, useOnResize } from 'vue-composable'
+import i18n from '@/plugins/i18n'
+
 export default defineComponent({
     name: 'App',
     setup(props){
@@ -15,24 +16,17 @@ export default defineComponent({
         const locale = ref('zh')
         if (/zh|cn|han/i.test(language.value)){
             locale.value = 'zh'
+        } else if (/ja/i.test(language.value)){
+            locale.value = 'ja'
         } else {
             locale.value = 'en'
         }
-        const { height, width } = useOnResize(document.body)
+        i18n.locale = locale.value
+        watchEffect(() => {
+            document.title = i18n.t('title') as string
+        })
         return {
-            locale,
-            height,
-            width,
         }
-    },
-    watch: {
-        '$i18n.locale' (val) {
-            document.title = this.$t('title') as string
-        },
-    },
-    created() {
-        this.$i18n.locale = this.locale
-        document.title = this.$t('title') as string
     },
 })
 </script>

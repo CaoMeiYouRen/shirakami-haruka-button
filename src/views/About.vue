@@ -75,10 +75,6 @@ export default defineComponent({
     props: {},
     setup(props, ctx){
         return {
-        }
-    },
-    data() {
-        return {
             useList: [
                 {
                     msg: `框架：Vue (${Vue.version})`,

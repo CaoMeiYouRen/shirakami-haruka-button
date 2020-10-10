@@ -38,6 +38,21 @@
                 <span class="title">{{ title }}</span>
             </v-toolbar-title>
             <v-spacer />
+            <v-tooltip bottom>
+                <template #activator="{on: tooltip}">
+                    <v-btn
+                        icon
+                        class="white--text"
+                        v-on="{...tooltip}"
+                        @click="open('https://github.com/CaoMeiYouRen/shirakami-haruka-button')"
+                    >
+                        <v-icon size="28">
+                            iconfont icon-github
+                        </v-icon>
+                    </v-btn>
+                </template>
+                <span>{{ $t('ProjectAddress') }}</span>
+            </v-tooltip>
             <v-menu offset-y>
                 <template #activator="{on: menu}">
                     <v-tooltip bottom>
@@ -54,14 +69,12 @@
                     </v-tooltip>
                 </template>
                 <v-list>
-                    <v-list-item @click="switchLang('zh')">
-                        <v-list-item-title>简体中文</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item @click="switchLang('en')">
-                        <v-list-item-title>English</v-list-item-title>
-                    </v-list-item>
-                    <v-list-item @click="switchLang('ja')">
-                        <v-list-item-title>日本語</v-list-item-title>
+                    <v-list-item
+                        v-for="item in langList"
+                        :key="item.lang"
+                        @click="switchLang(item.lang)"
+                    >
+                        <v-list-item-title>{{ item.label }}</v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>
@@ -105,63 +118,74 @@
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, ref, computed, watch } from '@vue/composition-api'
 import { useTitle, useLanguage, useI18n, useOnScroll, useOnResize } from 'vue-composable'
+import { useOnWindowSize } from '@/composable'
+import i18n from '@/plugins/i18n'
+/**
+ * 切换语言
+*/
+function switchLang(locale){
+    i18n.locale = locale
+}
+function open(url) {
+    return window.open(url)
+}
+const langList = [
+    {
+        lang: 'zh',
+        label: '简体中文',
+    },
+    {
+        lang: 'en',
+        label: 'English',
+    },
+    {
+        lang: 'ja',
+        label: '日本語',
+    },
+]
+const menuList = computed(() => [
+    {
+        icon: 'home',
+        name: i18n.t('menu.Home'),
+        path: '/',
+    },
+    {
+        icon: 'iconfont icon-bilibili2',
+        name: i18n.t('menu.Bilibili'),
+        fun(){
+            window.open('https://space.bilibili.com/477332594/')
+        },
+    },
+    {
+        icon: 'code',
+        name: i18n.t('menu.About'),
+        path: '/about',
+    },
+])
 export default defineComponent({
     name: 'HomeLayout',
     props: {},
     setup(){
-        function getWindowHeight() {
-            return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
-        }
         const { scrollTop, remove } = useOnScroll()
-        const height = ref(getWindowHeight())
-        window.onresize = () => {
-            height.value = getWindowHeight()
-        }
+        const { height } = useOnWindowSize()
         const isShowBackTop = computed(() => scrollTop.value >= height.value / 3)
 
         onUnmounted(() => {
             remove()
-            window.onresize = null
         })
         return {
             title: useTitle(),
             scrollTop,
             height,
             isShowBackTop,
-        }
-    },
-    data() {
-        return {
             drawer: null,
+            switchLang,
+            open,
+            langList,
+            menuList,
         }
-    },
-    computed: {
-        menuList(): any[] {
-            return [
-                {
-                    icon: 'home',
-                    name: this.$t('menu.Home'),
-                    path: '/',
-                },
-                {
-                    icon: 'iconfont icon-bilibili2',
-                    name: this.$t('menu.Bilibili'),
-                    fun(){
-                        window.open('https://space.bilibili.com/477332594/')
-                    },
-                },
-                {
-                    icon: 'code',
-                    name: this.$t('menu.About'),
-                    path: '/about',
-                },
-            ]
-        },
     },
     methods: {
-        switchLang(locale){
-            this.$i18n.locale = locale
-        },
         backTop(){
             this.$vuetify.goTo(0, {
                 duration: 500,

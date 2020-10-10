@@ -6,7 +6,7 @@
             rounded
             @click="play"
         >
-            {{ title | strLint }}
+            {{ title }}
         </v-btn>
         <v-tooltip v-else top>
             <template #activator="{on,attrs}">
@@ -17,10 +17,10 @@
                     @click="play"
                     v-on="on"
                 >
-                    {{ title | strLint }}
+                    {{ title }}
                 </v-btn>
             </template>
-            <span>{{ title }}</span>
+            <span>{{ rawTitle }}</span>
         </v-tooltip>
         <span v-if="playList.length">
             <span
@@ -35,20 +35,19 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, Ref, ref } from '@vue/composition-api'
+import { computed, defineComponent, Ref, ref, reactive, watchEffect, isRef, isReactive } from '@vue/composition-api'
 import { messages } from '@/locales'
-const maxLength = 18
+import { useOnWindowSize } from '@/composable'
+import i18n from '@/plugins/i18n'
+
+function strFix(val: string, max = 16){
+    if (val && val.length > max){
+        return `${val.slice(0, max)}…`
+    }
+    return val
+}
 export default defineComponent({
     name: 'HarukaButton',
-    filters: {
-        strLint(val: string){
-            const max = maxLength
-            if (val && val.length > max){
-                return `${val.slice(0, max)}…`
-            }
-            return val
-        },
-    },
     props: {
         /**
          * 音声路径
@@ -67,10 +66,14 @@ export default defineComponent({
     },
     setup(props, ctx){
         const publicPath = process.env.BASE_URL || ''
-        const playList = ref([]) as Ref<number[]>
+        const playList = ref<number[]>([])
         const style = ref({
             animation: '',
         })
+        const { width } = useOnWindowSize()
+        // 计算按钮标题最大字数
+        // 屏幕宽度减 44px ，除以每个字 19px，最大不超过28个字
+        const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 28))
         function play(event, item){
             const audio = new Audio()
             audio.preload = 'meta'
@@ -85,30 +88,31 @@ export default defineComponent({
                 playList.value.shift()
             }
         }
+        const rawTitle = computed(() => {
+            const locale = i18n.locale
+            let _title = props.messages[locale]
+            if (_title){
+                return _title
+            }
+            const langs = Object.keys(messages)
+            for (let i = 0; i < langs.length; i++) {
+                const lang = langs[i]
+                _title = props.messages[lang]
+                if (_title){
+                    return _title
+                }
+            }
+            return props.messages['zh']
+        })
+        const title = computed(() => strFix(rawTitle.value, maxLength.value))
         return {
             play,
             style,
             playList,
             maxLength,
+            rawTitle,
+            title,
         }
-    },
-    computed: {
-        title(): string {
-            const locale = this.$i18n.locale
-            let title = this.messages[locale]
-            if (title){
-                return title
-            }
-            const langs = Object.keys(messages)
-            for (let i = 0; i < langs.length; i++) {
-                const lang = langs[i]
-                title = this.messages[lang]
-                if (title){
-                    return title
-                }
-            }
-            return this.messages['zh']
-        },
     },
 })
 </script>
@@ -124,7 +128,6 @@ export default defineComponent({
     margin-bottom: 15px;
 
     .v-btn {
-        // margin-right: 15px;
         text-transform: none;
         box-shadow: 0px 0px 7px $haruka-primary !important;
     }
@@ -136,7 +139,6 @@ export default defineComponent({
     left: 0px;
     box-sizing: border-box;
     height: 36px;
-    // overflow: hidden !important;
     background-color: rgba(0, 0, 0, 0.2);
     border-top-left-radius: 28px;
     border-bottom-left-radius: 28px;
