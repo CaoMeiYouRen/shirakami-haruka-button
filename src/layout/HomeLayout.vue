@@ -118,7 +118,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, ref, computed, watch } from '@vue/composition-api'
 import { useTitle, useLanguage, useI18n, useOnScroll, useOnResize } from 'vue-composable'
-import { useOnWindowSize } from '@/composable'
+import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
 /**
  * 切换语言
@@ -167,7 +167,7 @@ export default defineComponent({
     props: {},
     setup(){
         const { scrollTop, remove } = useOnScroll()
-        const { height } = useOnWindowSize()
+        const { height } = useOnWindowResize()
         const isShowBackTop = computed(() => scrollTop.value >= height.value / 3)
 
         onUnmounted(() => {

@@ -37,7 +37,7 @@
 <script lang="ts">
 import { computed, defineComponent, Ref, ref, reactive, watchEffect, isRef, isReactive } from '@vue/composition-api'
 import { messages } from '@/locales'
-import { useOnWindowSize } from '@/composable'
+import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
 
 function strFix(val: string, max = 16){
@@ -70,7 +70,7 @@ export default defineComponent({
         const style = ref({
             animation: '',
         })
-        const { width } = useOnWindowSize()
+        const { width } = useOnWindowResize()
         // 计算按钮标题最大字数
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过28个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 28))

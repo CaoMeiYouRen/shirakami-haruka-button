@@ -8,7 +8,7 @@ import { onMounted, onUnmounted, ref, computed, watch } from '@vue/composition-a
  * @export
  * @returns
  */
-export function useOnWindowSize() {
+export function useOnWindowResize() {
     function getSize() {
         const height = window.innerHeight || document.documentElement.clientHeight
         const width = window.innerWidth || document.documentElement.clientWidth
