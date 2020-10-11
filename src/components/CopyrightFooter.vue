@@ -40,8 +40,8 @@ export default defineComponent({
     props: {},
     setup(props, ctx){
         return {
-            POLICE: '浙公安备33102302000270号',
-            ICP: '浙ICP备18041571-3号',
+            POLICE: process.env.VUE_APP_POLICE,
+            ICP: process.env.VUE_APP_ICP,
         }
     },
 })
