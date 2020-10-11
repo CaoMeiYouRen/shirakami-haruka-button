@@ -16,11 +16,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import { defineComponent } from '@vue/composition-api'
+export default defineComponent({
     name: 'Layout',
 })
 </script>
-
-<style lang="scss" scoped>
-</style>

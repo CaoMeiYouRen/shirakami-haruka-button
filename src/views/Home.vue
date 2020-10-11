@@ -62,7 +62,6 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
 import _ from 'lodash'
-import markdownIt from 'markdown-it'
 import baobao from '@/assets/shabao.jpg'
 import voices from '@/config/voices'
 
