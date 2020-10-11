@@ -1,5 +1,8 @@
 process.env.VUE_APP_VERSION = require('./package.json').version
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
+
 function verFormat(ver) {
     const list = ver.split('.')
     for (let i = 0; i < list.length; i++) {
@@ -14,6 +17,7 @@ Object.keys(dependencies).forEach(e => {
         dependencies[e] = verFormat(d)
     }
 })
+
 module.exports = {
     publicPath: '/',
     devServer: {
@@ -34,7 +38,6 @@ module.exports = {
             `https://cdn.jsdelivr.net/npm/@mdi/font@${dependencies['@mdi/font']}/css/materialdesignicons.min.css`,
             `https://cdn.jsdelivr.net/npm/material-design-icons-iconfont@${dependencies['material-design-icons-iconfont']}/dist/material-design-icons.min.css`,
             `https://cdn.jsdelivr.net/npm/vuetify@${dependencies['vuetify']}/dist/vuetify.min.css`,
-            // 'https://at.alicdn.com/t/font_2115084_k8i40dlea3.css',
         ]
         const js = [
             `https://cdn.jsdelivr.net/npm/lodash@${dependencies['lodash']}/lodash.min.js`,
@@ -93,17 +96,50 @@ module.exports = {
             return {
                 externals: {
                     vuetify: 'Vuetify',
+                    'vuetify/lib': 'Vuetify',
                     vue: 'Vue',
                     vuex: 'Vuex',
                     'vue-router': 'VueRouter',
                     lodash: '_',
                     'vue-i18n': 'VueI18n',
                     '@vue/composition-api': 'VueCompositionAPI'
+                },
+                plugins: [
+                    // new BundleAnalyzerPlugin({
+                    //     analyzerMode: 'server',
+                    //     analyzerHost: '127.0.0.1',
+                    //     analyzerPort: 8080,
+                    //     reportFilename: 'index.html',
+                    //     defaultSizes: 'parsed',
+                    //     openAnalyzer: true,
+                    //     generateStatsFile: false,
+                    //     statsFilename: 'stats.json',
+                    //     statsOptions: null,
+                    //     logLevel: 'info'
+                    // })
+                ],
+                optimization: {
+                    splitChunks: {
+                        chunks: 'all',
+                        cacheGroups: {
+                            libs: {
+                                name: 'chunk-libs',
+                                test: /[\\/]node_modules[\\/]/,
+                                priority: 10,
+                                chunks: 'initial' // 只打包初始时依赖的第三方
+                            },
+                            vuetify: {
+                                name: 'chunk-vuetify', // 单独将 vuetify 拆包
+                                priority: 20, // 权重要大于 libs 和 app 不然会被打包进 libs 或者 app
+                                test: /[\\/]node_modules[\\/]vuetify[\\/]/
+                            }
+                        }
+                    },
                 }
             }
         }
     },
-    // transpileDependencies: [
-    //     'vuetify',
-    // ],
+    transpileDependencies: [
+        'vuetify',
+    ],
 }
