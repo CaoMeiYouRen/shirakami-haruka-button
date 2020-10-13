@@ -97,11 +97,11 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
-            zh: '变恋！一群变恋！',
+            zh: '变态！一群变态！',
             en: '',
             ja: '',
         },
-        path: '变恋！一群变恋！.mp3',
+        path: '变态！一群变态！.mp3',
         tag: 'ShakeM',
     },
     {
