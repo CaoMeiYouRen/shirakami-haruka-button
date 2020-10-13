@@ -3,9 +3,9 @@
   <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button" target="_blank">
     <img alt="Version" src="https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button">
   </a>
-  <!-- <a href="https://travis-ci.com/CaoMeiYouRen/shirakami-haruka-button" target="_blank">
+  <a href="https://travis-ci.com/CaoMeiYouRen/shirakami-haruka-button" target="_blank">
     <img alt="build" src="https://travis-ci.com/CaoMeiYouRen/shirakami-haruka-button.svg?branch=master" />
-  </a> -->
+  </a>
   <img src="https://img.shields.io/badge/node-%3E%3D12-blue.svg" />
   <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
@@ -23,6 +23,10 @@
 > 诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来
 
 ### 🏠 [主页](https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme)
+
+## 演示页面
+
+[https://haruka.fun/](https://haruka.fun/)
 
 
 ## 依赖要求
