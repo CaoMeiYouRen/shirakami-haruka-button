@@ -1,7 +1,6 @@
 process.env.VUE_APP_VERSION = require('./package.json').version
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-const VuetifyLoaderPlugin = require('vuetify-loader/lib/plugin')
 
 function verFormat(ver) {
     const list = ver.split('.')

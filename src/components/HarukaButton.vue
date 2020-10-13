@@ -74,7 +74,7 @@ export default defineComponent({
         // 计算按钮标题最大字数
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过28个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 28))
-        function play(event, item){
+        function play(){
             const audio = new Audio()
             audio.preload = 'meta'
             audio.src = `${publicPath}voices/${props.path}`
