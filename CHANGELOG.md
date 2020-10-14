@@ -1,5 +1,12 @@
 # shirakami-haruka-button
 
+## [1.0.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.0.0...v1.0.1) (2020-10-13)
+
+
+### 🐛 Bug 修复
+
+* 修复错别字 ([bcd2215](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/bcd2215))
+
 # 1.0.0 (2020-10-13)
 
 
