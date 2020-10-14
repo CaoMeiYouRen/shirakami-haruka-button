@@ -1,5 +1,12 @@
 # shirakami-haruka-button
 
+## [1.0.2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.0.1...v1.0.2) (2020-10-14)
+
+
+### 🐛 Bug 修复
+
+* 修复错别字；优化音声未加载时也可多次点击问题；优化翻译选项 ([45b4598](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/45b4598))
+
 ## [1.0.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.0.0...v1.0.1) (2020-10-13)
 
 
