@@ -4,6 +4,7 @@
             v-if="title.length < maxLength"
             color="primary"
             rounded
+            :disabled="disabled"
             @click="play"
         >
             {{ title }}
@@ -14,6 +15,7 @@
                     color="primary"
                     rounded
                     v-bind="attrs"
+                    :disabled="disabled"
                     @click="play"
                     v-on="on"
                 >
@@ -66,6 +68,7 @@ export default defineComponent({
     },
     setup(props, ctx){
         const publicPath = process.env.BASE_URL || ''
+        const disabled = ref(false)
         const playList = ref<number[]>([])
         const style = ref({
             animation: '',
@@ -75,16 +78,18 @@ export default defineComponent({
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过28个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 28))
         function play(){
+            disabled.value = true
             const audio = new Audio()
             audio.preload = 'meta'
             audio.src = `${publicPath}voices/${props.path}`
             audio.load()
-            audio.oncanplay = (e) => {
+            audio.oncanplay = e => {
                 style.value.animation = `playing ${audio.duration}s linear forwards`
                 playList.value.push(Date.now())
+                disabled.value = false
                 audio.play()
             }
-            audio.onended = (e) => {
+            audio.onended = e => {
                 playList.value.shift()
             }
         }
@@ -112,6 +117,7 @@ export default defineComponent({
             maxLength,
             rawTitle,
             title,
+            disabled,
         }
     },
 })

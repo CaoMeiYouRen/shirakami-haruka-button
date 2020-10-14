@@ -43,8 +43,9 @@
                     <v-btn
                         icon
                         class="white--text"
+                        href="https://github.com/CaoMeiYouRen/shirakami-haruka-button"
+                        target="_blank"
                         v-on="{...tooltip}"
-                        @click="open('https://github.com/CaoMeiYouRen/shirakami-haruka-button')"
                     >
                         <v-icon size="28">
                             iconfont icon-github
@@ -120,29 +121,19 @@ import { defineComponent, onMounted, onUnmounted, ref, computed, watch } from '@
 import { useTitle, useLanguage, useI18n, useOnScroll, useOnResize } from 'vue-composable'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
+import { messages } from '@/locales'
 /**
  * 切换语言
 */
 function switchLang(locale){
     i18n.locale = locale
 }
-function open(url) {
-    return window.open(url)
-}
-const langList = [
-    {
-        lang: 'zh',
-        label: '简体中文',
-    },
-    {
-        lang: 'en',
-        label: 'English',
-    },
-    {
-        lang: 'ja',
-        label: '日本語',
-    },
-]
+
+const langList = Object.keys(messages).map(e => ({
+    lang: e,
+    label: messages[e].langName,
+}))
+
 const menuList = computed(() => [
     {
         icon: 'home',
@@ -180,7 +171,6 @@ export default defineComponent({
             isShowBackTop,
             drawer: null,
             switchLang,
-            open,
             langList,
             menuList,
         }

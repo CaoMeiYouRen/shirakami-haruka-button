@@ -1,5 +1,6 @@
 export default {
     title: 'ヒョウボタン (:3っ)∋',
+    langName: '日本語',
     appBar: {
         SwitchLanguage: '言語を切り替え',
     },

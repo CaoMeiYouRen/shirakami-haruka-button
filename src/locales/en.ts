@@ -1,5 +1,6 @@
 export default {
     title: 'Haruka Button (:3っ)∋',
+    langName: 'English',
     appBar: {
         SwitchLanguage: 'SwitchLanguage',
     },
