@@ -159,7 +159,7 @@ export default defineComponent({
     setup(){
         const { scrollTop, remove } = useOnScroll()
         const { height } = useOnWindowResize()
-        const isShowBackTop = computed(() => scrollTop.value >= height.value / 3)
+        const isShowBackTop = computed(() => scrollTop.value >= (height.value || 720) / 3)
 
         onUnmounted(() => {
             remove()

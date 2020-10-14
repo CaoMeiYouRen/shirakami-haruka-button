@@ -4,7 +4,6 @@
             v-if="title.length < maxLength"
             color="primary"
             rounded
-            :disabled="disabled"
             @click="play"
         >
             {{ title }}
@@ -15,7 +14,6 @@
                     color="primary"
                     rounded
                     v-bind="attrs"
-                    :disabled="disabled"
                     @click="play"
                     v-on="on"
                 >
@@ -77,16 +75,23 @@ export default defineComponent({
         // 计算按钮标题最大字数
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过28个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 28))
-        function play(){
-            disabled.value = true
+        function play(event: MouseEvent){
+            if (disabled.value){ // 如果当前音频文件还未加载完则跳过本次。
+                return
+            }
             const audio = new Audio()
             audio.preload = 'meta'
             audio.src = `${publicPath}voices/${props.path}`
+            disabled.value = true
+            const timer = setTimeout(() => {
+                disabled.value = false
+            }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
             audio.load()
             audio.oncanplay = e => {
+                disabled.value = false
+                clearTimeout(timer)
                 style.value.animation = `playing ${audio.duration}s linear forwards`
                 playList.value.push(Date.now())
-                disabled.value = false
                 audio.play()
             }
             audio.onended = e => {

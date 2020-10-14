@@ -24,9 +24,9 @@ export function useOnWindowResize() {
         height.value = size.height
         width.value = size.width
     }
+    window.addEventListener('resize', handler)
     onMounted(() => {
         handler()
-        window.addEventListener('resize', handler)
     })
     onUnmounted(() => {
         window.removeEventListener('resize', handler)
