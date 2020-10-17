@@ -1,5 +1,12 @@
 # shirakami-haruka-button
 
+# [1.1.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.0.3...v1.1.0) (2020-10-17)
+
+
+### ✨ 新功能
+
+* 新增 洗脑循环 功能 ([3f14a01](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/3f14a01))
+
 ## [1.0.3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.0.2...v1.0.3) (2020-10-14)
 
 
