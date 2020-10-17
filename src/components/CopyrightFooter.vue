@@ -28,6 +28,13 @@
                         {{ $t('ProjectAddress') }}
                     </a>
                 </p>
+                <p class="github-info">
+                    <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">
+                        <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/CaoMeiYouRen/shirakami-haruka-button?style=social">
+                        <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/CaoMeiYouRen/shirakami-haruka-button?style=social">
+                        <img alt="GitHub forks" src="https://img.shields.io/github/forks/CaoMeiYouRen/shirakami-haruka-button?style=social">
+                    </a>
+                </p>
             </v-card-text>
         </v-card>
     </v-footer>
@@ -64,6 +71,20 @@ export default defineComponent({
 
     .card {
         background-color: #424242 !important;
+    }
+
+    .github-info {
+        a {
+            display: flex;
+            justify-content: center;
+            width: 300px;
+            margin: 0px auto;
+
+            img {
+                display: block;
+                margin: 0 7px;
+            }
+        }
     }
 }
 </style>
