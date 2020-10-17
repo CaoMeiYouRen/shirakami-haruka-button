@@ -1,4 +1,4 @@
-interface VoiceInfo {
+export interface VoiceInfo {
     /**
      * 标题翻译
      */
@@ -17,6 +17,12 @@ interface VoiceInfo {
      * tag 的翻译在 locales 文件夹下 zh/en/ja 文件中的 tags 字段中设置
      */
     tag: string
+    /**
+     * 是否播放
+     *
+     * @type {boolean}
+     */
+    isPlay?: boolean
 }
 const voices: VoiceInfo[] = [
     {

@@ -81,7 +81,7 @@
             </v-menu>
         </v-app-bar>
         <!-- 主体 -->
-        <v-main>
+        <v-main class="main">
             <transition
                 enter-active-class="animated fadeIn"
                 leave-active-class="animated fadeOut"
@@ -188,5 +188,9 @@ export default defineComponent({
 <style lang="scss" scoped>
 .haruka-app-bar-boxshadow {
     box-shadow: 0px 1px 5px #ffaea6 !important;
+}
+
+.main {
+    margin-bottom: 20px;
 }
 </style>

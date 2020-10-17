@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, Ref, ref, reactive, watchEffect, isRef, isReactive } from '@vue/composition-api'
+import { computed, defineComponent, Ref, ref, reactive, watchEffect, isRef, isReactive, unref, watch, toRefs } from '@vue/composition-api'
 import { messages } from '@/locales'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
@@ -46,8 +46,46 @@ function strFix(val: string, max = 16){
     }
     return val
 }
+// eslint-disable-next-line @typescript-eslint/ban-types
+function usePlayAudio(path: Ref<string> | string, style: Ref<{ animation: string }>, playList: Ref<number[]>, disabled: Ref<boolean>, onEnd?: Function) {
+    if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
+        return
+    }
+    const audio = new Audio()
+    audio.preload = 'meta'
+    audio.src = unref(path)
+    disabled.value = true
+    const timer = setTimeout(() => {
+        disabled.value = false
+    }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
+    audio.load()
+    audio.oncanplay = e => {
+        disabled.value = false
+        clearTimeout(timer)
+        style.value.animation = `playing ${audio.duration}s linear forwards`
+        playList.value.push(Date.now())
+        audio.play()
+    }
+    audio.onended = e => {
+        playList.value.shift()
+        if (onEnd){
+            onEnd()
+        }
+    }
+    function remove() {
+        clearTimeout(timer)
+    }
+    return {
+        remove,
+    }
+}
+
 export default defineComponent({
     name: 'HarukaButton',
+    model: {
+        prop: 'isPlay',
+        event: 'input',
+    },
     props: {
         /**
          * 音声路径
@@ -63,8 +101,13 @@ export default defineComponent({
             type: Object,
             required: true,
         },
+        isPlay: {
+            type: Boolean,
+            default: false,
+        },
     },
     setup(props, ctx){
+        const { isPlay } = toRefs(props)
         const publicPath = process.env.BASE_URL || ''
         const disabled = ref(false)
         const playList = ref<number[]>([])
@@ -75,27 +118,12 @@ export default defineComponent({
         // 计算按钮标题最大字数
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过28个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 28))
-        function play(event: MouseEvent){
-            if (disabled.value){ // 如果当前音频文件还未加载完则跳过本次。
-                return
-            }
-            const audio = new Audio()
-            audio.preload = 'meta'
-            audio.src = `${publicPath}voices/${props.path}`
-            disabled.value = true
-            const timer = setTimeout(() => {
-                disabled.value = false
-            }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
-            audio.load()
-            audio.oncanplay = e => {
-                disabled.value = false
-                clearTimeout(timer)
-                style.value.animation = `playing ${audio.duration}s linear forwards`
-                playList.value.push(Date.now())
-                audio.play()
-            }
-            audio.onended = e => {
-                playList.value.shift()
+        const path = `${publicPath}voices/${props.path}`
+        function play(cb){
+            if (typeof cb === 'function'){
+                usePlayAudio(path, style, playList, disabled, cb)
+            } else {
+                usePlayAudio(path, style, playList, disabled)
             }
         }
         const rawTitle = computed(() => {
@@ -115,6 +143,13 @@ export default defineComponent({
             return props.messages['zh']
         })
         const title = computed(() => strFix(rawTitle.value, maxLength.value))
+        watch(isPlay, () => {
+            if (isPlay.value){
+                play(() => {
+                    ctx.emit('input', false)
+                })
+            }
+        })
         return {
             play,
             style,

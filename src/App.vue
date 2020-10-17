@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref, computed, watch, watchEffect} from '@vue/composition-api'
+import { defineComponent, onMounted, ref, computed, watch, watchEffect } from '@vue/composition-api'
 import { useTitle, useLanguage, useI18n, useOnResize } from 'vue-composable'
 import i18n from '@/plugins/i18n'
 

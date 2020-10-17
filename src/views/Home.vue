@@ -41,6 +41,34 @@
         </v-row>
         <v-row algin="start" justify="start">
             <v-col
+                cols="12"
+            >
+                <HarukaCard
+                    :raw-title="'播放控制'"
+                >
+                    <span class="haruka-button">
+                        <v-btn
+                            color="primary"
+                            rounded
+                            @click="startLoop"
+                        >
+                            {{ '循环播放' }}
+                        </v-btn>
+                    </span>
+                    <span class="haruka-button">
+                        <v-btn
+                            color="primary"
+                            rounded
+                            @click="stopLoop"
+                        >
+                            {{ '停止循环' }}
+                        </v-btn>
+                    </span>
+                </HarukaCard>
+            </v-col>
+        </v-row>
+        <v-row algin="start" justify="start">
+            <v-col
                 v-for="(item,tag) in voicesGroup"
                 :key="tag"
                 cols="12"
@@ -51,6 +79,7 @@
                     <HarukaButton
                         v-for="(e,j) in item"
                         :key="j"
+                        v-model="e.isPlay"
                         :path="e.path"
                         :messages="e.messages"
                     />
@@ -61,22 +90,69 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch } from '@vue/composition-api'
 import _ from 'lodash'
 import baobao from '@/assets/shabao.jpg'
-import voices from '@/config/voices'
+import voices, { VoiceInfo } from '@/config/voices'
 
 export default defineComponent({
     name: 'Home',
     props: {},
     setup(props, ctx){
+        const _voices = ref(voices.map(e => {
+            e.isPlay = false
+            return e
+        }))
+        const voicesGroup = computed(() => _.groupBy(_voices.value, 'tag'))
+        const currentVoiceIndex = ref(0)
+        const currentVoice = computed(() => _voices.value[currentVoiceIndex.value])
+        let stop: any = null
+        function startLoop() {
+            currentVoice.value.isPlay = true
+            if (!stop){
+                stop = watch(currentVoice, (val, newVal, onInvalidate) => {
+                    if (!val.isPlay){
+                        currentVoiceIndex.value += 1
+                        currentVoiceIndex.value %= _voices.value.length
+                        currentVoice.value.isPlay = true
+                    }
+                }, {
+                    deep: true,
+                })
+            }
+        }
+        function stopLoop() {
+            if (stop){
+                stop()
+                stop = null
+            }
+            currentVoiceIndex.value = 0
+        }
         return {
             baobao,
-            voicesGroup: _.groupBy(voices, 'tag'),
+            voicesGroup,
+            startLoop,
+            stopLoop,
+            currentVoice,
+            currentVoiceIndex,
         }
     },
 })
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/index.scss';
+
+.haruka-button {
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-right: 15px;
+    margin-bottom: 15px;
+
+    .v-btn {
+        text-transform: none;
+        box-shadow: 0px 0px 7px $haruka-primary !important;
+    }
+}
 </style>

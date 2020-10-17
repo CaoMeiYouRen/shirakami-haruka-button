@@ -22,7 +22,10 @@ export default defineComponent({
     props: {
         tag: {
             type: String,
-            default: 'Other',
+            default: '',
+        },
+        rawTitle: {
+            type: String,
         },
         disableTitle: {
             type: Boolean,
@@ -30,7 +33,12 @@ export default defineComponent({
         },
     },
     setup(props, ctx){
-        const title = computed(() => i18n.t(`tags.${props.tag}`))
+        const title = computed(() => {
+            if (props.rawTitle){
+                return props.rawTitle
+            }
+            return i18n.t(`tags.${props.tag}`)
+        })
         return {
             title,
         }
