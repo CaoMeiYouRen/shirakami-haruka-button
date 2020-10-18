@@ -12,6 +12,7 @@ import './styles/index.scss'
 Vue.config.productionTip = false
 
 new Vue({
+    name: 'Root',
     router,
     store,
     i18n,

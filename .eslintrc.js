@@ -24,9 +24,11 @@ module.exports = {
     },
     parser: 'vue-eslint-parser',
     rules: {
-        'vue/html-self-closing': [IS_PROD ? 2 : 0],
-        'no-empty': IS_PROD ? 2 : 0, // 禁止有空代码块
-        'prefer-const': IS_PROD ? 2 : 0, // 建议使用const
-        'no-useless-return': IS_PROD ? 2 : 0, // 禁止多余的 return 语句
+        'vue/match-component-file-name': [2, {//要求组件名称属性与其文件名匹配
+            'extensions': ['jsx', 'tsx', 'vue'],
+            'shouldMatchCase': true
+        }],
+        'vue/no-reserved-component-names': [2],//不允许在组件定义中使用保留名称
+        'vue/require-name-property': [2], // 组件必须命名
     },
 }

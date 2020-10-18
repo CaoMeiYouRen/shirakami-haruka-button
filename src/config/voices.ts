@@ -45,6 +45,13 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
+            zh: '再说我平胸我就从这里跳下去',
+        },
+        path: '再说我平胸我就从这里跳下去.mp3',
+        tag: 'Tone',
+    },
+    {
+        messages: {
             zh: '防空警豹',
             en: '',
         },
@@ -103,11 +110,34 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
+            zh: '泥萌这些变态大哥哥好kimo，M兮兮的',
+            en: '',
+            ja: '',
+        },
+        path: '泥萌这些变态大哥哥好kimo.mp3',
+        tag: 'ShakeM',
+    },
+    {
+        messages: {
             zh: '变态！一群变态！',
             en: '',
             ja: '',
         },
         path: '变态！一群变态！.mp3',
+        tag: 'ShakeM',
+    },
+    {
+        messages: {
+            zh: '就是，盯着小女孩的腿看什么啊，变态！',
+        },
+        path: '就是，盯着小女孩的腿看什么啊，变态！.mp3',
+        tag: 'ShakeM',
+    },
+    {
+        messages: {
+            zh: '还要看人家女孩子的裤子，变态！',
+        },
+        path: '还要看人家女孩子的裤子，变态.mp3',
         tag: 'ShakeM',
     },
     {
@@ -175,6 +205,48 @@ const voices: VoiceInfo[] = [
             en: '',
         },
         path: '我就是喜欢看你这副嫉妒我的表情.mp3',
+        tag: 'Death',
+    },
+    {
+        messages: {
+            zh: '然后我就可以为所欲为，哎嘿，为所欲为',
+        },
+        path: '然后我就可以为所欲为.mp3',
+        tag: 'Death',
+    },
+    {
+        messages: {
+            zh: '直播中被妈妈闯进房间gank怒关电源',
+        },
+        path: '直播中被妈妈闯进房间gank怒关电源.mp3',
+        tag: 'Death',
+    },
+    {
+        messages: {
+            zh: '放假了没人管得住我了',
+        },
+        path: '放假了没人管得住我了.mp3',
+        tag: 'Death',
+    },
+    {
+        messages: {
+            zh: '妈妈问我什么时候吃饭，说再不出来就现在冲进房间里把我电脑砸了',
+        },
+        path: '妈妈问我什么时候吃饭.mp3',
+        tag: 'Death',
+    },
+    {
+        messages: {
+            zh: '妈妈听我解释',
+        },
+        path: '妈妈听我解释.mp3',
+        tag: 'Death',
+    },
+    {
+        messages: {
+            zh: '完了，妈妈说我再不出来就要死了。对不起，大家晚安，对不起！',
+        },
+        path: '完了，妈妈说我再不出来就要死了.mp3',
         tag: 'Death',
     },
 ]
