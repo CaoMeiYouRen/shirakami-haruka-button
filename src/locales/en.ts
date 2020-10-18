@@ -13,6 +13,7 @@ export default {
         PlaybackControl: 'PlaybackControl',
         LoopPlayback: 'LoopPlayback',
         StopLoop: 'StopLoop',
+        StopAll: 'StopAll',
     },
     tags: {
         Other: 'Other',

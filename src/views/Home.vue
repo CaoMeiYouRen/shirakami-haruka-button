@@ -64,6 +64,15 @@
                             <v-icon>stop</v-icon>{{ $t('play.StopLoop') }}
                         </v-btn>
                     </span>
+                    <span class="haruka-button">
+                        <v-btn
+                            color="primary"
+                            rounded
+                            @click="stopAll"
+                        >
+                            <v-icon>mdi-stop-circle-outline</v-icon>{{ $t('play.StopAll') }}
+                        </v-btn>
+                    </span>
                 </HarukaCard>
             </v-col>
         </v-row>
@@ -79,6 +88,7 @@
                     <HarukaButton
                         v-for="(e,j) in item"
                         :key="j"
+                        ref="voiceButton"
                         v-model="e.isPlay"
                         :path="e.path"
                         :messages="e.messages"
@@ -90,7 +100,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch, provide, Ref } from '@vue/composition-api'
 import _ from 'lodash'
 import baobao from '@/assets/shabao.jpg'
 import voices, { VoiceInfo } from '@/config/voices'
@@ -99,6 +109,9 @@ export default defineComponent({
     name: 'Home',
     props: {},
     setup(props, ctx){
+        const playList: Ref<Set<HTMLAudioElement>> = ref(new Set)
+        provide('playList', playList)
+        const voiceButton = ref()
         const _voices = ref(voices.map(e => {
             e.isPlay = false
             return e
@@ -126,14 +139,26 @@ export default defineComponent({
                 stop()
                 stop = null
             }
+        }
+        function stopAll() {
+            stopLoop()
             currentVoice.value.isPlay = false
             currentVoiceIndex.value = 0
+            playList.value.forEach(i => {
+                i.pause()
+                playList.value.delete(i)
+            })
+            for (const i in voiceButton.value) {
+                voiceButton.value[i].playList = []
+            }
         }
         return {
+            voiceButton,
             baobao,
             voicesGroup,
             startLoop,
             stopLoop,
+            stopAll,
             currentVoice,
             currentVoiceIndex,
         }

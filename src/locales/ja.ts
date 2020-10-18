@@ -13,6 +13,7 @@ export default {
         PlaybackControl: 'コントロール',
         LoopPlayback: '繰り返し再生',
         StopLoop: 'ループを停止',
+        StopAll: '再生停止',
     },
     tags: {
         Other: 'その他',

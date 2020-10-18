@@ -13,6 +13,7 @@ export default {
         PlaybackControl: '播放控制',
         LoopPlayback: '循环播放',
         StopLoop: '停止循环',
+        StopAll: '全部停止',
     },
     tags: { // tag 的翻译
         Other: '其他',
