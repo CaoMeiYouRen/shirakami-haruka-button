@@ -1,5 +1,12 @@
 # shirakami-haruka-button
 
+## [1.1.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.1.0...v1.1.1) (2020-10-18)
+
+
+### 🐛 Bug 修复
+
+* 优化播放控制国际化；优化循环播放和暂停；优化footer ([9ff6c4d](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/9ff6c4d))
+
 # [1.1.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.0.3...v1.1.0) (2020-10-17)
 
 
