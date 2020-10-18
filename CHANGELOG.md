@@ -1,5 +1,12 @@
 # shirakami-haruka-button
 
+## [1.2.2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.2.1...v1.2.2) (2020-10-18)
+
+
+### 🐛 Bug 修复
+
+* 优化 音频文件采用 CDN 源 ([cb73d84](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/cb73d84))
+
 ## [1.2.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.2.0...v1.2.1) (2020-10-18)
 
 
