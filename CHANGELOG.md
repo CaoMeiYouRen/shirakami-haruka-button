@@ -1,5 +1,12 @@
 # shirakami-haruka-button
 
+# [1.2.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.1.1...v1.2.0) (2020-10-18)
+
+
+### ✨ 新功能
+
+* 加入六岁豹的按钮; 加入妈妈关电脑的名场面; 加入 “你们快夸它大！快点！夸它大！”的名场面 ([2425ff1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/2425ff1)), closes [#2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/2)
+
 ## [1.1.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.1.0...v1.1.1) (2020-10-18)
 
 
