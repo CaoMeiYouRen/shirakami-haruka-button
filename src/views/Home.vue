@@ -44,7 +44,7 @@
                 cols="12"
             >
                 <HarukaCard
-                    :raw-title="'播放控制'"
+                    :raw-title="$t('play.PlaybackControl')"
                 >
                     <span class="haruka-button">
                         <v-btn
@@ -52,7 +52,7 @@
                             rounded
                             @click="startLoop"
                         >
-                            {{ '循环播放' }}
+                            <v-icon>play_arrow</v-icon>{{ $t('play.LoopPlayback') }}
                         </v-btn>
                     </span>
                     <span class="haruka-button">
@@ -61,7 +61,7 @@
                             rounded
                             @click="stopLoop"
                         >
-                            {{ '停止循环' }}
+                            <v-icon>stop</v-icon>{{ $t('play.StopLoop') }}
                         </v-btn>
                     </span>
                 </HarukaCard>
@@ -126,6 +126,7 @@ export default defineComponent({
                 stop()
                 stop = null
             }
+            currentVoice.value.isPlay = false
             currentVoiceIndex.value = 0
         }
         return {

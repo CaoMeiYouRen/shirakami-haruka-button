@@ -30,6 +30,7 @@
                 </p>
                 <p class="github-info">
                     <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">
+                        <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button?color=ffaea6">
                         <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/CaoMeiYouRen/shirakami-haruka-button?style=social">
                         <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/CaoMeiYouRen/shirakami-haruka-button?style=social">
                         <img alt="GitHub forks" src="https://img.shields.io/github/forks/CaoMeiYouRen/shirakami-haruka-button?style=social">

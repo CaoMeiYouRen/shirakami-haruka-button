@@ -9,6 +9,11 @@ export default {
         Bilibili: 'Bilibili',
         About: 'About',
     },
+    play: {
+        PlaybackControl: 'PlaybackControl',
+        LoopPlayback: 'LoopPlayback',
+        StopLoop: 'StopLoop',
+    },
     tags: {
         Other: 'Other',
         Tone: 'Tone',

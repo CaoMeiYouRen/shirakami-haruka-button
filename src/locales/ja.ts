@@ -9,6 +9,11 @@ export default {
         Bilibili: 'ビリビリ',
         About: 'について',
     },
+    play: {
+        PlaybackControl: 'コントロール',
+        LoopPlayback: '繰り返し再生',
+        StopLoop: 'ループを停止',
+    },
     tags: {
         Other: 'その他',
         Tone: '豹が鳴く',

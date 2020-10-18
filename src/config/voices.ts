@@ -77,10 +77,10 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
-            zh: '我一个巴掌呼死你',
-            en: '',
+            zh: '芜湖，起飞',
+            en: 'Wuhu, take off',
         },
-        path: '我一个巴掌呼死你.mp3',
+        path: '芜湖，起飞.mp3',
         tag: 'Tone',
     },
     {
@@ -155,7 +155,15 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
-            zh: '这个板子就跟晓音姐的胸一样，还是滑的！',
+            zh: '我一个巴掌呼死你',
+            en: '',
+        },
+        path: '我一个巴掌呼死你.mp3',
+        tag: 'Death',
+    },
+    {
+        messages: {
+            zh: '这个板子就跟晓音姐的胸一样还是滑的',
             en: '',
         },
         path: '这个板子就跟晓音姐的胸一样，还是滑的.mp3',
@@ -169,14 +177,5 @@ const voices: VoiceInfo[] = [
         path: '我就是喜欢看你这副嫉妒我的表情.mp3',
         tag: 'Death',
     },
-    {
-        messages: {
-            zh: '芜湖，起飞',
-            en: 'Wuhu, take off',
-        },
-        path: '芜湖，起飞.mp3',
-        tag: 'Tone',
-    },
-
 ]
 export default voices

@@ -9,6 +9,11 @@ export default {
         Bilibili: '哔哩哔哩',
         About: '关于',
     },
+    play: {
+        PlaybackControl: '播放控制',
+        LoopPlayback: '循环播放',
+        StopLoop: '停止循环',
+    },
     tags: { // tag 的翻译
         Other: '其他',
         Tone: '豹叫',

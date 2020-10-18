@@ -46,39 +46,6 @@ function strFix(val: string, max = 16){
     }
     return val
 }
-// eslint-disable-next-line @typescript-eslint/ban-types
-function usePlayAudio(path: Ref<string> | string, style: Ref<{ animation: string }>, playList: Ref<number[]>, disabled: Ref<boolean>, onEnd?: Function) {
-    if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
-        return
-    }
-    const audio = new Audio()
-    audio.preload = 'meta'
-    audio.src = unref(path)
-    disabled.value = true
-    const timer = setTimeout(() => {
-        disabled.value = false
-    }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
-    audio.load()
-    audio.oncanplay = e => {
-        disabled.value = false
-        clearTimeout(timer)
-        style.value.animation = `playing ${audio.duration}s linear forwards`
-        playList.value.push(Date.now())
-        audio.play()
-    }
-    audio.onended = e => {
-        playList.value.shift()
-        if (onEnd){
-            onEnd()
-        }
-    }
-    function remove() {
-        clearTimeout(timer)
-    }
-    return {
-        remove,
-    }
-}
 
 export default defineComponent({
     name: 'HarukaButton',
@@ -119,11 +86,35 @@ export default defineComponent({
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过28个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 28))
         const path = `${publicPath}voices/${props.path}`
+        let stop: any = null
         function play(cb){
-            if (typeof cb === 'function'){
-                usePlayAudio(path, style, playList, disabled, cb)
-            } else {
-                usePlayAudio(path, style, playList, disabled)
+            if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
+                return
+            }
+            const audio = new Audio()
+            audio.preload = 'meta'
+            audio.src = path
+            disabled.value = true
+            const timer = setTimeout(() => {
+                disabled.value = false
+            }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
+            audio.load()
+            audio.oncanplay = e => {
+                disabled.value = false
+                clearTimeout(timer)
+                style.value.animation = `playing ${audio.duration}s linear forwards`
+                playList.value.push(Date.now())
+                audio.play()
+            }
+            audio.onended = e => {
+                playList.value.shift()
+                if (typeof cb === 'function'){
+                    cb()
+                }
+            }
+            stop = () => {
+                audio.pause()
+                playList.value.shift()
             }
         }
         const rawTitle = computed(() => {
@@ -148,6 +139,11 @@ export default defineComponent({
                 play(() => {
                     ctx.emit('input', false)
                 })
+            } else {
+                if (stop){
+                    stop()
+                    stop = null
+                }
             }
         })
         return {
