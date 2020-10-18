@@ -85,7 +85,13 @@ export default defineComponent({
         // 计算按钮标题最大字数
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过32个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 32))
-        const path = `${publicPath}voices/${props.path}`
+        const path = ref('')
+        if (process.env.NODE_ENV === 'production'){
+            path.value = `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${publicPath}voices/${props.path}`
+        } else {
+            path.value = `${publicPath}voices/${props.path}`
+        }
+        
         let stop: any = null
         function play(cb){
             if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
@@ -93,7 +99,7 @@ export default defineComponent({
             }
             const audio = new Audio()
             audio.preload = 'meta'
-            audio.src = path
+            audio.src = path.value
             disabled.value = true
             const timer = setTimeout(() => {
                 disabled.value = false
