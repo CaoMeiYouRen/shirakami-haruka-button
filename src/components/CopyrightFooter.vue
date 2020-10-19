@@ -75,15 +75,18 @@ export default defineComponent({
     }
 
     .github-info {
+        margin: 0;
+
         a {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            width: 300px;
+            width: 100%;
             margin: 0px auto;
 
             img {
                 display: block;
-                margin: 0 7px;
+                margin: 7px;
             }
         }
     }

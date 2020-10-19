@@ -39,13 +39,21 @@
                 </HarukaCard>
             </v-col>
         </v-row>
-        <v-row algin="start" justify="start">
+        <v-row
+            algin="start"
+            justify="start"
+            :class="{'fixed': fixed}"
+        >
             <v-col
                 cols="12"
             >
                 <HarukaCard
+                    class="control"
                     :raw-title="$t('play.PlaybackControl')"
                 >
+                    <v-icon class="pin" @click="fixed = !fixed">
+                        {{ fixed ? 'mdi-pin' : 'mdi-pin-off' }}
+                    </v-icon>
                     <span class="haruka-button">
                         <v-btn
                             color="primary"
@@ -152,6 +160,11 @@ export default defineComponent({
             }
         }
 
+        /**
+         * 是否固定播放面板
+         */
+        const fixed = ref(false)
+
         return {
             voiceButton,
             isLoop,
@@ -161,6 +174,7 @@ export default defineComponent({
             stopLoop,
             currentVoice,
             currentVoiceIndex,
+            fixed,
         }
     },
 })
@@ -168,6 +182,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/styles/index.scss';
+
+.control {
+    position: relative;
+
+    .pin {
+        position: absolute;
+        top: 20px;
+        right: 16px;
+    }
+}
+
+.fixed {
+    position: sticky;
+    top: 50px;
+    z-index: 1;
+}
 
 .haruka-button {
     position: relative;
