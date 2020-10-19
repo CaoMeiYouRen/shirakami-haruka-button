@@ -106,6 +106,6 @@
   },
   "changelog": {
     "language": "zh",
-    "authorName": true
+    "authorName": false
   }
 }

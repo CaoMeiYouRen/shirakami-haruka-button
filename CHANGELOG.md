@@ -5,13 +5,13 @@
 
 ### ✨ 新功能
 
-* 增加停止播放功能 ([8ad8f21](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/8ad8f21)) by: ****
-* 增加洗脑循环;合并停止循环和全部停止按钮 ([d6c019e](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d6c019e)) by: ****
+* 增加停止播放功能 ([8ad8f21](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/8ad8f21)) 
+* 增加洗脑循环;合并停止循环和全部停止按钮 ([d6c019e](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d6c019e))
 
 
 ### 🐛 Bug 修复
 
-* 修复停止播放bug；关于页面新增更新日志链接；更新日志新增用户名；优化按钮样式 ([daf77f3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/daf77f3)) by: ****, closes [#4](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/4)
+* 修复停止播放bug；关于页面新增更新日志链接；更新日志新增用户名；优化按钮样式 ([daf77f3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/daf77f3)), closes [#4](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/4)
 
 ## [1.2.2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.2.1...v1.2.2) (2020-10-18)
 
