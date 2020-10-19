@@ -114,11 +114,12 @@
                 >
                     <HarukaButton
                         v-for="(e,j) in item"
-                        :key="j"
                         ref="voiceButton"
+                        :key="j"
                         v-model="e.isPlay"
                         :path="e.path"
                         :messages="e.messages"
+                        :is-loop="isLoop"
                     />
                 </HarukaCard>
             </v-col>
@@ -161,7 +162,6 @@ export default defineComponent({
         let stop: any = null
 
         provide('playList', playList)
-        provide('isLoop', isLoop)
         /**
          * 开始循环播放
          */

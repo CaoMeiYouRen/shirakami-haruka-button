@@ -72,11 +72,14 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        isLoop: {
+            type: Boolean,
+            default: false,
+        },
     },
     setup(props, ctx){
         const allPlayList = inject('playList') as Ref<Set<HTMLAudioElement>>
-        const isLoop = inject('isLoop') as Ref<boolean>
-        const { isPlay } = toRefs(props)
+        const { isPlay, isLoop, path } = toRefs(props)
         const publicPath = process.env.BASE_URL || ''
         const disabled = ref(false)
         const playList = ref<number[]>([])
@@ -87,12 +90,13 @@ export default defineComponent({
         // 计算按钮标题最大字数
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过32个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 32))
-        const path = ref('')
-        if (process.env.NODE_ENV === 'production'){
-            path.value = `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${publicPath}voices/${props.path}`
-        } else {
-            path.value = `${publicPath}voices/${props.path}`
-        }
+        const _path = computed(() => {
+            if (process.env.NODE_ENV === 'production'){
+                return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${publicPath}voices/${path.value}`
+            } else {
+                return `${publicPath}voices/${path.value}`
+            }
+        })
 
         function play(cb?: () => any){
             if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
@@ -100,7 +104,7 @@ export default defineComponent({
             }
             const audio = new Audio()
             audio.preload = 'meta'
-            audio.src = path.value
+            audio.src = _path.value
             disabled.value = true
             const timer = setTimeout(() => {
                 disabled.value = false
