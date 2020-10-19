@@ -75,6 +75,7 @@ export default defineComponent({
     },
     setup(props, ctx){
         const allPlayList = inject('playList') as Ref<Set<HTMLAudioElement>>
+        const isLoop = inject('isLoop') as Ref<boolean>
         const { isPlay } = toRefs(props)
         const publicPath = process.env.BASE_URL || ''
         const disabled = ref(false)
@@ -113,6 +114,9 @@ export default defineComponent({
                 playList.value.shift()
                 if (typeof cb === 'function'){
                     cb()
+                }
+                if (isLoop.value) {
+                    play(null)
                 }
             }
             stop = () => {

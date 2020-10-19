@@ -12,8 +12,9 @@ export default {
     play: {
         PlaybackControl: 'コントロール',
         LoopPlayback: '繰り返し再生',
-        StopLoop: 'ループを停止',
-        StopAll: '再生停止',
+        StopPlay: '再生停止',
+        LoopOn: 'ループ',
+        LoopOff: 'ループオフ',
     },
     tags: {
         Other: 'その他',

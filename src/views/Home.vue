@@ -61,16 +61,16 @@
                             rounded
                             @click="stopLoop"
                         >
-                            <v-icon>stop</v-icon>{{ $t('play.StopLoop') }}
+                            <v-icon>stop</v-icon>{{ $t('play.StopPlay') }}
                         </v-btn>
                     </span>
                     <span class="haruka-button">
                         <v-btn
-                            color="primary"
+                            :color="isLoop ? 'primary' : '#fff'"
                             rounded
-                            @click="stopAll"
+                            @click="isLoop = !isLoop"
                         >
-                            <v-icon>mdi-stop-circle-outline</v-icon>{{ $t('play.StopAll') }}
+                            <v-icon>mdi-restore</v-icon>{{ isLoop ? $t('play.LoopOn') : $t('play.LoopOff') }}
                         </v-btn>
                     </span>
                 </HarukaCard>
@@ -111,6 +111,8 @@ export default defineComponent({
     setup(props, ctx){
         const playList: Ref<Set<HTMLAudioElement>> = ref(new Set)
         provide('playList', playList)
+        const isLoop = ref(false)
+        provide('isLoop', isLoop)
         const voiceButton = ref()
         const _voices = ref(voices.map(e => {
             e.isPlay = false
@@ -139,9 +141,6 @@ export default defineComponent({
                 stop()
                 stop = null
             }
-        }
-        function stopAll() {
-            stopLoop()
             currentVoice.value.isPlay = false
             currentVoiceIndex.value = 0
             playList.value.forEach(i => {
@@ -152,13 +151,14 @@ export default defineComponent({
                 voiceButton.value[i].playList = []
             }
         }
+
         return {
             voiceButton,
+            isLoop,
             baobao,
             voicesGroup,
             startLoop,
             stopLoop,
-            stopAll,
             currentVoice,
             currentVoiceIndex,
         }

@@ -12,8 +12,9 @@ export default {
     play: {
         PlaybackControl: 'PlaybackControl',
         LoopPlayback: 'LoopPlayback',
-        StopLoop: 'StopLoop',
-        StopAll: 'StopAll',
+        StopPlay: 'StopPlay',
+        LoopOn: 'LoopPlayOn',
+        LoopOff: 'LoopPlayOff',
     },
     tags: {
         Other: 'Other',
