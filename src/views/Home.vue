@@ -39,13 +39,21 @@
                 </HarukaCard>
             </v-col>
         </v-row>
-        <v-row algin="start" justify="start">
+        <v-row
+            algin="start"
+            justify="start"
+            :class="{'fixed': fixed}"
+        >
             <v-col
                 cols="12"
             >
                 <HarukaCard
+                    class="control"
                     :raw-title="$t('play.PlaybackControl')"
                 >
+                    <v-icon class="pin" @click="fixed = !fixed">
+                        {{ fixed ? 'mdi-pin' : 'mdi-pin-off' }}
+                    </v-icon>
                     <span class="haruka-button">
                         <v-btn
                             color="primary"
@@ -61,7 +69,16 @@
                             rounded
                             @click="stopLoop"
                         >
-                            <v-icon>stop</v-icon>{{ $t('play.StopLoop') }}
+                            <v-icon>stop</v-icon>{{ $t('play.StopPlay') }}
+                        </v-btn>
+                    </span>
+                    <span class="haruka-button">
+                        <v-btn
+                            :color="isLoop ? 'primary' : '#fff'"
+                            rounded
+                            @click="isLoop = !isLoop"
+                        >
+                            <v-icon>mdi-restore</v-icon>{{ isLoop ? $t('play.LoopOn') : $t('play.LoopOff') }}
                         </v-btn>
                     </span>
                 </HarukaCard>
@@ -79,6 +96,7 @@
                     <HarukaButton
                         v-for="(e,j) in item"
                         :key="j"
+                        ref="voiceButton"
                         v-model="e.isPlay"
                         :path="e.path"
                         :messages="e.messages"
@@ -90,7 +108,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch, provide, Ref } from '@vue/composition-api'
 import _ from 'lodash'
 import baobao from '@/assets/shabao.jpg'
 import voices, { VoiceInfo } from '@/config/voices'
@@ -99,6 +117,11 @@ export default defineComponent({
     name: 'Home',
     props: {},
     setup(props, ctx){
+        const playList: Ref<Set<HTMLAudioElement>> = ref(new Set)
+        provide('playList', playList)
+        const isLoop = ref(false)
+        provide('isLoop', isLoop)
+        const voiceButton = ref()
         const _voices = ref(voices.map(e => {
             e.isPlay = false
             return e
@@ -128,14 +151,30 @@ export default defineComponent({
             }
             currentVoice.value.isPlay = false
             currentVoiceIndex.value = 0
+            playList.value.forEach(i => {
+                i.pause()
+                playList.value.delete(i)
+            })
+            for (const i in voiceButton.value) {
+                voiceButton.value[i].playList = []
+            }
         }
+
+        /**
+         * 是否固定播放面板
+         */
+        const fixed = ref(false)
+
         return {
+            voiceButton,
+            isLoop,
             baobao,
             voicesGroup,
             startLoop,
             stopLoop,
             currentVoice,
             currentVoiceIndex,
+            fixed,
         }
     },
 })
@@ -143,6 +182,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 @import '@/styles/index.scss';
+
+.control {
+    position: relative;
+
+    .pin {
+        position: absolute;
+        top: 20px;
+        right: 16px;
+    }
+}
+
+.fixed {
+    position: sticky;
+    top: 50px;
+    z-index: 1;
+}
 
 .haruka-button {
     position: relative;

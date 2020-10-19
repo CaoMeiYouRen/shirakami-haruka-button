@@ -12,7 +12,9 @@ export default {
     play: {
         PlaybackControl: '播放控制',
         LoopPlayback: '循环播放',
-        StopLoop: '停止循环',
+        StopPlay: '停止播放',
+        LoopOn: '洗脑循环开启中',
+        LoopOff: '洗脑循环已关闭',
     },
     tags: { // tag 的翻译
         Other: '其他',

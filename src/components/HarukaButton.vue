@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, Ref, ref, reactive, watchEffect, isRef, isReactive, unref, watch, toRefs } from '@vue/composition-api'
+import { computed, defineComponent, Ref, ref, reactive, watchEffect, isRef, isReactive, unref, watch, toRefs, inject } from '@vue/composition-api'
 import { messages } from '@/locales'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
@@ -74,6 +74,8 @@ export default defineComponent({
         },
     },
     setup(props, ctx){
+        const allPlayList = inject('playList') as Ref<Set<HTMLAudioElement>>
+        const isLoop = inject('isLoop') as Ref<boolean>
         const { isPlay } = toRefs(props)
         const publicPath = process.env.BASE_URL || ''
         const disabled = ref(false)
@@ -110,12 +112,17 @@ export default defineComponent({
                 clearTimeout(timer)
                 style.value.animation = `playing ${audio.duration}s linear forwards`
                 playList.value.push(Date.now())
+                allPlayList.value.add(audio)
                 audio.play()
             }
             audio.onended = e => {
+                allPlayList.value.delete(audio)
                 playList.value.shift()
                 if (typeof cb === 'function'){
                     cb()
+                }
+                if (isLoop.value) {
+                    play(null)
                 }
             }
             stop = () => {
