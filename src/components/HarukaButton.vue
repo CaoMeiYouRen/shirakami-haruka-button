@@ -93,8 +93,7 @@ export default defineComponent({
         } else {
             path.value = `${publicPath}voices/${props.path}`
         }
-        
-        let stop: any = null
+
         function play(cb){
             if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
                 return
@@ -125,10 +124,6 @@ export default defineComponent({
                     play(null)
                 }
             }
-            stop = () => {
-                audio.pause()
-                playList.value.shift()
-            }
         }
         const rawTitle = computed(() => {
             const locale = i18n.locale
@@ -152,11 +147,6 @@ export default defineComponent({
                 play(() => {
                     ctx.emit('input', false)
                 })
-            } else {
-                if (stop){
-                    stop()
-                    stop = null
-                }
             }
         })
         return {
@@ -184,7 +174,10 @@ export default defineComponent({
 
     .v-btn {
         text-transform: none;
-        box-shadow: 0px 0px 7px $haruka-primary !important;
+
+        &.primary {
+            box-shadow: 0px 0px 7px $haruka-primary !important;
+        }
     }
 }
 

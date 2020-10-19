@@ -15,6 +15,7 @@ export default {
         StopPlay: '再生停止',
         LoopOn: 'ループ',
         LoopOff: 'ループオフ',
+        FixedControlPanel: '固定コントロールパネル',
     },
     tags: {
         Other: 'その他',

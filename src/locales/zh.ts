@@ -15,6 +15,7 @@ export default {
         StopPlay: '停止播放',
         LoopOn: '洗脑循环开启中',
         LoopOff: '洗脑循环已关闭',
+        FixedControlPanel: '固定控制面板',
     },
     tags: { // tag 的翻译
         Other: '其他',

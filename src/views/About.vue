@@ -24,6 +24,16 @@
                         </h3>
                     </v-card-text>
                     <v-card-text>
+                        <h2>更新日志</h2>
+                        <br>
+                        <h3>
+                            见 <v-icon size="24">
+                                iconfont icon-github
+                            </v-icon>
+                            <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button/blob/master/CHANGELOG.md">Github CHANGELOG</a>
+                        </h3>
+                    </v-card-text>
+                    <v-card-text>
                         <h2>使用技术</h2>
                         <br>
                         <div v-for="item in useList" :key="item.url">

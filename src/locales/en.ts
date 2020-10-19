@@ -15,6 +15,7 @@ export default {
         StopPlay: 'StopPlay',
         LoopOn: 'LoopPlayOn',
         LoopOff: 'LoopPlayOff',
+        FixedControlPanel: 'FixedControlPanel',
     },
     tags: {
         Other: 'Other',

@@ -31,9 +31,9 @@
                             <b>新增音声</b>：如果会编程的可以直接上
                             <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">GitHub</a>
                             fork，修改完后提 pull request ，不会编程的可以提个 issue<br>
-                            更多内容请参考 <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme" target="_blank">README</a><br>
-                            <b>使用指南</b>：点击按钮即可播放对应音声；多次点击可以造成相当鬼畜的效果<br>
-                            <b>声明</b>：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联
+                            <b>使用指南</b>：点击按钮即可播放对应音声；多次点击可以造成相当鬼畜的效果；开启洗脑循环将会一直播放一个音频<br>
+                            <b>声明</b>：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联<br>
+                            更多内容请参考 <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme" target="_blank">README</a>
                         </v-col>
                     </v-row>
                 </HarukaCard>
@@ -51,9 +51,19 @@
                     class="control"
                     :raw-title="$t('play.PlaybackControl')"
                 >
-                    <v-icon class="pin" @click="fixed = !fixed">
-                        {{ fixed ? 'mdi-pin' : 'mdi-pin-off' }}
-                    </v-icon>
+                    <v-tooltip top>
+                        <template #activator="{on,attrs}">
+                            <v-icon
+                                v-bind="attrs"
+                                class="pin"
+                                v-on="on"
+                                @click="fixed = !fixed"
+                            >
+                                {{ fixed ? 'mdi-pin' : 'mdi-pin-off' }}
+                            </v-icon>
+                        </template>
+                        <span>{{ $t('play.FixedControlPanel') }}</span>
+                    </v-tooltip>
                     <span class="haruka-button">
                         <v-btn
                             color="primary"
@@ -208,7 +218,10 @@ export default defineComponent({
 
     .v-btn {
         text-transform: none;
-        box-shadow: 0px 0px 7px $haruka-primary !important;
+
+        &.primary {
+            box-shadow: 0px 0px 7px $haruka-primary !important;
+        }
     }
 }
 </style>
