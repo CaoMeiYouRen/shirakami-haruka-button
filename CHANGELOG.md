@@ -1,5 +1,12 @@
 # shirakami-haruka-button
 
+# [1.4.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.3.0...v1.4.0) (2020-10-19)
+
+
+### ✨ 新功能
+
+* 新增随机播放按钮 ([cf89776](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/cf89776)), closes [#5](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/5)
+
 # [1.3.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.2.2...v1.3.0) (2020-10-19)
 
 
