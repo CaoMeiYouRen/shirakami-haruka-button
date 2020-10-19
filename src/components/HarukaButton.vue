@@ -35,7 +35,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, Ref, ref, reactive, watchEffect, isRef, isReactive, unref, watch, toRefs, inject } from '@vue/composition-api'
+import { computed, defineComponent, Ref, ref, watch, toRefs, inject } from '@vue/composition-api'
 import { messages } from '@/locales'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
@@ -94,7 +94,7 @@ export default defineComponent({
             path.value = `${publicPath}voices/${props.path}`
         }
 
-        function play(cb){
+        function play(cb?: () => any){
             if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
                 return
             }
@@ -121,7 +121,7 @@ export default defineComponent({
                     cb()
                 }
                 if (isLoop.value) {
-                    play(null)
+                    play()
                 }
             }
         }

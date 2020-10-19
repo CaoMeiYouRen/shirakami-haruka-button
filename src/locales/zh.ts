@@ -12,6 +12,7 @@ export default {
     play: {
         PlaybackControl: '播放控制',
         LoopPlayback: '循环播放',
+        RandomPlay: '随机播放',
         StopPlay: '停止播放',
         LoopOn: '洗脑循环开启中',
         LoopOff: '洗脑循环已关闭',

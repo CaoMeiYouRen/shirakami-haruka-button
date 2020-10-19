@@ -77,6 +77,15 @@
                         <v-btn
                             color="primary"
                             rounded
+                            @click="startRandomPlay"
+                        >
+                            <v-icon>iconfont icon-suijibofang</v-icon>{{ $t('play.RandomPlay') }}
+                        </v-btn>
+                    </span>
+                    <span class="haruka-button">
+                        <v-btn
+                            color="primary"
+                            rounded
                             @click="stopLoop"
                         >
                             <v-icon>stop</v-icon>{{ $t('play.StopPlay') }}
@@ -118,7 +127,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, provide, Ref } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch, provide, Ref, nextTick } from '@vue/composition-api'
 import _ from 'lodash'
 import baobao from '@/assets/shabao.jpg'
 import voices, { VoiceInfo } from '@/config/voices'
@@ -127,21 +136,40 @@ export default defineComponent({
     name: 'Home',
     props: {},
     setup(props, ctx){
-        const playList: Ref<Set<HTMLAudioElement>> = ref(new Set)
-        provide('playList', playList)
+        const playList = ref(new Set<HTMLAudioElement>())
+        /**
+         * 是否洗脑循环
+        */
         const isLoop = ref(false)
-        provide('isLoop', isLoop)
         const voiceButton = ref()
         const _voices = ref(voices.map(e => {
             e.isPlay = false
             return e
         }))
+        /**
+         * 是否固定播放面板
+         */
+        const fixed = ref(false)
+        /**
+         * 随机播放列表
+        */
+        const randomList = ref(_voices.value.map((e, i) => i))
+
         const voicesGroup = computed(() => _.groupBy(_voices.value, 'tag'))
         const currentVoiceIndex = ref(0)
         const currentVoice = computed(() => _voices.value[currentVoiceIndex.value])
         let stop: any = null
-        function startLoop() {
+
+        provide('playList', playList)
+        provide('isLoop', isLoop)
+        /**
+         * 开始循环播放
+         */
+        async function startLoop() {
+            stopLoop()
+            await nextTick()
             currentVoice.value.isPlay = true
+            currentVoiceIndex.value = 0
             if (!stop){
                 stop = watch(currentVoice, (val, newVal, onInvalidate) => {
                     if (!val.isPlay){
@@ -154,6 +182,32 @@ export default defineComponent({
                 })
             }
         }
+        function randomPlay() {
+            if (randomList.value.length <= 0){
+                randomList.value = _voices.value.map((e, i) => i)
+            }
+            const i = Math.floor(Math.random() * randomList.value.length)
+            currentVoiceIndex.value = randomList.value[i]
+            randomList.value.splice(i, 1) // 将当前播放的音频移除随机播放列表
+            currentVoice.value.isPlay = true
+        }
+        /**
+         * 开始随机播放
+        */
+        function startRandomPlay() {
+            stopLoop()
+            randomPlay()
+            if (!stop){
+                stop = watch(currentVoice, (val, newVal, onInvalidate) => {
+                    if (!val.isPlay){
+                        randomPlay()
+                    }
+                }, {
+                    deep: true,
+                })
+            }
+        }
+
         function stopLoop() {
             if (stop){
                 stop()
@@ -170,17 +224,13 @@ export default defineComponent({
             }
         }
 
-        /**
-         * 是否固定播放面板
-         */
-        const fixed = ref(false)
-
         return {
             voiceButton,
             isLoop,
             baobao,
             voicesGroup,
             startLoop,
+            startRandomPlay,
             stopLoop,
             currentVoice,
             currentVoiceIndex,
