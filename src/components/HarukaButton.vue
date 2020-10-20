@@ -22,9 +22,9 @@
             </template>
             <span>{{ rawTitle }}</span>
         </v-tooltip>
-        <span v-if="playList.length">
+        <span v-if="maskList.length">
             <span
-                v-for="(e) in playList"
+                v-for="(e) in maskList"
                 :key="e"
                 :style="style"
                 class="process-mask"
@@ -72,17 +72,27 @@ export default defineComponent({
             type: Boolean,
             default: false,
         },
+        /**
+         * 循环播放
+        */
         isLoop: {
+            type: Boolean,
+            default: false,
+        },
+        /**
+         * 是否停止全部音频
+        */
+        stopAll: {
             type: Boolean,
             default: false,
         },
     },
     setup(props, ctx){
-        const allPlayList = inject('playList') as Ref<Set<HTMLAudioElement>>
-        const { isPlay, isLoop, path } = toRefs(props)
+        const playList = ref(new Set<HTMLAudioElement>())
+        const { isPlay, isLoop, stopAll, path } = toRefs(props)
         const publicPath = process.env.BASE_URL || ''
         const disabled = ref(false)
-        const playList = ref<number[]>([])
+        const maskList = ref<number[]>([])
         const style = ref({
             animation: '',
         })
@@ -114,13 +124,13 @@ export default defineComponent({
                 disabled.value = false
                 clearTimeout(timer)
                 style.value.animation = `playing ${audio.duration}s linear forwards`
-                playList.value.push(Date.now())
-                allPlayList.value.add(audio)
+                maskList.value.push(Date.now())
+                playList.value.add(audio)
                 audio.play()
             }
             audio.onended = e => {
-                allPlayList.value.delete(audio)
-                playList.value.shift()
+                playList.value.delete(audio)
+                maskList.value.shift()
                 if (typeof cb === 'function'){
                     cb()
                 }
@@ -146,17 +156,26 @@ export default defineComponent({
             return props.messages['zh']
         })
         const title = computed(() => strFix(rawTitle.value, maxLength.value))
-        watch(isPlay, () => {
-            if (isPlay.value){
+        watch(isPlay, val => {
+            if (val){
                 play(() => {
                     ctx.emit('input', false)
                 })
             }
         })
+        watch(stopAll, val => {
+            if (val){
+                playList.value.forEach(e => {
+                    e.pause()
+                    playList.value.delete(e)
+                })
+                maskList.value = []
+            }
+        })
         return {
             play,
             style,
-            playList,
+            maskList,
             maxLength,
             rawTitle,
             title,

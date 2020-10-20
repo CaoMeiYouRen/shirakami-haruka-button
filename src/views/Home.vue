@@ -27,11 +27,12 @@
                             欢迎来到 “豹按钮(:3っ)∋” 项目，这是一个从
                             <a target="_blank" href="https://vtbbtn.org/">https://vtbbtn.org/</a>
                             获得灵感的项目，感觉很有意思。<br>
-                            诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来<br>
+                            诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来。<br>
                             <b>新增音声</b>：如果会编程的可以直接上
                             <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">GitHub</a>
                             fork，修改完后提 pull request ，不会编程的可以提个 issue<br>
-                            <b>使用指南</b>：点击按钮即可播放对应音声；多次点击可以造成相当鬼畜的效果；开启洗脑循环将会一直播放一个音频<br>
+                            <b>使用指南</b>：点击按钮即可播放对应音声；多次点击可以造成相当鬼畜的效果；开启洗脑循环将会一直播放一个音频；
+                            同时开启循环播放和洗脑循环将会出现 地 狱 绘 卷。<br>
                             <b>声明</b>：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联<br>
                             更多内容请参考 <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme" target="_blank">README</a>
                         </v-col>
@@ -114,12 +115,12 @@
                 >
                     <HarukaButton
                         v-for="(e,j) in item"
-                        ref="voiceButton"
                         :key="j"
                         v-model="e.isPlay"
                         :path="e.path"
                         :messages="e.messages"
                         :is-loop="isLoop"
+                        :stop-all="stopAll"
                     />
                 </HarukaCard>
             </v-col>
@@ -137,16 +138,18 @@ export default defineComponent({
     name: 'Home',
     props: {},
     setup(props, ctx){
-        const playList = ref(new Set<HTMLAudioElement>())
-        /**
-         * 是否洗脑循环
-        */
-        const isLoop = ref(false)
-        const voiceButton = ref()
         const _voices = ref(voices.map(e => {
             e.isPlay = false
             return e
         }))
+        /**
+         * 是否洗脑循环
+        */
+        const isLoop = ref(false)
+        /**
+         * 是否全部停止
+        */
+        const stopAll = ref(false)
         /**
          * 是否固定播放面板
          */
@@ -161,7 +164,6 @@ export default defineComponent({
         const currentVoice = computed(() => _voices.value[currentVoiceIndex.value])
         let stop: any = null
 
-        provide('playList', playList)
         /**
          * 开始循环播放
          */
@@ -208,24 +210,19 @@ export default defineComponent({
             }
         }
 
-        function stopLoop() {
+        async function stopLoop() {
             if (stop){
                 stop()
                 stop = null
             }
             currentVoice.value.isPlay = false
             currentVoiceIndex.value = 0
-            playList.value.forEach(i => {
-                i.pause()
-                playList.value.delete(i)
-            })
-            for (const i in voiceButton.value) {
-                voiceButton.value[i].playList = []
-            }
+            stopAll.value = true
+            await nextTick()
+            stopAll.value = false
         }
 
         return {
-            voiceButton,
             isLoop,
             baobao,
             voicesGroup,
@@ -235,6 +232,7 @@ export default defineComponent({
             currentVoice,
             currentVoiceIndex,
             fixed,
+            stopAll,
         }
     },
 })
