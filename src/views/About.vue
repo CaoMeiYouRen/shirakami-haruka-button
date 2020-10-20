@@ -73,13 +73,28 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import Vuetify from 'vuetify'
+import { dependencies, devDependencies } from '../../package.json'
 import { defineComponent } from '@vue/composition-api'
-import _ from 'lodash'
-import VueI18n from 'vue-i18n'
-import { VERSION as VueComposableVersion } from 'vue-composable'
+function verFormat(ver: string) {
+    const list = ver.split('.')
+    for (let i = 0; i < list.length; i++) {
+        list[i] = list[i].replace('^', '').replace('~', '')
+    }
+    return list.join('.')
+}
+Object.keys(dependencies).forEach(e => {
+    const d = dependencies[e]
+    if (!d.includes('git+')) {
+        dependencies[e] = verFormat(d)
+    }
+})
 
+Object.keys(devDependencies).forEach(e => {
+    const d = devDependencies[e]
+    if (!d.includes('git+')) {
+        devDependencies[e] = verFormat(d)
+    }
+})
 export default defineComponent({
     name: 'About',
     props: {},
@@ -87,31 +102,31 @@ export default defineComponent({
         return {
             useList: [
                 {
-                    msg: `框架：Vue (${Vue.version})`,
+                    msg: `框架：Vue (${dependencies['vue']})`,
                     url: 'https://cn.vuejs.org/',
                 },
                 {
-                    msg: '脚手架：Vue Cli',
+                    msg: `脚手架：Vue Cli (${devDependencies['@vue/cli-service']})`,
                     url: 'https://cli.vuejs.org/zh/',
                 },
                 {
-                    msg: `UI：Vuetify (${Vuetify.version})`,
+                    msg: `UI：Vuetify (${dependencies['vuetify']})`,
                     url: 'https://vuetifyjs.com/zh-Hans/',
                 },
                 {
-                    msg: `组合式API：vue-composable (${VueComposableVersion})`,
+                    msg: `组合式API：vue-composable (${dependencies['vue-composable']})`,
                     url: 'https://pikax.me/vue-composable/',
                 },
                 {
-                    msg: `国际化：vue-i18n (${VueI18n.version})`,
+                    msg: `国际化：vue-i18n (${dependencies['vue-i18n']})`,
                     url: 'https://kazupon.github.io/vue-i18n/zh/',
                 },
                 {
-                    msg: '语言：TypeScript',
+                    msg: `语言：TypeScript (${devDependencies['typescript']})`,
                     url: 'https://www.typescriptlang.org/',
                 },
                 {
-                    msg: `工具库：Lodash (${_.VERSION})`,
+                    msg: `工具库：Lodash (${dependencies['lodash']})`,
                     url: 'https://www.lodashjs.com/',
                 },
                 {

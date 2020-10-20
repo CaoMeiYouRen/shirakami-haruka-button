@@ -127,6 +127,11 @@ module.exports = {
                                 priority: 10,
                                 chunks: 'initial' // 只打包初始时依赖的第三方
                             },
+                            corejs: {
+                                name: 'chunk-corejs', // 单独将 core-js 拆包
+                                priority: 15,
+                                test: /[\\/]node_modules[\\/]core-js[\\/]/
+                            },
                             vuetify: {
                                 name: 'chunk-vuetify', // 单独将 vuetify 拆包
                                 priority: 20, // 权重要大于 libs 和 app 不然会被打包进 libs 或者 app
@@ -138,7 +143,7 @@ module.exports = {
             }
         }
     },
-    transpileDependencies: [
-        'vuetify',
-    ],
+    // transpileDependencies: [
+    //     'vuetify',
+    // ],
 }

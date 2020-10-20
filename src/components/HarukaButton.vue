@@ -121,12 +121,14 @@ export default defineComponent({
             }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
             audio.load()
             audio.oncanplay = e => {
-                disabled.value = false
-                clearTimeout(timer)
-                style.value.animation = `playing ${audio.duration}s linear forwards`
-                maskList.value.push(Date.now())
                 playList.value.add(audio)
-                audio.play()
+
+                audio.play().then(() => {
+                    clearTimeout(timer)
+                    disabled.value = false
+                    style.value.animation = `playing ${audio.duration}s linear forwards`
+                    maskList.value.push(Date.now())
+                })
             }
             audio.onended = e => {
                 playList.value.delete(audio)
