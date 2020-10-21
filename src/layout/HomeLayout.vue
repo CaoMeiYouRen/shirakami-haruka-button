@@ -125,12 +125,14 @@ import { messages } from '@/locales'
 /**
  * 切换语言
 */
-function switchLang(locale){
+function switchLang(locale: string){
     i18n.locale = locale
 }
 
-const langList = Object.keys(messages).map(e => ({
+const langList: {lang: string, label: string}[] = Object.keys(messages).map(e => ({
     lang: e,
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     label: messages[e].langName,
 }))
 

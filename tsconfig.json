@@ -7,7 +7,7 @@
         "importHelpers": true,
         "moduleResolution": "node",
         "esModuleInterop": true,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "allowSyntheticDefaultImports": true,
         "strictPropertyInitialization": false,
         "sourceMap": false,
