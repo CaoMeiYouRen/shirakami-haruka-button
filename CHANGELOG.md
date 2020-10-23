@@ -15,7 +15,6 @@
 
 * 新增 更新日志页面；新增 友情链接；修改 README 文件 ([00e05b0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/00e05b0))
 
-# shirakami-haruka-button
 
 # [1.4.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.3.0...v1.4.0) (2020-10-19)
 
