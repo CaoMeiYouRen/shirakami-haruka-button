@@ -91,6 +91,20 @@ module.exports = {
                 fix: true,
             }),
         )
+        config.module.rules.push({
+            test: /\.md$/,
+            use: [
+                {
+                    loader: "html-loader"
+                },
+                {
+                    loader: "markdown-it-loader",
+                    options: {
+                        html: true,
+                    }
+                }
+            ]
+        })
         if (process.env.NODE_ENV === 'production') {
             return {
                 externals: {

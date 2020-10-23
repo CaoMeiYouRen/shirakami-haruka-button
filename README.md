@@ -18,17 +18,19 @@
   </a>
 </p>
 
-> 豹按钮(:3っ)∋)  - 最近看到 [https://vtbbtn.org/](https://vtbbtn.org/) 这个网站，感觉很有意思，就想着能不能给 [白神遥Haruka](https://space.bilibili.com/477332594/) 也安排一个。目前只是立个项，什么时候写完看心情，也许会弃坑。
+> 欢迎来到 “豹按钮(:3っ)∋” 项目，这是一个从 https://vtbbtn.org/ 获得灵感的项目，是为 [白神遥Haruka](https://space.bilibili.com/477332594/) 制作的音声按钮网站。
 >
 > 诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来
 >
-> 声明：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联
+> **声明**：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联
 
 ### 🏠 [主页](https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme)
 
 ## 演示页面
 
 [https://haruka.fun/](https://haruka.fun/)
+
+**使用指南**：点击按钮即可播放对应音声；多次点击可以造成相当鬼畜的效果；开启洗脑循环将会一直播放一个音频； 同时开启循环播放和洗脑循环将会出现 地 狱 绘 卷。
 
 
 ## 依赖要求

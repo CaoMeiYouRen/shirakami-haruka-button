@@ -16,7 +16,7 @@ module.exports = {
             '@semantic-release/changelog',
             {
                 changelogFile: 'CHANGELOG.md',
-                changelogTitle: '# shirakami-haruka-button',
+                changelogTitle: '# shirakami-haruka-button(豹按钮(:3っ)∋)',
             },
         ],
         '@semantic-release/npm',

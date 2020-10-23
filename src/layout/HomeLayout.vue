@@ -150,6 +150,11 @@ const menuList = computed(() => [
         },
     },
     {
+        icon: 'iconfont icon-changelog-clock',
+        name: i18n.t('menu.Changelog'),
+        path: '/changelog',
+    },
+    {
         icon: 'code',
         name: i18n.t('menu.About'),
         path: '/about',

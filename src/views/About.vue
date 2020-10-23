@@ -4,7 +4,7 @@
             <v-col cols="12">
                 <v-card flat class="text-center">
                     <v-card-text>
-                        <h2>关于</h2>
+                        <h1>关于</h1>
                         <br>
                         <h3>
                             本网站由 草梅友仁(
@@ -21,16 +21,6 @@
                                 bilibili
                             </a>
                             ) 开发并提供技术支持
-                        </h3>
-                    </v-card-text>
-                    <v-card-text>
-                        <h2>更新日志</h2>
-                        <br>
-                        <h3>
-                            见 <v-icon size="24">
-                                iconfont icon-github
-                            </v-icon>
-                            <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button/blob/master/CHANGELOG.md">Github CHANGELOG</a>
                         </h3>
                     </v-card-text>
                     <v-card-text>
@@ -75,6 +65,7 @@
 <script lang="ts">
 import { dependencies, devDependencies } from '../../package.json'
 import { defineComponent } from '@vue/composition-api'
+const dep = Object.assign({}, dependencies, devDependencies)
 function verFormat(ver: string) {
     const list = ver.split('.')
     for (let i = 0; i < list.length; i++) {
@@ -82,19 +73,13 @@ function verFormat(ver: string) {
     }
     return list.join('.')
 }
-Object.keys(dependencies).forEach(e => {
-    const d = dependencies[e]
+Object.keys(dep).forEach(e => {
+    const d = dep[e]
     if (!d.includes('git+')) {
-        dependencies[e] = verFormat(d)
+        dep[e] = verFormat(d)
     }
 })
 
-Object.keys(devDependencies).forEach(e => {
-    const d = devDependencies[e]
-    if (!d.includes('git+')) {
-        devDependencies[e] = verFormat(d)
-    }
-})
 export default defineComponent({
     name: 'About',
     props: {},
@@ -102,31 +87,31 @@ export default defineComponent({
         return {
             useList: [
                 {
-                    msg: `框架：Vue (${dependencies['vue']})`,
+                    msg: `框架：Vue (${dep['vue']})`,
                     url: 'https://cn.vuejs.org/',
                 },
                 {
-                    msg: `脚手架：Vue Cli (${devDependencies['@vue/cli-service']})`,
+                    msg: `脚手架：Vue Cli (${dep['@vue/cli-service']})`,
                     url: 'https://cli.vuejs.org/zh/',
                 },
                 {
-                    msg: `UI：Vuetify (${dependencies['vuetify']})`,
+                    msg: `UI：Vuetify (${dep['vuetify']})`,
                     url: 'https://vuetifyjs.com/zh-Hans/',
                 },
                 {
-                    msg: `组合式API：vue-composable (${dependencies['vue-composable']})`,
+                    msg: `组合式API：vue-composable (${dep['vue-composable']})`,
                     url: 'https://pikax.me/vue-composable/',
                 },
                 {
-                    msg: `国际化：vue-i18n (${dependencies['vue-i18n']})`,
+                    msg: `国际化：vue-i18n (${dep['vue-i18n']})`,
                     url: 'https://kazupon.github.io/vue-i18n/zh/',
                 },
                 {
-                    msg: `语言：TypeScript (${devDependencies['typescript']})`,
+                    msg: `语言：TypeScript (${dep['typescript']})`,
                     url: 'https://www.typescriptlang.org/',
                 },
                 {
-                    msg: `工具库：Lodash (${dependencies['lodash']})`,
+                    msg: `工具库：Lodash (${dep['lodash']})`,
                     url: 'https://www.lodashjs.com/',
                 },
                 {
@@ -141,17 +126,33 @@ export default defineComponent({
             referList: [
                 {
                     msg: 'Peko按钮',
-                    url: 'https://peko.top/',
+                    url: 'https://github.com/voosc/new-pekobutton',
                 },
                 {
                     msg: '狐按钮(^・ω・^§)ﾉ',
-                    url: 'https://fubuki.moe/',
+                    url: 'https://github.com/lonelyion/fubuki-button',
                 },
             ],
             friendshipLinks: [
                 {
                     msg: 'VTuberの音声ボタンコレクション',
                     url: 'https://vtbbtn.org/',
+                },
+                {
+                    msg: '狗妈按钮',
+                    url: 'https://kaguranana.moe/',
+                },
+                {
+                    msg: 'mea按钮',
+                    url: 'https://meamea.moe/',
+                },
+                {
+                    msg: '桃按钮',
+                    url: 'https://sepeach.com/',
+                },
+                {
+                    msg: '阿媂娅按钮',
+                    url: 'https://artia.moe/',
                 },
             ],
         }

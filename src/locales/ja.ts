@@ -8,6 +8,8 @@ export default {
         Home: 'ホームページ',
         Bilibili: 'ビリビリ',
         About: 'について',
+        Readme: '加入する',
+        Changelog: 'ログを更新',
     },
     play: {
         PlaybackControl: 'コントロール',

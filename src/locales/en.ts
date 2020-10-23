@@ -8,6 +8,8 @@ export default {
         Home: 'Home',
         Bilibili: 'Bilibili',
         About: 'About',
+        Readme: 'AddProject',
+        Changelog: 'Changelog',
     },
     play: {
         PlaybackControl: 'PlaybackControl',

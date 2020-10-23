@@ -8,6 +8,8 @@ export default {
         Home: '主页',
         Bilibili: '哔哩哔哩',
         About: '关于',
+        Readme: '加入项目',
+        Changelog: '更新日志',
     },
     play: {
         PlaybackControl: '播放控制',
