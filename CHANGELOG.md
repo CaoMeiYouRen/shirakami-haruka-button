@@ -1,3 +1,20 @@
+# shirakami-haruka-button(豹按钮(:3っ)∋)
+
+# [1.5.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.4.0...v1.5.0) (2020-10-23)
+
+
+### ♻ 代码重构
+
+* 优化 HarukaButton 组件 ([348cec8](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/348cec8))
+* 优化停止播放的逻辑 ([c6b0f03](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/c6b0f03))
+* 优化关于页面的版本号信息；优化播放按钮；优化分包 ([35ba340](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/35ba340))
+* 优化类型约束 ([17df1c5](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/17df1c5))
+
+
+### ✨ 新功能
+
+* 新增 更新日志页面；新增 友情链接；修改 README 文件 ([00e05b0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/00e05b0))
+
 # shirakami-haruka-button
 
 # [1.4.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.3.0...v1.4.0) (2020-10-19)
