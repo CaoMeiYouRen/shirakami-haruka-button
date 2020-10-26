@@ -23,6 +23,7 @@ export default {
     tags: {
         Other: 'Other',
         Tone: 'Tone',
+        Rbq: 'RuBaoQi',
         Peach: 'Peach',
         Belly: 'Belly',
         Death: 'SeekDeath',

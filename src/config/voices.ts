@@ -43,13 +43,7 @@ const voices: VoiceInfo[] = [
         path: '阿巴阿巴阿巴阿巴阿巴阿巴(超长).mp3',
         tag: 'Tone',
     },
-    {
-        messages: {
-            zh: '再说我平胸我就从这里跳下去',
-        },
-        path: '再说我平胸我就从这里跳下去.mp3',
-        tag: 'Tone',
-    },
+
     {
         messages: {
             zh: '防空警豹',
@@ -89,6 +83,20 @@ const voices: VoiceInfo[] = [
         },
         path: '芜湖，起飞.mp3',
         tag: 'Tone',
+    },
+    {
+        messages: {
+            zh: '再说我平胸我就从这里跳下去',
+        },
+        path: '再说我平胸我就从这里跳下去.mp3',
+        tag: 'Rbq',
+    },
+    {
+        messages: {
+            zh: '贫乳是属性，是稀有价值哒！',
+        },
+        path: '贫乳是稀有价值！贫乳是宝藏.mp3',
+        tag: 'Rbq',
     },
     {
         messages: {

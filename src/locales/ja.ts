@@ -23,6 +23,7 @@ export default {
     tags: {
         Other: 'その他',
         Tone: '豹が鳴く',
+        Rbq: '乳豹器',
         Peach: '桃を食べる',
         Belly: '腹を探る',
         Death: '死を遂げる',

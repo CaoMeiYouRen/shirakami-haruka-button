@@ -23,6 +23,7 @@ export default {
     tags: { // tag 的翻译
         Other: '其他',
         Tone: '豹叫',
+        Rbq: '乳豹器',
         Peach: '吃桃',
         Belly: '摸肚皮',
         Death: '作死',
