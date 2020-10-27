@@ -94,6 +94,10 @@ interface VoiceInfo {
  }
 ```
 
+## Pull Request
+
+**注意：**请提交 PR 时提交到 **`dev`** 分支，master 分支暂不接受 PR。
+
 ## 编译
 
 ```sh
