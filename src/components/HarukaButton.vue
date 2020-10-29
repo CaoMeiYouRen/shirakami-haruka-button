@@ -5,20 +5,16 @@
             color="primary"
             rounded
             @click="play"
-        >
-            {{ title }}
-        </v-btn>
+        >{{ title }}</v-btn>
         <v-tooltip v-else top>
-            <template #activator="{on,attrs}">
+            <template #activator="{on, attrs}">
                 <v-btn
                     color="primary"
                     rounded
                     v-bind="attrs"
                     @click="play"
                     v-on="on"
-                >
-                    {{ title }}
-                </v-btn>
+                >{{ title }}</v-btn>
             </template>
             <span>{{ rawTitle }}</span>
         </v-tooltip>
@@ -35,13 +31,13 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, Ref, ref, watch, toRefs, inject } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch, toRefs, ComputedRef } from '@vue/composition-api'
 import { messages } from '@/locales'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
 
-function strFix(val: string, max = 16){
-    if (val && val.length > max){
+function strFix(val: string, max = 16) {
+    if (val && val.length > max) {
         return `${val.slice(0, max)}…`
     }
     return val
@@ -87,7 +83,7 @@ export default defineComponent({
             default: false,
         },
     },
-    setup(props, ctx){
+    setup(props, ctx) {
         const playList = ref(new Set<HTMLAudioElement>())
         const { isPlay, isLoop, stopAll, path } = toRefs(props)
         const publicPath = process.env.BASE_URL || ''
@@ -101,14 +97,14 @@ export default defineComponent({
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过32个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 32))
         const _path = computed(() => {
-            if (process.env.NODE_ENV === 'production'){
+            if (process.env.NODE_ENV === 'production') {
                 return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${publicPath}voices/${path.value}`
             } else {
                 return `${publicPath}voices/${path.value}`
             }
         })
 
-        function play(cb?: () => any){
+        function play(cb?: () => any) {
             if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
                 return
             }
@@ -133,7 +129,7 @@ export default defineComponent({
             audio.onended = e => {
                 playList.value.delete(audio)
                 maskList.value.shift()
-                if (typeof cb === 'function'){
+                if (typeof cb === 'function') {
                     cb()
                 }
                 if (isLoop.value) {
@@ -141,17 +137,17 @@ export default defineComponent({
                 }
             }
         }
-        const rawTitle = computed(() => {
+        const rawTitle: ComputedRef<string> = computed(() => {
             const locale = i18n.locale
             let _title = props.messages[locale]
-            if (_title){
+            if (_title) {
                 return _title
             }
             const langs = Object.keys(messages)
             for (let i = 0; i < langs.length; i++) {
                 const lang = langs[i]
                 _title = props.messages[lang]
-                if (_title){
+                if (_title) {
                     return _title
                 }
             }
@@ -159,14 +155,14 @@ export default defineComponent({
         })
         const title = computed(() => strFix(rawTitle.value, maxLength.value))
         watch(isPlay, val => {
-            if (val){
+            if (val) {
                 play(() => {
                     ctx.emit('input', false)
                 })
             }
         })
         watch(stopAll, val => {
-            if (val){
+            if (val) {
                 playList.value.forEach(e => {
                     e.pause()
                     playList.value.delete(e)
@@ -181,14 +177,13 @@ export default defineComponent({
             maxLength,
             rawTitle,
             title,
-            disabled,
         }
     },
 })
 </script>
 
 <style lang="scss" scoped>
-@import '@/styles/index.scss';
+@import "@/styles/index.scss";
 
 .haruka-button {
     position: relative;

@@ -129,10 +129,10 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, provide, Ref, nextTick } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch, nextTick } from '@vue/composition-api'
 import _ from 'lodash'
 import baobao from '@/assets/shabao.jpg'
-import voices, { VoiceInfo } from '@/config/voices'
+import voices from '@/config/voices'
 
 export default defineComponent({
     name: 'Home',
@@ -229,8 +229,6 @@ export default defineComponent({
             startLoop,
             startRandomPlay,
             stopLoop,
-            currentVoice,
-            currentVoiceIndex,
             fixed,
             stopAll,
         }
