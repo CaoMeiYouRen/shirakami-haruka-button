@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+# [1.6.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.5.0...v1.6.0) (2020-10-29)
+
+
+### ✨ 新功能
+
+* 新增 乳豹器分类；新增音声 ([955794f](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/955794f))
+
 # [1.5.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.4.0...v1.5.0) (2020-10-23)
 
 
