@@ -117,8 +117,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, ref, computed, watch } from '@vue/composition-api'
-import { useTitle, useLanguage, useI18n, useOnScroll, useOnResize } from 'vue-composable'
+import { defineComponent, onUnmounted, computed } from '@vue/composition-api'
+import { useTitle, useOnScroll } from 'vue-composable'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
 import { messages } from '@/locales'
@@ -173,8 +173,6 @@ export default defineComponent({
         })
         return {
             title: useTitle(),
-            scrollTop,
-            height,
             isShowBackTop,
             drawer: null,
             switchLang,
