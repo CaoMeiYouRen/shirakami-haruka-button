@@ -65,6 +65,7 @@
 <script lang="ts">
 import { dependencies, devDependencies } from '../../package.json'
 import { defineComponent } from '@vue/composition-api'
+import { friendshipLinks } from '@/config/links'
 const dep = Object.assign({}, dependencies, devDependencies)
 function verFormat(ver: string) {
     const list = ver.split('.')
@@ -133,28 +134,7 @@ export default defineComponent({
                     url: 'https://github.com/lonelyion/fubuki-button',
                 },
             ],
-            friendshipLinks: [
-                {
-                    msg: 'VTuberの音声ボタンコレクション',
-                    url: 'https://vtbbtn.org/',
-                },
-                {
-                    msg: '狗妈按钮',
-                    url: 'https://kaguranana.moe/',
-                },
-                {
-                    msg: 'mea按钮',
-                    url: 'https://meamea.moe/',
-                },
-                {
-                    msg: '桃按钮',
-                    url: 'https://sepeach.com/',
-                },
-                {
-                    msg: '阿媂娅按钮',
-                    url: 'https://artia.moe/',
-                },
-            ],
+            friendshipLinks,
         }
     },
 })
