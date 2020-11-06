@@ -89,54 +89,54 @@ export default defineComponent({
             useList: [
                 {
                     msg: `框架：Vue (${dep['vue']})`,
-                    url: 'https://cn.vuejs.org/',
+                    url: 'https://cn.vuejs.org/'
                 },
                 {
                     msg: `脚手架：Vue Cli (${dep['@vue/cli-service']})`,
-                    url: 'https://cli.vuejs.org/zh/',
+                    url: 'https://cli.vuejs.org/zh/'
                 },
                 {
                     msg: `UI：Vuetify (${dep['vuetify']})`,
-                    url: 'https://vuetifyjs.com/zh-Hans/',
+                    url: 'https://vuetifyjs.com/zh-Hans/'
                 },
                 {
                     msg: `组合式API：vue-composable (${dep['vue-composable']})`,
-                    url: 'https://pikax.me/vue-composable/',
+                    url: 'https://pikax.me/vue-composable/'
                 },
                 {
                     msg: `国际化：vue-i18n (${dep['vue-i18n']})`,
-                    url: 'https://kazupon.github.io/vue-i18n/zh/',
+                    url: 'https://kazupon.github.io/vue-i18n/zh/'
                 },
                 {
                     msg: `语言：TypeScript (${dep['typescript']})`,
-                    url: 'https://www.typescriptlang.org/',
+                    url: 'https://www.typescriptlang.org/'
                 },
                 {
                     msg: `工具库：Lodash (${dep['lodash']})`,
-                    url: 'https://www.lodashjs.com/',
+                    url: 'https://www.lodashjs.com/'
                 },
                 {
                     msg: '图标：阿里巴巴矢量图标库',
-                    url: 'https://www.iconfont.cn/',
+                    url: 'https://www.iconfont.cn/'
                 },
                 {
                     msg: 'CDN服务：jsdelivr',
-                    url: 'https://www.jsdelivr.com/',
-                },
+                    url: 'https://www.jsdelivr.com/'
+                }
             ],
             referList: [
                 {
                     msg: 'Peko按钮',
-                    url: 'https://github.com/voosc/new-pekobutton',
+                    url: 'https://github.com/voosc/new-pekobutton'
                 },
                 {
                     msg: '狐按钮(^・ω・^§)ﾉ',
-                    url: 'https://github.com/lonelyion/fubuki-button',
-                },
+                    url: 'https://github.com/lonelyion/fubuki-button'
+                }
             ],
-            friendshipLinks,
+            friendshipLinks
         }
-    },
+    }
 })
 </script>
 

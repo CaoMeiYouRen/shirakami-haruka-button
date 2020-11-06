@@ -133,7 +133,7 @@
                     <v-btn
                         v-for="item in friendshipLinks"
                         :key="item.url"
-                        class="white--text friendship-link"
+                        class="friendship-link white--text"
                         :href="item.url"
                         :color="item.color"
                         target="_blank"
@@ -199,7 +199,7 @@ export default defineComponent({
                         currentVoice.value.isPlay = true
                     }
                 }, {
-                    deep: true,
+                    deep: true
                 })
             }
         }
@@ -224,7 +224,7 @@ export default defineComponent({
                         randomPlay()
                     }
                 }, {
-                    deep: true,
+                    deep: true
                 })
             }
         }
@@ -250,9 +250,9 @@ export default defineComponent({
             stopLoop,
             fixed,
             stopAll,
-            friendshipLinks,
+            friendshipLinks
         }
-    },
+    }
 })
 </script>
 

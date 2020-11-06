@@ -14,7 +14,7 @@ export function useOnWindowResize() {
         const width = window.innerWidth || document.documentElement.clientWidth
         return {
             height,
-            width,
+            width
         }
     }
     const height = ref(0)
@@ -37,6 +37,6 @@ export function useOnWindowResize() {
     return {
         height,
         width,
-        remove,
+        remove
     }
 }

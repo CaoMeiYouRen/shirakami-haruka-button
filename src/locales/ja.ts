@@ -2,14 +2,14 @@ export default {
     title: 'ヒョウボタン (:3っ)∋',
     langName: '日本語',
     appBar: {
-        SwitchLanguage: '言語を切り替え',
+        SwitchLanguage: '言語を切り替え'
     },
     menu: {
         Home: 'ホームページ',
         Bilibili: 'ビリビリ',
         About: 'について',
         Readme: '加入する',
-        Changelog: 'ログを更新',
+        Changelog: 'ログを更新'
     },
     play: {
         PlaybackControl: 'コントロール',
@@ -18,7 +18,7 @@ export default {
         StopPlay: '再生停止',
         LoopOn: 'ループ',
         LoopOff: 'ループオフ',
-        FixedControlPanel: '固定コントロールパネル',
+        FixedControlPanel: '固定コントロールパネル'
     },
     tags: {
         Other: 'その他',
@@ -27,8 +27,8 @@ export default {
         Peach: '桃を食べる',
         Belly: '腹を探る',
         Death: '死を遂げる',
-        ShakeM: 'ドM',
+        ShakeM: 'ドM'
     },
     ProjectAddress: 'プロジェクトのアドレス',
-    BackToTop: 'トップに戻る',
+    BackToTop: 'トップに戻る'
 }
