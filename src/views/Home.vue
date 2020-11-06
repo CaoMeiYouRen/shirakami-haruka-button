@@ -125,6 +125,25 @@
                 </HarukaCard>
             </v-col>
         </v-row>
+        <v-row algin="start" justify="start">
+            <v-col
+                cols="12"
+            >
+                <HarukaCard :raw-title="'友情链接'">
+                    <v-btn
+                        v-for="item in friendshipLinks"
+                        :key="item.url"
+                        class="friendship-link white--text"
+                        :href="item.url"
+                        :color="item.color"
+                        target="_blank"
+                        rounded
+                    >
+                        {{ item.msg }}
+                    </v-btn>
+                </HarukaCard>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 
@@ -133,7 +152,7 @@ import { computed, defineComponent, ref, watch, nextTick } from '@vue/compositio
 import _ from 'lodash'
 import baobao from '@/assets/shabao.jpg'
 import voices from '@/config/voices'
-
+import { friendshipLinks } from '@/config/links'
 export default defineComponent({
     name: 'Home',
     props: {},
@@ -180,7 +199,7 @@ export default defineComponent({
                         currentVoice.value.isPlay = true
                     }
                 }, {
-                    deep: true,
+                    deep: true
                 })
             }
         }
@@ -205,7 +224,7 @@ export default defineComponent({
                         randomPlay()
                     }
                 }, {
-                    deep: true,
+                    deep: true
                 })
             }
         }
@@ -231,8 +250,9 @@ export default defineComponent({
             stopLoop,
             fixed,
             stopAll,
+            friendshipLinks
         }
-    },
+    }
 })
 </script>
 
@@ -269,5 +289,10 @@ export default defineComponent({
             box-shadow: 0px 0px 7px $haruka-primary !important;
         }
     }
+}
+
+.friendship-link {
+    margin-right: 15px;
+    margin-bottom: 15px;
 }
 </style>

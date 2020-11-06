@@ -30,10 +30,12 @@
                 </p>
                 <p class="github-info">
                     <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">
-                        <img alt="GitHub package.json version" src="https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button?color=ffaea6">
-                        <img alt="GitHub watchers" src="https://img.shields.io/github/watchers/CaoMeiYouRen/shirakami-haruka-button?style=social">
-                        <img alt="GitHub Repo stars" src="https://img.shields.io/github/stars/CaoMeiYouRen/shirakami-haruka-button?style=social">
-                        <img alt="GitHub forks" src="https://img.shields.io/github/forks/CaoMeiYouRen/shirakami-haruka-button?style=social">
+                        <img
+                            v-for="e in githubs"
+                            :key="e.src"
+                            :alt="e.alt"
+                            :src="e.src"
+                        >
                     </a>
                 </p>
             </v-card-text>
@@ -50,8 +52,26 @@ export default defineComponent({
         return {
             POLICE: process.env.VUE_APP_POLICE,
             ICP: process.env.VUE_APP_ICP,
+            githubs: [
+                {
+                    alt: 'GitHub package.json version',
+                    src: 'https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button?color=ffaea6'
+                },
+                {
+                    alt: 'GitHub watchers',
+                    src: 'https://img.shields.io/github/watchers/CaoMeiYouRen/shirakami-haruka-button?style=social'
+                },
+                {
+                    alt: 'GitHub Repo stars',
+                    src: 'https://img.shields.io/github/stars/CaoMeiYouRen/shirakami-haruka-button?style=social'
+                },
+                {
+                    alt: 'GitHub forks',
+                    src: 'https://img.shields.io/github/forks/CaoMeiYouRen/shirakami-haruka-button?style=social'
+                }
+            ]
         }
-    },
+    }
 })
 </script>
 
@@ -86,7 +106,7 @@ export default defineComponent({
 
             img {
                 display: block;
-                margin: 7px;
+                margin-right: 7px;
             }
         }
     }

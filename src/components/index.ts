@@ -5,7 +5,7 @@ const requireComponent = require.context('@/components', true, /\.vue$/)
 requireComponent.keys().forEach(fileName => {
     const componentConfig = requireComponent(fileName)
     const componentName = _.upperFirst(// 调整风格为首字母大写驼峰
-        _.camelCase(fileName.replace(/^\.\//, '').replace(/\.\w+$/, '')),
+        _.camelCase(fileName.replace(/^\.\//, '').replace(/\.\w+$/, ''))
     )
     Vue.component(componentName, componentConfig.default || componentConfig)
 })

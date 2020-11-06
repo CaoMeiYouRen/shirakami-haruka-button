@@ -34,7 +34,7 @@
             class="haruka-app-bar-boxshadow"
         >
             <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-            <v-toolbar-title class="mr-5 align-center">
+            <v-toolbar-title class="align-center mr-5">
                 <span class="title">{{ title }}</span>
             </v-toolbar-title>
             <v-spacer />
@@ -117,8 +117,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, onUnmounted, ref, computed, watch } from '@vue/composition-api'
-import { useTitle, useLanguage, useI18n, useOnScroll, useOnResize } from 'vue-composable'
+import { defineComponent, onUnmounted, computed } from '@vue/composition-api'
+import { useTitle, useOnScroll } from 'vue-composable'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
 import { messages } from '@/locales'
@@ -133,32 +133,32 @@ const langList: {lang: string, label: string}[] = Object.keys(messages).map(e =>
     lang: e,
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    label: messages[e].langName,
+    label: messages[e].langName
 }))
 
 const menuList = computed(() => [
     {
         icon: 'home',
         name: i18n.t('menu.Home'),
-        path: '/',
+        path: '/'
     },
     {
         icon: 'iconfont icon-bilibili2',
         name: i18n.t('menu.Bilibili'),
         fun(){
             window.open('https://space.bilibili.com/477332594/')
-        },
+        }
     },
     {
         icon: 'iconfont icon-changelog-clock',
         name: i18n.t('menu.Changelog'),
-        path: '/changelog',
+        path: '/changelog'
     },
     {
         icon: 'code',
         name: i18n.t('menu.About'),
-        path: '/about',
-    },
+        path: '/about'
+    }
 ])
 export default defineComponent({
     name: 'HomeLayout',
@@ -173,22 +173,20 @@ export default defineComponent({
         })
         return {
             title: useTitle(),
-            scrollTop,
-            height,
             isShowBackTop,
             drawer: null,
             switchLang,
             langList,
-            menuList,
+            menuList
         }
     },
     methods: {
         backTop(){
             this.$vuetify.goTo(0, {
-                duration: 500,
+                duration: 500
             })
-        },
-    },
+        }
+    }
 })
 </script>
 

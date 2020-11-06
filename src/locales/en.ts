@@ -2,14 +2,14 @@ export default {
     title: 'Haruka Button (:3っ)∋',
     langName: 'English',
     appBar: {
-        SwitchLanguage: 'SwitchLanguage',
+        SwitchLanguage: 'SwitchLanguage'
     },
     menu: {
         Home: 'Home',
         Bilibili: 'Bilibili',
         About: 'About',
         Readme: 'AddProject',
-        Changelog: 'Changelog',
+        Changelog: 'Changelog'
     },
     play: {
         PlaybackControl: 'PlaybackControl',
@@ -18,7 +18,7 @@ export default {
         StopPlay: 'StopPlay',
         LoopOn: 'LoopPlayOn',
         LoopOff: 'LoopPlayOff',
-        FixedControlPanel: 'FixedControlPanel',
+        FixedControlPanel: 'FixedControlPanel'
     },
     tags: {
         Other: 'Other',
@@ -27,8 +27,8 @@ export default {
         Peach: 'Peach',
         Belly: 'Belly',
         Death: 'SeekDeath',
-        ShakeM: 'ShakeM',
+        ShakeM: 'ShakeM'
     },
     ProjectAddress: 'ProjectAddress',
-    BackToTop: 'BackToTop',
+    BackToTop: 'BackToTop'
 }

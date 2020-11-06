@@ -47,7 +47,7 @@ export default defineComponent({
     name: 'HarukaButton',
     model: {
         prop: 'isPlay',
-        event: 'input',
+        event: 'input'
     },
     props: {
         /**
@@ -55,33 +55,33 @@ export default defineComponent({
         */
         path: {
             type: String,
-            required: true,
+            required: true
         },
         /**
          * 按钮标题的翻译
         */
         messages: {
             type: Object,
-            required: true,
+            required: true
         },
         isPlay: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * 循环播放
         */
         isLoop: {
             type: Boolean,
-            default: false,
+            default: false
         },
         /**
          * 是否停止全部音频
         */
         stopAll: {
             type: Boolean,
-            default: false,
-        },
+            default: false
+        }
     },
     setup(props, ctx) {
         const playList = ref(new Set<HTMLAudioElement>())
@@ -90,7 +90,7 @@ export default defineComponent({
         const disabled = ref(false)
         const maskList = ref<number[]>([])
         const style = ref({
-            animation: '',
+            animation: ''
         })
         const { width } = useOnWindowResize()
         // 计算按钮标题最大字数
@@ -176,9 +176,9 @@ export default defineComponent({
             maskList,
             maxLength,
             rawTitle,
-            title,
+            title
         }
-    },
+    }
 })
 </script>
 
@@ -214,6 +214,7 @@ export default defineComponent({
     animation: playing 3s linear;
 }
 </style>
+
 <style lang="scss">
 @keyframes playing {
     from {

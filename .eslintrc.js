@@ -1,4 +1,4 @@
-const IS_PROD = process.env.NODE_ENV === 'production'
+const IS_PROD = process.env.NODE_ENV === 'production' ? 2 : 0
 module.exports = {
     root: true,
     env: {
@@ -30,5 +30,6 @@ module.exports = {
         }],
         'vue/no-reserved-component-names': [2],//不允许在组件定义中使用保留名称
         'vue/require-name-property': [2], // 组件必须命名
+        'vue/block-tag-newline': 0
     },
 }

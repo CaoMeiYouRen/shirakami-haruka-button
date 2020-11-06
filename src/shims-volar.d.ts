@@ -1,6 +1,6 @@
-import CopyrightFooter from './src/CopyrightFooter.vue'
-import HarukaButton from './src/HarukaButton.vue'
-import HarukaCard from './src/HarukaCard.vue'
+import CopyrightFooter from './components/CopyrightFooter.vue'
+import HarukaButton from './components/HarukaButton.vue'
+import HarukaCard from './components/HarukaCard.vue'
 
 declare global {
     interface __VLS_GlobalComponents {

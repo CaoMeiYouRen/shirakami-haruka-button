@@ -9,7 +9,7 @@ const i18nOption: VueI18n.I18nOptions = {
     fallbackLocale: 'zh', // 回退本地化
     silentFallbackWarn: process.env.NODE_ENV === 'production',
     formatFallbackMessages: process.env.NODE_ENV === 'production',
-    messages, // 设置地区信息
+    messages // 设置地区信息
 }
 
 export default new VueI18n(i18nOption)

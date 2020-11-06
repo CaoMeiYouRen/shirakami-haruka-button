@@ -7,11 +7,12 @@ export default defineComponent({
     props: {},
     setup(props, ctx){
         return {
-            readme,
+            readme
         }
-    },
+    }
 })
 </script>
+
 <template>
     <v-container fluid>
         <v-row
