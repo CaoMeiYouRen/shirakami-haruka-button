@@ -1,5 +1,18 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.6.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.6.0...v1.6.1) (2020-11-06)
+
+
+### ♻ 代码重构
+
+* 优化 在首页添加友情链接 ([57ec09d](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/57ec09d))
+* 修改 GitHub 图标显示 ([f648e79](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/f648e79)), closes [#10](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/10)
+
+
+### 🐛 Bug 修复
+
+* global components service not work ([6dda4cf](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/6dda4cf))
+
 # [1.6.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.5.0...v1.6.0) (2020-10-29)
 
 
