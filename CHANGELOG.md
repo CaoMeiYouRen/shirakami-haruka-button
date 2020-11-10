@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+# [1.7.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.6.1...v1.7.0) (2020-11-10)
+
+
+### ✨ 新功能
+
+* 新增音声 ([6435403](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/6435403))
+
 ## [1.6.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.6.0...v1.6.1) (2020-11-06)
 
 
