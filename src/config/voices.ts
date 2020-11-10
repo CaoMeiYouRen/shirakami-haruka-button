@@ -100,6 +100,27 @@ const voices: VoiceInfo[] = [
     },
     {
         messages: {
+            zh: '那我总不能说我是真的傻吧'
+        },
+        path: '那我总不能说我是真的傻吧.mp3',
+        tag: 'Rbq'
+    },
+    {
+        messages: {
+            zh: '好，我就是傻子！'
+        },
+        path: '好，我就是傻子.mp3',
+        tag: 'Rbq'
+    },
+    {
+        messages: {
+            zh: '我是无情的乳豹器'
+        },
+        path: '我是无情的rbq.mp3',
+        tag: 'Rbq'
+    },
+    {
+        messages: {
             zh: '八嘎 hentai 无路赛',
             en: '',
             ja: 'バカ 変態 うるさい'
