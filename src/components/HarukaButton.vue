@@ -96,6 +96,7 @@ export default defineComponent({
         // 计算按钮标题最大字数
         // 屏幕宽度减 44px ，除以每个字 19px，最大不超过32个字
         const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 32))
+        //  @todo 音频资源加载优化，若 CDN 加载失败则从本地加载
         const _path = computed(() => {
             if (process.env.NODE_ENV === 'production') {
                 return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${publicPath}voices/${path.value}`
