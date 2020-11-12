@@ -1,5 +1,17 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.7.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.7.0...v1.7.1) (2020-11-12)
+
+
+### ♻ 代码重构
+
+* 音频资源加载优化，若 CDN 加载失败则从本地加载 ([23c8db6](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/23c8db6)), closes [#12](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/12)
+
+
+### 🐛 Bug 修复
+
+* 修复底部github图标在手机端的显示，即修复 f648e79 的bug ([a63e73a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/a63e73a)), closes [#13](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/13)
+
 # [1.7.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.6.1...v1.7.0) (2020-11-10)
 
 
