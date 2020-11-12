@@ -106,7 +106,7 @@ export default defineComponent({
 
             img {
                 display: block;
-                margin-right: 7px;
+                margin: 7px;
             }
         }
     }
