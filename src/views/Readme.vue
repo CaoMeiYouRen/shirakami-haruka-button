@@ -7,9 +7,9 @@ export default defineComponent({
     props: {},
     setup(props, ctx){
         return {
-            readme
+            readme,
         }
-    }
+    },
 })
 </script>
 

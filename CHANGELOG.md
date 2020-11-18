@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+# [1.8.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.7.1...v1.8.0) (2020-11-18)
+
+
+### ✨ 新功能
+
+* 新增 白神遥最新动态显示 ([e09f922](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/e09f922))
+
 ## [1.7.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.7.0...v1.7.1) (2020-11-12)
 
 

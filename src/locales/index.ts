@@ -4,5 +4,5 @@ import ja from './ja'
 export const messages = {
     zh,
     en,
-    ja
+    ja,
 }

@@ -17,29 +17,29 @@ const routes: Array<RouteConfig> = [
                     {
                         path: '',
                         name: 'Home',
-                        component: () => import('@/views/Home.vue')
+                        component: () => import('@/views/Home.vue'),
                     },
                     {
                         path: '/changelog',
                         name: 'Changelog',
-                        component: () => import('@/views/Changelog.vue')
+                        component: () => import('@/views/Changelog.vue'),
                     },
                     {
                         path: '/about',
                         name: 'About',
-                        component: () => import('@/views/About.vue')
-                    }
-                ]
-            }
-        ]
-    }
+                        component: () => import('@/views/About.vue'),
+                    },
+                ],
+            },
+        ],
+    },
 
 ]
 
 const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes
+    routes,
 })
 
 export default router

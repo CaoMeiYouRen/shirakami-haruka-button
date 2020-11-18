@@ -201,7 +201,7 @@ import { timeFormat } from '@/utils/time'
 
 function useBiliDynamic(uid: number) {
     const { data, loading } = useAxios(`/bilibili/user/dynamic/${uid}`, {
-        baseURL: process.env.VUE_APP_RSS_URL
+        baseURL: process.env.VUE_APP_RSS_URL,
     })
     const dynamic = ref<Parser.Item[]>([])
 
@@ -219,7 +219,7 @@ function useBiliDynamic(uid: number) {
     })
     return {
         dynamic,
-        loading
+        loading,
     }
 }
 
@@ -269,7 +269,7 @@ export default defineComponent({
                         currentVoice.value.isPlay = true
                     }
                 }, {
-                    deep: true
+                    deep: true,
                 })
             }
         }
@@ -294,7 +294,7 @@ export default defineComponent({
                         randomPlay()
                     }
                 }, {
-                    deep: true
+                    deep: true,
                 })
             }
         }
@@ -324,9 +324,9 @@ export default defineComponent({
             stopAll,
             friendshipLinks,
             dynamic,
-            loading
+            loading,
         }
-    }
+    },
 })
 </script>
 

@@ -22,15 +22,15 @@ export default defineComponent({
     props: {
         tag: {
             type: String,
-            default: ''
+            default: '',
         },
         rawTitle: {
-            type: String
+            type: String,
         },
         disableTitle: {
             type: Boolean,
-            default: false
-        }
+            default: false,
+        },
     },
     setup(props, ctx){
         const title = computed(() => {
@@ -40,9 +40,9 @@ export default defineComponent({
             return i18n.t(`tags.${props.tag}`)
         })
         return {
-            title
+            title,
         }
-    }
+    },
 })
 </script>
 

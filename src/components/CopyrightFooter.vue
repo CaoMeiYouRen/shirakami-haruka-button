@@ -55,23 +55,23 @@ export default defineComponent({
             githubs: [
                 {
                     alt: 'GitHub package.json version',
-                    src: 'https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button?color=ffaea6'
+                    src: 'https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button?color=ffaea6',
                 },
                 {
                     alt: 'GitHub watchers',
-                    src: 'https://img.shields.io/github/watchers/CaoMeiYouRen/shirakami-haruka-button?style=social'
+                    src: 'https://img.shields.io/github/watchers/CaoMeiYouRen/shirakami-haruka-button?style=social',
                 },
                 {
                     alt: 'GitHub Repo stars',
-                    src: 'https://img.shields.io/github/stars/CaoMeiYouRen/shirakami-haruka-button?style=social'
+                    src: 'https://img.shields.io/github/stars/CaoMeiYouRen/shirakami-haruka-button?style=social',
                 },
                 {
                     alt: 'GitHub forks',
-                    src: 'https://img.shields.io/github/forks/CaoMeiYouRen/shirakami-haruka-button?style=social'
-                }
-            ]
+                    src: 'https://img.shields.io/github/forks/CaoMeiYouRen/shirakami-haruka-button?style=social',
+                },
+            ],
         }
-    }
+    },
 })
 </script>
 
