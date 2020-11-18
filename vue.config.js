@@ -61,7 +61,6 @@ module.exports = {
             // `https://cdn.jsdelivr.net/npm/@vue-composable/axios@${dependencies['@vue-composable/axios']}/dist/v2/axios.global.prod.js`,
             `https://cdn.jsdelivr.net/npm/dayjs@${dependencies['dayjs']}/dayjs.min.js`,
             `https://cdn.jsdelivr.net/npm/rss-parser@${dependencies['rss-parser']}/dist/rss-parser.min.js`,
-            // `https://cdn.jsdelivr.net/npm/query-string@${dependencies['query-string']}/index.min.js`
         ]
         let cdn = {
             css: [],
@@ -152,7 +151,6 @@ module.exports = {
                     // 'vue-composable': 'VueComposable',
                     dayjs: 'dayjs',
                     'rss-parser': 'RSSParser',
-                    // 'query-string': 'queryString',
                     axios: 'axios'
                 },
                 plugins,
