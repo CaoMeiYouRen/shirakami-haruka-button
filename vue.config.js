@@ -24,6 +24,16 @@ module.exports = {
         port: 5000, // 设置端口
         hot: true, // 启用热更新
         compress: true, // 是否启用gzip压缩
+        proxy: {
+            '/rss': {
+                target: 'https://rsshub.cmyr.ltd/',
+                ws: true,
+                changOrigin: true,
+                pathRewrite: {
+                    '^/rss': '/',
+                },
+            },
+        }
     },
     productionSourceMap: process.env.NODE_ENV === 'development', // 移除生产环境的 source map
     chainWebpack: (config) => {
@@ -40,12 +50,18 @@ module.exports = {
         ]
         const js = [
             `https://cdn.jsdelivr.net/npm/lodash@${dependencies['lodash']}/lodash.min.js`,
+            `https://cdn.jsdelivr.net/npm/axios@${dependencies['axios']}/dist/axios.min.js`,
             `https://cdn.jsdelivr.net/npm/vue@${dependencies['vue']}/dist/vue.min.js`,
             `https://cdn.jsdelivr.net/npm/vuetify@${dependencies['vuetify']}/dist/vuetify.min.js`,
             `https://cdn.jsdelivr.net/npm/vue-router@${dependencies['vue-router']}/dist/vue-router.min.js`,
             `https://cdn.jsdelivr.net/npm/vuex@${dependencies['vuex']}/dist/vuex.min.js`,
             `https://cdn.jsdelivr.net/npm/vue-i18n@${dependencies['vue-i18n']}/dist/vue-i18n.min.js`,
-            `https://cdn.jsdelivr.net/npm/@vue/composition-api@${dependencies['@vue/composition-api']}/dist/vue-composition-api.prod.min.js`
+            `https://cdn.jsdelivr.net/npm/@vue/composition-api@${dependencies['@vue/composition-api']}/dist/vue-composition-api.prod.min.js`,
+            // `https://cdn.jsdelivr.net/npm/vue-composable@${dependencies['vue-composable']}/dist/v2/vue-composable.global.prod.js`,
+            // `https://cdn.jsdelivr.net/npm/@vue-composable/axios@${dependencies['@vue-composable/axios']}/dist/v2/axios.global.prod.js`,
+            `https://cdn.jsdelivr.net/npm/dayjs@${dependencies['dayjs']}/dayjs.min.js`,
+            `https://cdn.jsdelivr.net/npm/rss-parser@${dependencies['rss-parser']}/dist/rss-parser.min.js`,
+            // `https://cdn.jsdelivr.net/npm/query-string@${dependencies['query-string']}/index.min.js`
         ]
         let cdn = {
             css: [],
@@ -106,6 +122,23 @@ module.exports = {
             ]
         })
         if (process.env.NODE_ENV === 'production') {
+            const plugins = []
+            if (process.env.MODE === 'analyzer') {
+                plugins.push(
+                    new BundleAnalyzerPlugin({
+                        analyzerMode: 'server',
+                        analyzerHost: '127.0.0.1',
+                        analyzerPort: 8080,
+                        reportFilename: 'index.html',
+                        defaultSizes: 'parsed',
+                        openAnalyzer: true,
+                        generateStatsFile: false,
+                        statsFilename: 'stats.json',
+                        statsOptions: null,
+                        logLevel: 'info'
+                    })
+                )
+            }
             return {
                 externals: {
                     vuetify: 'Vuetify',
@@ -115,22 +148,14 @@ module.exports = {
                     'vue-router': 'VueRouter',
                     lodash: '_',
                     'vue-i18n': 'VueI18n',
-                    '@vue/composition-api': 'VueCompositionAPI'
+                    '@vue/composition-api': 'VueCompositionAPI',
+                    // 'vue-composable': 'VueComposable',
+                    dayjs: 'dayjs',
+                    'rss-parser': 'RSSParser',
+                    // 'query-string': 'queryString',
+                    axios: 'axios'
                 },
-                plugins: [
-                    // new BundleAnalyzerPlugin({
-                    //     analyzerMode: 'server',
-                    //     analyzerHost: '127.0.0.1',
-                    //     analyzerPort: 8080,
-                    //     reportFilename: 'index.html',
-                    //     defaultSizes: 'parsed',
-                    //     openAnalyzer: true,
-                    //     generateStatsFile: false,
-                    //     statsFilename: 'stats.json',
-                    //     statsOptions: null,
-                    //     logLevel: 'info'
-                    // })
-                ],
+                plugins,
                 optimization: {
                     splitChunks: {
                         chunks: 'all',

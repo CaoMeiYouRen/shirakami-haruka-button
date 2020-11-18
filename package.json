@@ -12,7 +12,8 @@
     "commit": "git add . && git cz && git pull && git push",
     "changelog": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",
     "release": "semantic-release",
-    "deploy": "npm run build && node ./deploy"
+    "deploy": "npm run build && node ./deploy",
+    "analyzer": "cross-env MODE=analyzer vue-cli-service build"
   },
   "engines": {
     "node": ">=12"
@@ -27,20 +28,25 @@
   "homepage": "https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme",
   "dependencies": {
     "@mdi/font": "^5.8.55",
+    "@vue-composable/axios": "^1.0.0-beta.12",
     "@vue/composition-api": "^1.0.0-beta.15",
     "animate.css": "^4.1.1",
     "axios": "^0.21.0",
     "core-js": "^3.6.5",
+    "dayjs": "^1.9.6",
     "highlight.js": "^10.3.2",
     "lodash": "^4.17.20",
     "material-design-icons-iconfont": "^6.1.0",
     "normalize.css": "^8.0.1",
+    "query-string": "^6.13.7",
+    "rss-parser": "^3.9.0",
     "vue": "^2.6.12",
     "vue-composable": "^1.0.0-beta.10",
     "vue-i18n": "^8.22.1",
     "vue-router": "^3.4.9",
     "vuetify": "^2.3.16",
-    "vuex": "^3.5.1"
+    "vuex": "^3.5.1",
+    "xml2js": "^0.4.23"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^5.0.1",
@@ -51,6 +57,7 @@
     "@semantic-release/release-notes-generator": "^9.0.1",
     "@types/lodash": "^4.14.165",
     "@types/markdown-it": "^10.0.2",
+    "@types/xml2js": "^0.4.6",
     "@typescript-eslint/eslint-plugin": "^4.6.1",
     "@typescript-eslint/parser": "^4.6.1",
     "@vue/cli-plugin-babel": "^4.5.8",
