@@ -188,7 +188,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, nextTick } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch, nextTick, onUnmounted } from '@vue/composition-api'
 import { useAxios } from '@vue-composable/axios'
 import Parser from 'rss-parser'
 import _ from 'lodash'
@@ -200,7 +200,7 @@ import { rssParserString } from '@/utils/rssParser'
 import { timeFormat } from '@/utils/time'
 
 function useBiliDynamic(uid: number) {
-    const { data, loading } = useAxios(`/bilibili/user/dynamic/${uid}`, {
+    const { data, loading, cancel } = useAxios(`/bilibili/user/dynamic/${uid}`, {
         baseURL: process.env.VUE_APP_RSS_URL,
     })
     const dynamic = ref<Parser.Item[]>([])
@@ -215,8 +215,14 @@ function useBiliDynamic(uid: number) {
                 return e
             })
         }
-
     })
+
+    onUnmounted(() => {
+        if (loading.value){ // 组件卸载时如果还在加载则取消请求
+            cancel()
+        }
+    })
+
     return {
         dynamic,
         loading,
