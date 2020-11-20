@@ -31,4 +31,5 @@ export default {
     },
     ProjectAddress: 'プロジェクトのアドレス',
     BackToTop: 'トップに戻る',
+    LatestDynamic: '最新の動き',
 }

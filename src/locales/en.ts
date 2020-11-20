@@ -31,4 +31,5 @@ export default {
     },
     ProjectAddress: 'ProjectAddress',
     BackToTop: 'BackToTop',
+    LatestDynamic: 'LatestDynamic',
 }

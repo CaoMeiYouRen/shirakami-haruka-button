@@ -4,7 +4,7 @@
         rounded="xl"
         class="haruka-card"
     >
-        <v-card-title v-if="!disableTitle && title" primary-title>
+        <v-card-title v-if="title" primary-title>
             {{ title }}
         </v-card-title>
         <v-card-text>
@@ -27,15 +27,14 @@ export default defineComponent({
         rawTitle: {
             type: String,
         },
-        disableTitle: {
-            type: Boolean,
-            default: false,
-        },
     },
     setup(props, ctx){
         const title = computed(() => {
             if (props.rawTitle){
                 return props.rawTitle
+            }
+            if (!props.tag){
+                return ''
             }
             return i18n.t(`tags.${props.tag}`)
         })

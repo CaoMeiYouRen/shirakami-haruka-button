@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-row>
             <v-col cols="12">
-                <HarukaCard disable-title>
+                <HarukaCard>
                     <v-row algin="start" justify="start">
                         <v-col
                             cols="12"
@@ -42,7 +42,7 @@
         </v-row>
         <v-row>
             <v-col cols="12">
-                <HarukaCard :raw-title="'最新动态'">
+                <HarukaCard :raw-title="$t('LatestDynamic')">
                     <v-row v-if="loading">
                         <v-col
                             v-for="i in 3"
