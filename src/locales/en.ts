@@ -31,5 +31,9 @@ export default {
     },
     ProjectAddress: 'ProjectAddress',
     BackToTop: 'BackToTop',
-    LatestDynamic: 'LatestDynamic',
+    dynamic: {
+        LatestDynamic: 'LatestDynamic',
+        DynamicLink: 'DynamicLink',
+        PublishTime: 'PublishTime',
+    },
 }

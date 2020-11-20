@@ -42,7 +42,7 @@
         </v-row>
         <v-row>
             <v-col cols="12">
-                <HarukaCard :raw-title="$t('LatestDynamic')">
+                <HarukaCard :raw-title="$t('dynamic.LatestDynamic')">
                     <v-row v-if="loading">
                         <v-col
                             v-for="i in 3"
@@ -71,8 +71,8 @@
                                 <v-card-text class="subtitle-1">
                                     {{ item.contentSnippet }}
                                     <br>
-                                    <span>动态链接：<a target="_blank" :href="item.link">{{ item.link }}</a> </span><br>
-                                    发布时间：{{ item.isoDate }}
+                                    <span>{{ $t('dynamic.DynamicLink') }}：<a target="_blank" :href="item.link">{{ item.link }}</a> </span><br>
+                                    {{ $t('dynamic.PublishTime') }}：{{ item.isoDate }}
                                 </v-card-text>
                             </v-card>
                         </v-col>

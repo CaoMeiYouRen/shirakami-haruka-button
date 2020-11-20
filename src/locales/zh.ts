@@ -31,5 +31,9 @@ export default {
     },
     ProjectAddress: '项目地址',
     BackToTop: '返回顶部',
-    LatestDynamic: '最新动态',
+    dynamic: {
+        LatestDynamic: '最新动态',
+        DynamicLink: '动态链接',
+        PublishTime: '发布时间',
+    },
 }
