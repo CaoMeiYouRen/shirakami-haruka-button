@@ -1,3 +1,4 @@
+import _ from 'lodash'
 import { onMounted, onUnmounted, ref } from '@vue/composition-api'
 
 /**
@@ -19,11 +20,11 @@ export function useOnWindowResize() {
     }
     const height = ref(0)
     const width = ref(0)
-    function handler() {
+    const handler = _.debounce(() => { // 去抖动
         const size = getSize()
         height.value = size.height
         width.value = size.width
-    }
+    }, 200)
     window.addEventListener('resize', handler)
     onMounted(() => {
         handler()

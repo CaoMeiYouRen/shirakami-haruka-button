@@ -31,16 +31,68 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, toRefs, ComputedRef } from '@vue/composition-api'
-import { messages } from '@/locales'
+import { computed, defineComponent, ref, watch, toRefs, ComputedRef, Ref } from '@vue/composition-api'
+import { messages as globalMessages } from '@/locales'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
+
+const langs = Object.keys(globalMessages)
 
 function strFix(val: string, max = 16) {
     if (val && val.length > max) {
         return `${val.slice(0, max)}…`
     }
     return val
+}
+/**
+ * 计算按钮标题
+*/
+function useButtonTile(messages: Ref<Record<string, string>>) {
+    const rawTitle = computed(() => {
+        const locale = i18n.locale
+        let _title = messages.value[locale]
+        if (_title) {
+            return _title
+        }
+        for (let i = 0; i < langs.length; i++) {
+            const lang = langs[i]
+            _title = messages.value[lang]
+            if (_title) {
+                return _title
+            }
+        }
+        return messages.value['zh']
+    })
+
+    const { width } = useOnWindowResize()
+    // 计算按钮标题最大字数
+    // 屏幕宽度减 44px ，除以每个字 19px，最大不超过32个字
+    const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 32))
+    const title = computed(() => strFix(rawTitle.value, maxLength.value))
+
+    return {
+        maxLength,
+        rawTitle,
+        title,
+    }
+}
+/**
+ * 计算音频路径
+*/
+function useVoicesPath(path: Ref<string>) {
+    const publicPath = process.env.BASE_URL || ''
+    const localVoicesPath = `${publicPath}voices/${path.value}`
+    const voicesPath = computed(() => {
+        if (process.env.NODE_ENV === 'production') {
+            return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${localVoicesPath}`
+        } else {
+            return localVoicesPath
+        }
+    })
+    return {
+        voicesPath,
+        localVoicesPath,
+    }
 }
 
 export default defineComponent({
@@ -84,27 +136,15 @@ export default defineComponent({
         },
     },
     setup(props, ctx) {
+        const { isPlay, isLoop, stopAll, path, messages } = toRefs(props)
         const playList = ref(new Set<HTMLAudioElement>())
-        const { isPlay, isLoop, stopAll, path } = toRefs(props)
-        const publicPath = process.env.BASE_URL || ''
         const disabled = ref(false)
         const maskList = ref<number[]>([])
         const style = ref({
             animation: '',
         })
-        const { width } = useOnWindowResize()
-        // 计算按钮标题最大字数
-        // 屏幕宽度减 44px ，除以每个字 19px，最大不超过32个字
-        const maxLength = computed(() => Math.min(Math.floor((width.value - 44) / 19), 32))
 
-        const voicesPath = `${publicPath}voices/${path.value}`
-        const _path = computed(() => {
-            if (process.env.NODE_ENV === 'production') {
-                return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${voicesPath}`
-            } else {
-                return voicesPath
-            }
-        })
+        const { voicesPath, localVoicesPath } = useVoicesPath(path)
 
         function play(cb?: () => any) {
             if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
@@ -112,7 +152,7 @@ export default defineComponent({
             }
             const audio = new Audio()
             audio.preload = 'meta'
-            audio.src = _path.value
+            audio.src = voicesPath.value
             disabled.value = true
             const timer = setTimeout(() => {
                 disabled.value = false
@@ -141,26 +181,12 @@ export default defineComponent({
             audio.onerror = e => {
                 console.error(e)
                 // 音频资源加载优化，若 CDN 加载失败则从本地加载
-                audio.src = voicesPath
+                audio.src = localVoicesPath
             }
         }
-        const rawTitle: ComputedRef<string> = computed(() => {
-            const locale = i18n.locale
-            let _title = props.messages[locale]
-            if (_title) {
-                return _title
-            }
-            const langs = Object.keys(messages)
-            for (let i = 0; i < langs.length; i++) {
-                const lang = langs[i]
-                _title = props.messages[lang]
-                if (_title) {
-                    return _title
-                }
-            }
-            return props.messages['zh']
-        })
-        const title = computed(() => strFix(rawTitle.value, maxLength.value))
+
+        const { maxLength, rawTitle, title } = useButtonTile(messages)
+
         watch(isPlay, val => {
             if (val) {
                 play(() => {

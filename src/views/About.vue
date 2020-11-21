@@ -100,7 +100,11 @@ export default defineComponent({
                     url: 'https://vuetifyjs.com/zh-Hans/',
                 },
                 {
-                    msg: `组合式API：vue-composable (${dep['vue-composable']})`,
+                    msg: `组合式API：@vue/composition-api (${dep['@vue/composition-api']})`,
+                    url: 'https://github.com/vuejs/composition-api',
+                },
+                {
+                    msg: `组合式API工具集：vue-composable (${dep['vue-composable']})`,
                     url: 'https://pikax.me/vue-composable/',
                 },
                 {
