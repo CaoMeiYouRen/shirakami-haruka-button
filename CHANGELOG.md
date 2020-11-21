@@ -1,5 +1,19 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.8.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.8.0...v1.8.1) (2020-11-21)
+
+
+### ♻ 代码重构
+
+* 优化 组件卸载时如果还在加载则取消请求 ([03a54dc](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/03a54dc))
+
+
+### 🐛 Bug 修复
+
+* 优化 最新动态 部分翻译 ([6f97655](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/6f97655))
+* 优化setup 部分 ([4586340](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/4586340)), closes [#15](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/15)
+* 修改HarukaCard的title部分逻辑 ([6668501](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/6668501)), closes [#16](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/16)
+
 # [1.8.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.7.1...v1.8.0) (2020-11-18)
 
 
