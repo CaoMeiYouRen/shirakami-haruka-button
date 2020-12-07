@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+# [1.9.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.8.1...v1.9.0) (2020-12-07)
+
+
+### ✨ 新功能
+
+* 新增 音频压缩包和音频下载链接 ([bcc9180](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/bcc9180)), closes [#18](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/18)
+
 ## [1.8.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.8.0...v1.8.1) (2020-11-21)
 
 
