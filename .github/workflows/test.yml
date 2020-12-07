@@ -3,7 +3,7 @@ on: [push, pull_request]
 
 jobs:
   test:
-    name: Test Build
+    name: Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -11,6 +11,6 @@ jobs:
         uses: actions/setup-node@v2.1.2
         with:
           node-version: "14"
-      - run: npm i
+      - run: yarn
       - run: npm run lint
       - run: npm run build
