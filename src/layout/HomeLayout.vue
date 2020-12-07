@@ -159,6 +159,21 @@ const menuList = computed(() => [
         name: i18n.t('menu.About'),
         path: '/about',
     },
+    {
+        icon: 'mdi-download',
+        name: i18n.t('menu.Download'),
+        fun(){
+            let url = ''
+            const publicPath = process.env.BASE_URL || ''
+            const localZipPath = `${publicPath}voices.zip`
+            if (process.env.NODE_ENV === 'production') {
+                url = `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${localZipPath}`
+            } else {
+                url = localZipPath
+            }
+            window.open(url)
+        },
+    },
 ])
 export default defineComponent({
     name: 'HomeLayout',

@@ -1,6 +1,7 @@
 process.env.VUE_APP_VERSION = require('./package.json').version
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const FileManagerPlugin = require('filemanager-webpack-plugin')
 
 function verFormat(ver) {
     const list = ver.split('.')
@@ -122,6 +123,20 @@ module.exports = {
         })
         if (process.env.NODE_ENV === 'production') {
             const plugins = []
+            plugins.push(
+                new FileManagerPlugin({
+                    events: {
+                        onEnd: {
+                            delete: [
+                                './public/voices.zip',
+                            ],
+                            archive: [
+                                { source: './public/voices', destination: './public/voices.zip' },
+                            ],
+                        },
+                    }
+                }),
+            )
             if (process.env.MODE === 'analyzer') {
                 plugins.push(
                     new BundleAnalyzerPlugin({

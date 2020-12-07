@@ -10,6 +10,7 @@ export default {
         About: '关于',
         Readme: '加入项目',
         Changelog: '更新日志',
+        Download: '下载音频',
     },
     play: {
         PlaybackControl: '播放控制',

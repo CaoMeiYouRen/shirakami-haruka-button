@@ -10,6 +10,7 @@ export default {
         About: 'について',
         Readme: '加入する',
         Changelog: 'ログを更新',
+        Download: 'ダウンロード',
     },
     play: {
         PlaybackControl: 'コントロール',

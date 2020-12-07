@@ -10,6 +10,7 @@ export default {
         About: 'About',
         Readme: 'AddProject',
         Changelog: 'Changelog',
+        Download: 'Download',
     },
     play: {
         PlaybackControl: 'PlaybackControl',
