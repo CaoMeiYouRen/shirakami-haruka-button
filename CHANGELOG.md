@@ -1,5 +1,13 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.9.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.0...v1.9.1) (2020-12-12)
+
+
+### 🐛 Bug 修复
+
+* 优化 CDN 加载 ([273091f](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/273091f))
+* 修复 github 图标 ([82c564b](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/82c564b))
+
 # [1.9.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.8.1...v1.9.0) (2020-12-07)
 
 
