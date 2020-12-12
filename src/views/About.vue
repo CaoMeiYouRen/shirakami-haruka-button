@@ -8,8 +8,8 @@
                         <br>
                         <h3>
                             本网站由 草梅友仁(
-                            <v-icon size="24">
-                                iconfont icon-github
+                            <v-icon size="24" color="#000">
+                                iconfont icon-github2
                             </v-icon>
                             <a target="_blank" href="https://github.com/CaoMeiYouRen">
                                 github

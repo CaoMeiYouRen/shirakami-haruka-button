@@ -75,7 +75,6 @@ module.exports = {
                 name: 'vuetify',
                 var: 'Vuetify',
                 path: 'dist/vuetify.min.js',
-                style: 'dist/vuetify.min.css',
             },
             {
                 name: 'vue-i18n',
@@ -117,6 +116,11 @@ module.exports = {
             {
                 name: 'material-design-icons-iconfont',
                 style: 'dist/material-design-icons.min.css',
+                cssOnly: true,
+            },
+            {
+                name: 'vuetify',
+                style: 'dist/vuetify.min.css',
                 cssOnly: true,
             },
         ]

@@ -24,7 +24,7 @@
                 </p>
                 <p>
                     <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">
-                        <v-icon color="primary">iconfont icon-github</v-icon>
+                        <v-icon color="primary">iconfont icon-github2</v-icon>
                         {{ $t('ProjectAddress') }}
                     </a>
                 </p>
