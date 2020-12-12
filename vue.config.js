@@ -1,22 +1,11 @@
-process.env.VUE_APP_VERSION = require('./package.json').version
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FileManagerPlugin = require('filemanager-webpack-plugin')
+const WebpackCdnPlugin = require('webpack-cdn-plugin')
 
-function verFormat(ver) {
-    const list = ver.split('.')
-    for (let i = 0; i < list.length; i++) {
-        list[i] = list[i].replace('^', '').replace('~', '')
-    }
-    return list.join('.')
-}
-const { dependencies } = require('./package.json')
-Object.keys(dependencies).forEach(e => {
-    let d = dependencies[e]
-    if (!d.includes('git+')) {
-        dependencies[e] = verFormat(d)
-    }
-})
+process.env.VUE_APP_VERSION = require('./package.json').version
+const __DEV__ = process.env.NODE_ENV === 'development'
+const __PROD__ = !__DEV__
 
 module.exports = {
     publicPath: '/',
@@ -34,70 +23,119 @@ module.exports = {
                     '^/rss': '/',
                 },
             },
-        }
+        },
     },
-    productionSourceMap: process.env.NODE_ENV === 'development', // 移除生产环境的 source map
-    chainWebpack: (config) => {
+    productionSourceMap: __DEV__, // 移除生产环境的 source map
+    chainWebpack: config => {
         config.plugin('html').tap(([options]) => {
             options.title = '豹按钮 (:3っ)∋'
+            options.__DEV__ = __DEV__
+            options.__PROD__ = __PROD__
             return [options]
         })
-        const css = [
-            `https://cdn.jsdelivr.net/npm/normalize.css@${dependencies['normalize.css']}/normalize.min.css`,
-            `https://cdn.jsdelivr.net/npm/animate.css@${dependencies['animate.css']}/animate.min.css`,
-            `https://cdn.jsdelivr.net/npm/@mdi/font@${dependencies['@mdi/font']}/css/materialdesignicons.min.css`,
-            `https://cdn.jsdelivr.net/npm/material-design-icons-iconfont@${dependencies['material-design-icons-iconfont']}/dist/material-design-icons.min.css`,
-            `https://cdn.jsdelivr.net/npm/vuetify@${dependencies['vuetify']}/dist/vuetify.min.css`,
-        ]
-        const js = [
-            `https://cdn.jsdelivr.net/npm/lodash@${dependencies['lodash']}/lodash.min.js`,
-            `https://cdn.jsdelivr.net/npm/axios@${dependencies['axios']}/dist/axios.min.js`,
-            `https://cdn.jsdelivr.net/npm/vue@${dependencies['vue']}/dist/vue.min.js`,
-            `https://cdn.jsdelivr.net/npm/vuetify@${dependencies['vuetify']}/dist/vuetify.min.js`,
-            `https://cdn.jsdelivr.net/npm/vue-router@${dependencies['vue-router']}/dist/vue-router.min.js`,
-            `https://cdn.jsdelivr.net/npm/vuex@${dependencies['vuex']}/dist/vuex.min.js`,
-            `https://cdn.jsdelivr.net/npm/vue-i18n@${dependencies['vue-i18n']}/dist/vue-i18n.min.js`,
-            `https://cdn.jsdelivr.net/npm/@vue/composition-api@${dependencies['@vue/composition-api']}/dist/vue-composition-api.prod.min.js`,
-            // `https://cdn.jsdelivr.net/npm/vue-composable@${dependencies['vue-composable']}/dist/v2/vue-composable.global.prod.js`,
-            // `https://cdn.jsdelivr.net/npm/@vue-composable/axios@${dependencies['@vue-composable/axios']}/dist/v2/axios.global.prod.js`,
-            `https://cdn.jsdelivr.net/npm/dayjs@${dependencies['dayjs']}/dayjs.min.js`,
-            `https://cdn.jsdelivr.net/npm/rss-parser@${dependencies['rss-parser']}/dist/rss-parser.min.js`,
-        ]
-        let cdn = {
-            css: [],
-            js: []
-        }
-        if (process.env.NODE_ENV === 'production') {
-            cdn = {
-                css,
-                js
-            }
-            config.plugin('html').tap(([options]) => {
-                options.cdn = cdn
-                return [options]
-            })
-            config.module
-                .rule('images')
-                .test(/\.(jpg|png|jpeg|gif|bmp)$/i)
-                .use('url-loader')
-                .loader('url-loader')
-                .options({
-                    limit: 1024,
-                    outputPath: 'img',
-                    name: '[name].[hash:8].[ext]',
-                }).end()
-        } else {
-            cdn = {
-                css,
-                js: []
-            }
-            config.plugin('html').tap(([options]) => {
-                options.cdn = cdn
-                return [options]
-            })
-        }
     },
     configureWebpack: config => {
+        const jsModules = [
+            {
+                name: 'lodash',
+                var: '_',
+                path: 'lodash.min.js',
+            },
+            {
+                name: 'axios',
+                var: 'axios',
+                path: 'dist/axios.min.js',
+            },
+            {
+                name: 'dayjs',
+                var: 'dayjs',
+                path: 'dayjs.min.js',
+            },
+            {
+                name: 'rss-parser',
+                var: 'RSSParser',
+                path: 'dist/rss-parser.min.js',
+            },
+            {
+                name: 'vue',
+                var: 'Vue',
+                path: 'dist/vue.runtime.min.js',
+            },
+            {
+                name: 'vue-router',
+                var: 'VueRouter',
+                path: 'dist/vue-router.min.js',
+            },
+            {
+                name: 'vuex',
+                var: 'Vuex',
+                path: 'dist/vuex.min.js',
+            },
+            {
+                name: 'vuetify',
+                var: 'Vuetify',
+                path: 'dist/vuetify.min.js',
+                style: 'dist/vuetify.min.css',
+            },
+            {
+                name: 'vue-i18n',
+                var: 'VueI18n',
+                path: 'dist/vue-i18n.min.js',
+            },
+            // {
+            //     name: '@vue/composition-api',
+            //     var: 'vueCompositionApi',
+            //     path: 'dist/vue-composition-api.prod.min.js',
+            // },
+            // {
+            //     name: 'vue-composable',
+            //     var: 'vueComposable',
+            //     path: 'dist/v2/vue-composable.global.prod.js',
+            // },
+            // {
+            //     name: '@vue-composable/axios',
+            //     var: 'vueComposableAxios',
+            //     path: 'dist/v2/axios.global.prod.js',
+            // },
+        ]
+        const cssModules = [
+            {
+                name: 'normalize.css',
+                style: 'normalize.min.css',
+                cssOnly: true,
+            },
+            {
+                name: 'animate.css',
+                style: 'animate.min.css',
+                cssOnly: true,
+            },
+            {
+                name: '@mdi/font',
+                style: 'css/materialdesignicons.min.css',
+                cssOnly: true,
+            },
+            {
+                name: 'material-design-icons-iconfont',
+                style: 'dist/material-design-icons.min.css',
+                cssOnly: true,
+            },
+        ]
+
+        config.module.rules.push({
+            test: /\.md$/,
+            use: [
+                {
+                    loader: 'html-loader',
+                },
+                {
+                    loader: 'markdown-it-loader',
+                    options: {
+                        html: true,
+                    },
+                },
+            ],
+        })
+        const plugins = []
         config.plugins.push(
             // @ts-ignore
             new StyleLintPlugin({
@@ -106,35 +144,27 @@ module.exports = {
                 cache: true,
                 fix: true,
             }),
+            new WebpackCdnPlugin({
+                publicPath: '/node_modules',
+                prod: true, // 生产环境使用 cdn
+                prodUrl: 'https://cdn.jsdelivr.net/npm/:name@:version/:path',
+                modules: __DEV__ ? cssModules : [].concat(cssModules, jsModules), // 开发环境仅注入 css ，生产环境注入 js、css
+            }),
         )
-        config.module.rules.push({
-            test: /\.md$/,
-            use: [
-                {
-                    loader: "html-loader"
-                },
-                {
-                    loader: "markdown-it-loader",
-                    options: {
-                        html: true,
-                    }
-                }
-            ]
-        })
-        if (process.env.NODE_ENV === 'production') {
-            const plugins = []
+        if (__PROD__) {
             plugins.push(
                 new FileManagerPlugin({
                     events: {
                         onEnd: {
                             delete: [
                                 './public/voices.zip',
+                                './dist/voices.zip',
                             ],
                             archive: [
                                 { source: './public/voices', destination: './public/voices.zip' },
                             ],
                         },
-                    }
+                    },
                 }),
             )
             if (process.env.MODE === 'analyzer') {
@@ -149,49 +179,40 @@ module.exports = {
                         generateStatsFile: false,
                         statsFilename: 'stats.json',
                         statsOptions: null,
-                        logLevel: 'info'
-                    })
+                        logLevel: 'info',
+                    }),
                 )
             }
+            const optimization = {
+                splitChunks: {
+                    chunks: 'all',
+                    cacheGroups: {
+                        libs: {
+                            name: 'chunk-libs',
+                            test: /[\\/]node_modules[\\/]/,
+                            priority: 10,
+                            chunks: 'initial', // 只打包初始时依赖的第三方
+                        },
+                        corejs: {
+                            name: 'chunk-corejs', // 单独将 core-js 拆包
+                            priority: 15,
+                            test: /[\\/]node_modules[\\/]core-js[\\/]/,
+                        },
+                        vuetify: {
+                            name: 'chunk-vuetify', // 单独将 vuetify 拆包
+                            priority: 20, // 权重要大于 libs 和 app 不然会被打包进 libs 或者 app
+                            test: /[\\/]node_modules[\\/]vuetify[\\/]/,
+                        },
+                    },
+                },
+            }
             return {
+                plugins,
+                optimization,
                 externals: {
                     vuetify: 'Vuetify',
                     'vuetify/lib': 'Vuetify',
-                    vue: 'Vue',
-                    vuex: 'Vuex',
-                    'vue-router': 'VueRouter',
-                    lodash: '_',
-                    'vue-i18n': 'VueI18n',
-                    '@vue/composition-api': 'VueCompositionAPI',
-                    // 'vue-composable': 'VueComposable',
-                    dayjs: 'dayjs',
-                    'rss-parser': 'RSSParser',
-                    axios: 'axios'
                 },
-                plugins,
-                optimization: {
-                    splitChunks: {
-                        chunks: 'all',
-                        cacheGroups: {
-                            libs: {
-                                name: 'chunk-libs',
-                                test: /[\\/]node_modules[\\/]/,
-                                priority: 10,
-                                chunks: 'initial' // 只打包初始时依赖的第三方
-                            },
-                            corejs: {
-                                name: 'chunk-corejs', // 单独将 core-js 拆包
-                                priority: 15,
-                                test: /[\\/]node_modules[\\/]core-js[\\/]/
-                            },
-                            vuetify: {
-                                name: 'chunk-vuetify', // 单独将 vuetify 拆包
-                                priority: 20, // 权重要大于 libs 和 app 不然会被打包进 libs 或者 app
-                                test: /[\\/]node_modules[\\/]vuetify[\\/]/
-                            }
-                        }
-                    },
-                }
             }
         }
     },
