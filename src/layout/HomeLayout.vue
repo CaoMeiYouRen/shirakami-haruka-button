@@ -122,6 +122,7 @@ import { useTitle, useOnScroll } from 'vue-composable'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
 import { messages } from '@/locales'
+import { BASE_URL } from '@/config/env'
 /**
  * 切换语言
 */
@@ -164,8 +165,7 @@ const menuList = computed(() => [
         name: i18n.t('menu.Download'),
         fun(){
             let url = ''
-            const publicPath = process.env.BASE_URL || ''
-            const localZipPath = `${publicPath}voices.zip`
+            const localZipPath = `${BASE_URL}voices.zip`
             if (process.env.NODE_ENV === 'production') {
                 url = `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${localZipPath}`
             } else {

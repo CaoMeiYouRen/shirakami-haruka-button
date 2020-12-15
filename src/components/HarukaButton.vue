@@ -35,6 +35,7 @@ import { computed, defineComponent, ref, watch, toRefs, ComputedRef, Ref } from 
 import { messages as globalMessages } from '@/locales'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
+import { BASE_URL } from '@/config/env'
 
 const langs = Object.keys(globalMessages)
 
@@ -80,8 +81,7 @@ function useButtonTile(messages: Ref<Record<string, string>>) {
  * 计算音频路径
 */
 function useVoicesPath(path: Ref<string>) {
-    const publicPath = process.env.BASE_URL || ''
-    const localVoicesPath = `${publicPath}voices/${path.value}`
+    const localVoicesPath = `${BASE_URL}voices/${path.value}`
     const voicesPath = (() => {
         if (process.env.NODE_ENV === 'production') {
             return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${localVoicesPath}`
@@ -179,8 +179,8 @@ export default defineComponent({
             }
             audio.onerror = e => {
                 console.error(e)
-                // 音频资源加载优化，若 CDN 加载失败则从本地加载
-                audio.src = localVoicesPath
+                // TODO: 音频资源加载优化，若 CDN 加载失败则从本地加载
+                // audio.src = localVoicesPath
             }
         }
 
