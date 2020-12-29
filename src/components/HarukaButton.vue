@@ -81,13 +81,13 @@ function useButtonTile(messages: Ref<Record<string, string>>) {
  * 计算音频路径
 */
 function useVoicesPath(path: Ref<string>) {
-    const localVoicesPath = `${BASE_URL}voices/${path.value}`
-    const voicesPath = (() => {
+    const localVoicesPath = computed(() => `${BASE_URL}voices/${path.value}`)
+    const voicesPath = computed(() => {
         if (process.env.NODE_ENV === 'production') {
-            return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${localVoicesPath}`
+            return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${localVoicesPath.value}`
         }
-        return localVoicesPath
-    })()
+        return localVoicesPath.value
+    })
     return {
         voicesPath,
         localVoicesPath,
@@ -151,7 +151,7 @@ export default defineComponent({
             }
             const audio = new Audio()
             audio.preload = 'meta'
-            audio.src = voicesPath
+            audio.src = voicesPath.value
             disabled.value = true
             const timer = setTimeout(() => {
                 disabled.value = false

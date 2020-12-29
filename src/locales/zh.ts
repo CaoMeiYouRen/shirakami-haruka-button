@@ -32,6 +32,7 @@ export default {
     },
     ProjectAddress: '项目地址',
     BackToTop: '返回顶部',
+    FriendlyLink: '友情链接',
     dynamic: {
         LatestDynamic: '最新动态',
         DynamicLink: '动态链接',

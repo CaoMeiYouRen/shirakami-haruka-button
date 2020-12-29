@@ -32,6 +32,7 @@ export default {
     },
     ProjectAddress: 'プロジェクトのアドレス',
     BackToTop: 'トップに戻る',
+    FriendlyLink: '相互リンク',
     dynamic: {
         LatestDynamic: '最新の動き',
         DynamicLink: 'ダイナミックリンク',

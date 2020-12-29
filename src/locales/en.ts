@@ -32,6 +32,7 @@ export default {
     },
     ProjectAddress: 'ProjectAddress',
     BackToTop: 'BackToTop',
+    FriendlyLink: 'FriendlyLink',
     dynamic: {
         LatestDynamic: 'LatestDynamic',
         DynamicLink: 'DynamicLink',

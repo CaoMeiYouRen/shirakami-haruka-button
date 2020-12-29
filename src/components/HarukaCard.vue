@@ -44,7 +44,7 @@ export default defineComponent({
     },
     setup(props, ctx){
         const { rawTitle, tag } = toRefs(props)
-        const title = useCardTitle( tag, rawTitle)
+        const title = useCardTitle(tag, rawTitle)
         return {
             title,
         }

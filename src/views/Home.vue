@@ -169,7 +169,7 @@
             <v-col
                 cols="12"
             >
-                <HarukaCard :raw-title="'友情链接'">
+                <HarukaCard :raw-title="$t('FriendlyLink')">
                     <v-btn
                         v-for="item in friendshipLinks"
                         :key="item.url"
