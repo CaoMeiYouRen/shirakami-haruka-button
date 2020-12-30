@@ -188,8 +188,9 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, nextTick, onUnmounted } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch, nextTick, onUnmounted, Ref, unref, onMounted } from '@vue/composition-api'
 import { useAxios } from '@vue-composable/axios'
+import { usePromise } from 'vue-composable'
 import Parser from 'rss-parser'
 import _ from 'lodash'
 import axios from 'axios'
@@ -203,18 +204,17 @@ function useBiliDynamic(uid: number) {
     const { data, loading, cancel } = useAxios(`/bilibili/user/dynamic/${uid}`, {
         baseURL: process.env.VUE_APP_RSS_URL,
     })
-    const dynamic = ref<Parser.Item[]>([])
-
-    watch(data, async (val, oldVal) => {
-        const rss = await rssParserString(val)
-        // console.log(rss)
-        if (rss.items){
-            dynamic.value = rss.items.slice(0, 3).map(e => {
-                e.contentSnippet = e.contentSnippet?.replace(/(\n[\s|\t]*\r*\n)/g, '\n') // 去除多余换行符
-                e.isoDate = timeFormat(e.isoDate, 'YYYY-MM-DD HH:mm:ss')
-                return e
-            })
-        }
+    const { exec, result: rss } = usePromise(() => rssParserString(data.value), { lazy: true })
+    watch(data, () => {
+        exec()
+    })
+    const dynamic = computed(() => {
+        const rssItems = rss?.value?.items || []
+        return rssItems.slice(0, 3).map((e) => {
+            e.contentSnippet = e.contentSnippet?.replace(/(\n[\s|\t]*\r*\n)/g, '\n') // 去除多余换行符
+            e.isoDate = timeFormat(e.isoDate, 'YYYY-MM-DD HH:mm:ss')
+            return e
+        })
     })
 
     onUnmounted(() => {
@@ -233,7 +233,7 @@ export default defineComponent({
     name: 'Home',
     props: {},
     setup(props, ctx){
-        const _voices = ref(voices.map(e => {
+        const _voices = ref(voices.map((e) => {
             e.isPlay = false
             return e
         }))

@@ -130,7 +130,7 @@ function switchLang(locale: string){
     i18n.locale = locale
 }
 
-const langList: {lang: string, label: string}[] = Object.keys(messages).map(e => ({
+const langList: {lang: string, label: string}[] = Object.keys(messages).map((e) => ({
     lang: e,
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore

@@ -157,7 +157,7 @@ export default defineComponent({
                 disabled.value = false
             }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
             audio.load()
-            audio.oncanplay = e => {
+            audio.oncanplay = (e) => {
                 playList.value.add(audio)
 
                 audio.play().then(() => {
@@ -167,7 +167,7 @@ export default defineComponent({
                     maskList.value.push(Date.now())
                 })
             }
-            audio.onended = e => {
+            audio.onended = (e) => {
                 playList.value.delete(audio)
                 maskList.value.shift()
                 if (typeof cb === 'function') {
@@ -177,7 +177,7 @@ export default defineComponent({
                     play()
                 }
             }
-            audio.onerror = e => {
+            audio.onerror = (e) => {
                 console.error(e)
                 // TODO: 音频资源加载优化，若 CDN 加载失败则从本地加载
                 // audio.src = localVoicesPath
@@ -186,16 +186,16 @@ export default defineComponent({
 
         const { maxLength, rawTitle, title } = useButtonTile(messages)
 
-        watch(isPlay, val => {
+        watch(isPlay, (val) => {
             if (val) {
                 play(() => {
                     ctx.emit('input', false)
                 })
             }
         })
-        watch(stopAll, val => {
+        watch(stopAll, (val) => {
             if (val) {
-                playList.value.forEach(e => {
+                playList.value.forEach((e) => {
                     e.pause()
                     playList.value.delete(e)
                 })
