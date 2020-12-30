@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.9.3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.2...v1.9.3) (2020-12-30)
+
+
+### 🐛 Bug 修复
+
+* 移除query-string包; 修改动态获取 ([46e087a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/46e087a)), closes [#22](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/22) [#23](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/23)
+
 ## [1.9.2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.1...v1.9.2) (2020-12-30)
 
 
