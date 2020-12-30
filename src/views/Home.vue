@@ -209,7 +209,7 @@ function useBiliDynamic(uid: number) {
         const rss = await rssParserString(val)
         // console.log(rss)
         if (rss.items){
-            dynamic.value = rss.items.slice(0, 3).map(e => {
+            dynamic.value = rss.items.slice(0, 3).map((e) => {
                 e.contentSnippet = e.contentSnippet?.replace(/(\n[\s|\t]*\r*\n)/g, '\n') // 去除多余换行符
                 e.isoDate = timeFormat(e.isoDate, 'YYYY-MM-DD HH:mm:ss')
                 return e
@@ -233,7 +233,7 @@ export default defineComponent({
     name: 'Home',
     props: {},
     setup(props, ctx){
-        const _voices = ref(voices.map(e => {
+        const _voices = ref(voices.map((e) => {
             e.isPlay = false
             return e
         }))

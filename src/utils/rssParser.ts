@@ -19,7 +19,7 @@ export async function rssParserURL(url: string, query: any = {}) {
     if (rss.image) {
         rss.image.title = rss.image.title?.trim()
     }
-    rss.items = rss.items?.map(e => {
+    rss.items = rss.items?.map((e) => {
         e.title = e.title?.trim()
         e.content = e.content?.trim()
         e.contentSnippet = e.contentSnippet?.trim()
@@ -45,7 +45,7 @@ export async function rssParserString(xml: string) {
     if (rss.image) {
         rss.image.title = rss.image.title?.trim()
     }
-    rss.items = rss.items?.map(e => {
+    rss.items = rss.items?.map((e) => {
         e.title = e.title?.trim()
         e.content = e.content?.trim()
         e.guid = e.guid?.trim()

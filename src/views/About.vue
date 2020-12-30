@@ -74,7 +74,7 @@ function verFormat(ver: string) {
     }
     return list.join('.')
 }
-Object.keys(dep).forEach(e => {
+Object.keys(dep).forEach((e) => {
     const d = dep[e]
     if (!d.includes('git+')) {
         dep[e] = verFormat(d)
