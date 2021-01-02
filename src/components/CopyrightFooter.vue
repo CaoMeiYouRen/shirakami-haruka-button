@@ -82,7 +82,7 @@ export default defineComponent({
     a,
     p {
         color: $haruka-primary !important;
-        font-family: "微软雅黑";
+        font-family: '微软雅黑';
         text-decoration: none;
     }
 

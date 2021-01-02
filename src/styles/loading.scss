@@ -1,0 +1,92 @@
+@import './index';
+
+.loading {
+    display: none;
+    text-align: center;
+
+    p {
+        margin-top: 20px;
+    }
+}
+
+$animation-time: 0.16s;
+
+.loadEffect {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 220px;
+
+    span {
+        position: absolute;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        background: $haruka-primary;
+        border-radius: 50%;
+        animation: load $animation-time*8 ease infinite;
+    }
+}
+
+@keyframes load {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.loadEffect span:nth-child(1) {
+    top: 50%;
+    left: 0;
+    margin-top: -8px;
+    animation-delay: $animation-time;
+}
+
+.loadEffect span:nth-child(2) {
+    top: 14px;
+    left: 14px;
+    animation-delay: $animation-time*2;
+}
+
+.loadEffect span:nth-child(3) {
+    top: 0;
+    left: 50%;
+    margin-left: -8px;
+    animation-delay: $animation-time*3;
+}
+
+.loadEffect span:nth-child(4) {
+    top: 14px;
+    right: 14px;
+    animation-delay: $animation-time*4;
+}
+
+.loadEffect span:nth-child(5) {
+    top: 50%;
+    right: 0;
+    margin-top: -8px;
+    animation-delay: $animation-time*5;
+}
+
+.loadEffect span:nth-child(6) {
+    right: 14px;
+    bottom: 14px;
+    animation-delay: $animation-time*6;
+}
+
+.loadEffect span:nth-child(7) {
+    bottom: 0;
+    left: 50%;
+    margin-left: -8px;
+    animation-delay: $animation-time*7;
+}
+
+.loadEffect span:nth-child(8) {
+    bottom: 14px;
+    left: 14px;
+    animation-delay: $animation-time*8;
+}

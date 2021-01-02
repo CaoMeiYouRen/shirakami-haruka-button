@@ -12,7 +12,8 @@
                         >
                             <v-img
                                 class="rounded-lg"
-                                :src="baobao"
+                                :src="shabao"
+                                :lazy-src="shabaoMin"
                                 width="220px"
                                 contain
                             />
@@ -194,7 +195,8 @@ import { usePromise } from 'vue-composable'
 import Parser from 'rss-parser'
 import _ from 'lodash'
 import axios from 'axios'
-import baobao from '@/assets/shabao.jpg'
+import shabao from '@/assets/shabao.jpg'
+import shabaoMin from '@/assets/shabao.min.jpg'
 import voices from '@/config/voices'
 import { friendshipLinks } from '@/config/links'
 import { rssParserString } from '@/utils/rssParser'
@@ -253,12 +255,10 @@ export default defineComponent({
          * 随机播放列表
         */
         const randomList = ref(_voices.value.map((e, i) => i))
-
         const voicesGroup = computed(() => _.groupBy(_voices.value, 'tag'))
         const currentVoiceIndex = ref(0)
         const currentVoice = computed(() => _voices.value[currentVoiceIndex.value])
         let stop: any = null
-
         /**
          * 开始循环播放
          */
@@ -321,7 +321,8 @@ export default defineComponent({
 
         return {
             isLoop,
-            baobao,
+            shabao,
+            shabaoMin,
             voicesGroup,
             startLoop,
             startRandomPlay,
