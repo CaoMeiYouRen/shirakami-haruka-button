@@ -56,27 +56,47 @@
                         </v-col>
                     </v-row>
                     <v-row v-if="!loading">
-                        <v-col
-                            v-for="item in dynamic"
-                            :key="item.guid"
-                            cols="12"
-                            sm="12"
-                            md="6"
-                            lg="4"
-                        >
-                            <v-card
-                                flat
-                                rounded="xl"
-                                class="haruka-card"
+                        <template v-if="dynamic.length">
+                            <v-col
+                                v-for="item in dynamic"
+                                :key="item.guid"
+                                cols="12"
+                                sm="12"
+                                md="6"
+                                lg="4"
                             >
-                                <v-card-text class="subtitle-1">
-                                    {{ item.contentSnippet }}
-                                    <br>
-                                    <span>{{ $t('dynamic.DynamicLink') }}：<a target="_blank" :href="item.link">{{ item.link }}</a> </span><br>
-                                    {{ $t('dynamic.PublishTime') }}：{{ item.isoDate }}
-                                </v-card-text>
-                            </v-card>
-                        </v-col>
+                                <v-card
+                                    flat
+                                    rounded="xl"
+                                    class="haruka-card"
+                                >
+                                    <v-card-text class="subtitle-1">
+                                        {{ item.contentSnippet }}
+                                        <br>
+                                        <span>{{ $t('dynamic.DynamicLink') }}：<a target="_blank" :href="item.link">{{ item.link }}</a> </span><br>
+                                        {{ $t('dynamic.PublishTime') }}：{{ item.isoDate }}
+                                    </v-card-text>
+                                </v-card>
+                            </v-col>
+                        </template>
+                        <template v-if="!dynamic.length">
+                            <v-col
+                                cols="12"
+                                sm="12"
+                                md="6"
+                                lg="4"
+                            >
+                                <v-card
+                                    flat
+                                    rounded="xl"
+                                    class="haruka-card"
+                                >
+                                    <v-card-text class="subtitle-1">
+                                        当前暂无最新动态
+                                    </v-card-text>
+                                </v-card>
+                            </v-col>
+                        </template>
                     </v-row>
                 </HarukaCard>
             </v-col>

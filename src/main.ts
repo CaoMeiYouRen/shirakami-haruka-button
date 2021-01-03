@@ -8,7 +8,6 @@ import router from './router'
 import store from './store'
 import './components'
 import './styles/index.scss'
-import './styles/loading.scss'
 
 Vue.config.productionTip = false
 

@@ -14,6 +14,95 @@
         [v-cloak] {
             display: block !important;
         }
+
+        .loading {
+            display: none;
+            text-align: center;
+        }
+
+        .loading p {
+            margin-top: 20px;
+        }
+
+        .load-effect {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            margin: 0 auto;
+            margin-top: 220px;
+        }
+
+        .load-effect span {
+            position: absolute;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: #ffaea6;
+            border-radius: 50%;
+            animation: load 1.28s ease infinite;
+        }
+
+        .load-effect span:nth-child(1) {
+            top: 50%;
+            left: 0;
+            margin-top: -8px;
+            animation-delay: 0.16s;
+        }
+
+        .load-effect span:nth-child(2) {
+            top: 14px;
+            left: 14px;
+            animation-delay: 0.32s;
+        }
+
+        .load-effect span:nth-child(3) {
+            top: 0;
+            left: 50%;
+            margin-left: -8px;
+            animation-delay: 0.48s;
+        }
+
+        .load-effect span:nth-child(4) {
+            top: 14px;
+            right: 14px;
+            animation-delay: 0.64s;
+        }
+
+        .load-effect span:nth-child(5) {
+            top: 50%;
+            right: 0;
+            margin-top: -8px;
+            animation-delay: 0.8s;
+        }
+
+        .load-effect span:nth-child(6) {
+            right: 14px;
+            bottom: 14px;
+            animation-delay: 0.96s;
+        }
+
+        .load-effect span:nth-child(7) {
+            bottom: 0;
+            left: 50%;
+            margin-left: -8px;
+            animation-delay: 1.12s;
+        }
+
+        .load-effect span:nth-child(8) {
+            bottom: 14px;
+            left: 14px;
+            animation-delay: 1.28s;
+        }
+
+        @keyframes load {
+            0% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.2;
+            }
+        }
     </style>
 </head>
 
