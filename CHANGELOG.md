@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.9.6](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.5...v1.9.6) (2021-01-06)
+
+
+### 🐛 Bug 修复
+
+* 抽离业务逻辑到 setup 外，使其更符合 Vue3 规范 ([50adcb2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/50adcb2))
+
 ## [1.9.5](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.4...v1.9.5) (2021-01-03)
 
 
