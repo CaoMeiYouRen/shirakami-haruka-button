@@ -94,6 +94,98 @@ function useVoicesPath(path: Ref<string>) {
     }
 }
 
+interface IAudioPlay {
+    path: Ref<string>
+    /**
+     * 是否循环播放单条语音
+     */
+    isLoop: Ref<boolean>
+    /**
+     * 是否播放当前语音
+    */
+    isPlay: Ref<boolean>
+    /**
+     * 停止全部语音
+    */
+    stopAll: Ref<boolean>
+    playCb?: () => void
+}
+
+function useAudioPlay({
+    path,
+    isLoop,
+    isPlay,
+    stopAll,
+    playCb,
+}: IAudioPlay) {
+    const playList = ref(new Set<HTMLAudioElement>())
+    const disabled = ref(false)
+    const maskList = ref<number[]>([])
+    const style = ref({
+        animation: '',
+    })
+    const { voicesPath, localVoicesPath } = useVoicesPath(path)
+
+    function play(cb?: () => void){
+        if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
+            return
+        }
+        const audio = new Audio()
+        audio.preload = 'meta'
+        audio.src = voicesPath.value
+        disabled.value = true
+        const timer = setTimeout(() => {
+            disabled.value = false
+        }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
+        audio.load()
+        audio.oncanplay = (e) => {
+            playList.value.add(audio)
+
+            audio.play().then(() => {
+                clearTimeout(timer)
+                disabled.value = false
+                style.value.animation = `playing ${audio.duration}s linear forwards`
+                maskList.value.push(Date.now())
+            })
+        }
+        audio.onended = (e) => {
+            playList.value.delete(audio)
+            maskList.value.shift()
+            if (typeof cb === 'function') {
+                cb()
+            }
+            if (isLoop.value) {
+                play()
+            }
+        }
+        audio.onerror = (e) => {
+            console.error(e)
+            // TODO: 音频资源加载优化，若 CDN 加载失败则从本地加载
+            // audio.src = localVoicesPath
+        }
+    }
+
+    watch(isPlay, (val) => {
+        if (val) {
+            play(playCb)
+        }
+    })
+    watch(stopAll, (val) => {
+        if (val) {
+            playList.value.forEach((e) => {
+                e.pause()
+                playList.value.delete(e)
+            })
+            maskList.value = []
+        }
+    })
+    return {
+        play,
+        style,
+        maskList,
+    }
+}
+
 export default defineComponent({
     name: 'HarukaButton',
     model: {
@@ -134,74 +226,21 @@ export default defineComponent({
             default: false,
         },
     },
+    emits: {
+        input: null,
+    },
     setup(props, ctx) {
         const { isPlay, isLoop, stopAll, path, messages } = toRefs(props)
-        const playList = ref(new Set<HTMLAudioElement>())
-        const disabled = ref(false)
-        const maskList = ref<number[]>([])
-        const style = ref({
-            animation: '',
+        const { play, style, maskList } = useAudioPlay({
+            isPlay,
+            isLoop,
+            stopAll,
+            path,
+            playCb(){
+                ctx.emit('input', false)
+            },
         })
-
-        const { voicesPath, localVoicesPath } = useVoicesPath(path)
-
-        function play(cb?: () => any) {
-            if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
-                return
-            }
-            const audio = new Audio()
-            audio.preload = 'meta'
-            audio.src = voicesPath.value
-            disabled.value = true
-            const timer = setTimeout(() => {
-                disabled.value = false
-            }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
-            audio.load()
-            audio.oncanplay = (e) => {
-                playList.value.add(audio)
-
-                audio.play().then(() => {
-                    clearTimeout(timer)
-                    disabled.value = false
-                    style.value.animation = `playing ${audio.duration}s linear forwards`
-                    maskList.value.push(Date.now())
-                })
-            }
-            audio.onended = (e) => {
-                playList.value.delete(audio)
-                maskList.value.shift()
-                if (typeof cb === 'function') {
-                    cb()
-                }
-                if (isLoop.value) {
-                    play()
-                }
-            }
-            audio.onerror = (e) => {
-                console.error(e)
-                // TODO: 音频资源加载优化，若 CDN 加载失败则从本地加载
-                // audio.src = localVoicesPath
-            }
-        }
-
         const { maxLength, rawTitle, title } = useButtonTile(messages)
-
-        watch(isPlay, (val) => {
-            if (val) {
-                play(() => {
-                    ctx.emit('input', false)
-                })
-            }
-        })
-        watch(stopAll, (val) => {
-            if (val) {
-                playList.value.forEach((e) => {
-                    e.pause()
-                    playList.value.delete(e)
-                })
-                maskList.value = []
-            }
-        })
         return {
             play,
             style,

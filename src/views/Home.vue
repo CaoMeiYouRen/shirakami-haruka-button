@@ -209,7 +209,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, nextTick, onUnmounted, Ref, unref, onMounted } from '@vue/composition-api'
+import { computed, defineComponent, ref, watch, nextTick, onUnmounted, Ref, unref, onMounted, WatchStopHandle } from '@vue/composition-api'
 import { useAxios } from '@vue-composable/axios'
 import { usePromise } from 'vue-composable'
 import Parser from 'rss-parser'
@@ -251,104 +251,109 @@ function useBiliDynamic(uid: number) {
     }
 }
 
+function useLoopAndRandomPlay() {
+    const _voices = ref(voices.map((e) => {
+        e.isPlay = false
+        return e
+    }))
+    /**
+         * 是否洗脑循环
+        */
+    const isLoop = ref(false)
+    /**
+         * 是否全部停止
+        */
+    const stopAll = ref(false)
+    /**
+         * 是否固定播放面板
+         */
+    const fixed = ref(false)
+    /**
+         * 随机播放列表
+        */
+    const randomList = ref(_voices.value.map((e, i) => i))
+    const voicesGroup = computed(() => _.groupBy(_voices.value, 'tag'))
+    const currentVoiceIndex = ref(0)
+    const currentVoice = computed(() => _voices.value[currentVoiceIndex.value])
+    let stop: WatchStopHandle | null = null
+    /**
+         * 开始循环播放
+         */
+    async function startLoop() {
+        stopLoop()
+        await nextTick()
+        currentVoice.value.isPlay = true
+        currentVoiceIndex.value = 0
+        if (!stop){
+            stop = watch(currentVoice, (val, newVal, onInvalidate) => {
+                if (!val.isPlay){
+                    currentVoiceIndex.value += 1
+                    currentVoiceIndex.value %= _voices.value.length
+                    currentVoice.value.isPlay = true
+                }
+            }, {
+                deep: true,
+            })
+        }
+    }
+    function randomPlay() {
+        if (randomList.value.length <= 0){
+            randomList.value = _voices.value.map((e, i) => i)
+        }
+        const i = Math.floor(Math.random() * randomList.value.length)
+        currentVoiceIndex.value = randomList.value[i]
+        randomList.value.splice(i, 1) // 将当前播放的音频移除随机播放列表
+        currentVoice.value.isPlay = true
+    }
+    /**
+         * 开始随机播放
+        */
+    function startRandomPlay() {
+        stopLoop()
+        randomPlay()
+        if (!stop){
+            stop = watch(currentVoice, (val, newVal, onInvalidate) => {
+                if (!val.isPlay){
+                    randomPlay()
+                }
+            }, {
+                deep: true,
+            })
+        }
+    }
+
+    async function stopLoop() {
+        if (stop){
+            stop()
+            stop = null
+        }
+        currentVoice.value.isPlay = false
+        currentVoiceIndex.value = 0
+        stopAll.value = true
+        await nextTick()
+        stopAll.value = false
+    }
+    return {
+        isLoop,
+        voicesGroup,
+        startLoop,
+        startRandomPlay,
+        stopLoop,
+        fixed,
+        stopAll,
+    }
+}
+
 export default defineComponent({
     name: 'Home',
     props: {},
     setup(props, ctx){
-        const _voices = ref(voices.map((e) => {
-            e.isPlay = false
-            return e
-        }))
-        /**
-         * 是否洗脑循环
-        */
-        const isLoop = ref(false)
-        /**
-         * 是否全部停止
-        */
-        const stopAll = ref(false)
-        /**
-         * 是否固定播放面板
-         */
-        const fixed = ref(false)
-        /**
-         * 随机播放列表
-        */
-        const randomList = ref(_voices.value.map((e, i) => i))
-        const voicesGroup = computed(() => _.groupBy(_voices.value, 'tag'))
-        const currentVoiceIndex = ref(0)
-        const currentVoice = computed(() => _voices.value[currentVoiceIndex.value])
-        let stop: any = null
-        /**
-         * 开始循环播放
-         */
-        async function startLoop() {
-            stopLoop()
-            await nextTick()
-            currentVoice.value.isPlay = true
-            currentVoiceIndex.value = 0
-            if (!stop){
-                stop = watch(currentVoice, (val, newVal, onInvalidate) => {
-                    if (!val.isPlay){
-                        currentVoiceIndex.value += 1
-                        currentVoiceIndex.value %= _voices.value.length
-                        currentVoice.value.isPlay = true
-                    }
-                }, {
-                    deep: true,
-                })
-            }
-        }
-        function randomPlay() {
-            if (randomList.value.length <= 0){
-                randomList.value = _voices.value.map((e, i) => i)
-            }
-            const i = Math.floor(Math.random() * randomList.value.length)
-            currentVoiceIndex.value = randomList.value[i]
-            randomList.value.splice(i, 1) // 将当前播放的音频移除随机播放列表
-            currentVoice.value.isPlay = true
-        }
-        /**
-         * 开始随机播放
-        */
-        function startRandomPlay() {
-            stopLoop()
-            randomPlay()
-            if (!stop){
-                stop = watch(currentVoice, (val, newVal, onInvalidate) => {
-                    if (!val.isPlay){
-                        randomPlay()
-                    }
-                }, {
-                    deep: true,
-                })
-            }
-        }
-
-        async function stopLoop() {
-            if (stop){
-                stop()
-                stop = null
-            }
-            currentVoice.value.isPlay = false
-            currentVoiceIndex.value = 0
-            stopAll.value = true
-            await nextTick()
-            stopAll.value = false
-        }
-
+        const play = useLoopAndRandomPlay()
         const { dynamic, loading } = useBiliDynamic(477332594)
-
         return {
-            isLoop,
+            ...play,
             shabao,
             shabaoMin,
-            voicesGroup,
-            startLoop,
-            startRandomPlay,
-            stopLoop,
-            fixed,
-            stopAll,
             friendshipLinks,
             dynamic,
             loading,

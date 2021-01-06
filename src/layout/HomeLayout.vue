@@ -117,12 +117,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onUnmounted, computed } from '@vue/composition-api'
+import { defineComponent, onUnmounted, computed, watch, watchEffect, ref } from '@vue/composition-api'
 import { useTitle, useOnScroll } from 'vue-composable'
 import { useOnWindowResize } from '@/composable'
+import vuetify from '@/plugins/vuetify'
 import i18n from '@/plugins/i18n'
 import { messages } from '@/locales'
 import { BASE_URL } from '@/config/env'
+
 /**
  * 切换语言
 */
@@ -175,31 +177,40 @@ const menuList = computed(() => [
         },
     },
 ])
+
+function backTop() {
+    vuetify.framework.goTo(0, {
+        duration: 500,
+    })
+}
+
 export default defineComponent({
     name: 'HomeLayout',
     props: {},
     setup(){
+        const title = useTitle()
         const { scrollTop, remove } = useOnScroll()
         const { height } = useOnWindowResize()
         const isShowBackTop = computed(() => scrollTop.value >= (height.value / 3 || 300))
-
         onUnmounted(() => {
             remove()
         })
         return {
-            title: useTitle(),
+            title,
             isShowBackTop,
             drawer: null,
             switchLang,
             langList,
             menuList,
+            backTop,
+            scrollTop,
         }
     },
-    methods: {
-        backTop(){
-            this.$vuetify.goTo(0, {
-                duration: 500,
-            })
+    watch: {
+        $route(){
+            if (this.scrollTop > 50){
+                this.backTop()
+            }
         },
     },
 })
