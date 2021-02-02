@@ -123,7 +123,7 @@ import { useOnWindowResize } from '@/composable'
 import vuetify from '@/plugins/vuetify'
 import i18n from '@/plugins/i18n'
 import { messages } from '@/locales'
-import { BASE_URL } from '@/config/env'
+import { BASE_URL, CDN_PATH } from '@/config/env'
 
 /**
  * 切换语言
@@ -169,7 +169,7 @@ const menuList = computed(() => [
             let url = ''
             const localZipPath = `${BASE_URL}voices.zip`
             if (process.env.NODE_ENV === 'production') {
-                url = `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${localZipPath}`
+                url = `${CDN_PATH}${localZipPath}`
             } else {
                 url = localZipPath
             }

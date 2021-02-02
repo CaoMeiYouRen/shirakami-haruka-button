@@ -35,7 +35,7 @@ import { computed, defineComponent, ref, watch, toRefs, ComputedRef, Ref } from 
 import { messages as globalMessages } from '@/locales'
 import { useOnWindowResize } from '@/composable'
 import i18n from '@/plugins/i18n'
-import { BASE_URL } from '@/config/env'
+import { BASE_URL, CDN_PATH } from '@/config/env'
 
 const langs = Object.keys(globalMessages)
 
@@ -84,7 +84,7 @@ function useVoicesPath(path: Ref<string>) {
     const localVoicesPath = computed(() => `${BASE_URL}voices/${path.value}`)
     const voicesPath = computed(() => {
         if (process.env.NODE_ENV === 'production') {
-            return `https://cdn.jsdelivr.net/gh/CaoMeiYouRen/shirakami-haruka-button@latest/public${localVoicesPath.value}`
+            return `${CDN_PATH}${localVoicesPath.value}`
         }
         return localVoicesPath.value
     })
@@ -124,7 +124,7 @@ function useAudioPlay({
     const style = ref({
         animation: '',
     })
-    const { voicesPath, localVoicesPath } = useVoicesPath(path)
+    const { voicesPath } = useVoicesPath(path)
 
     function play(cb?: () => void){
         if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
