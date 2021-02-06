@@ -128,7 +128,7 @@ import { BASE_URL, CDN_PATH } from '@/config/env'
 /**
  * 切换语言
 */
-function switchLang(locale: string){
+function switchLang(locale: string) {
     i18n.locale = locale
 }
 
@@ -148,7 +148,7 @@ const menuList = computed(() => [
     {
         icon: 'iconfont icon-bilibili2',
         name: i18n.t('menu.Bilibili'),
-        fun(){
+        fun() {
             window.open('https://space.bilibili.com/477332594/')
         },
     },
@@ -165,7 +165,7 @@ const menuList = computed(() => [
     {
         icon: 'mdi-download',
         name: i18n.t('menu.Download'),
-        fun(){
+        fun() {
             let url = ''
             const localZipPath = `${BASE_URL}voices.zip`
             if (process.env.NODE_ENV === 'production') {
@@ -187,7 +187,7 @@ function backTop() {
 export default defineComponent({
     name: 'HomeLayout',
     props: {},
-    setup(){
+    setup() {
         const title = useTitle()
         const { scrollTop, remove } = useOnScroll()
         const { height } = useOnWindowResize()
@@ -207,8 +207,8 @@ export default defineComponent({
         }
     },
     watch: {
-        $route(){
-            if (this.scrollTop > 50){
+        $route() {
+            if (this.scrollTop > 50) {
                 this.backTop()
             }
         },

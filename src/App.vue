@@ -12,9 +12,9 @@ import i18n from '@/plugins/i18n'
 function initLanguage() {
     const { language } = useLanguage()
     const locale = ref('zh')
-    if (/zh|cn|han/i.test(language.value)){
+    if (/zh|cn|han/i.test(language.value)) {
         locale.value = 'zh'
-    } else if (/ja/i.test(language.value)){
+    } else if (/ja/i.test(language.value)) {
         locale.value = 'ja'
     } else {
         locale.value = 'en'
@@ -24,7 +24,7 @@ function initLanguage() {
 
 export default defineComponent({
     name: 'App',
-    setup(props, ctx){
+    setup(props, ctx) {
         initLanguage()
         watchEffect(() => {
             document.title = i18n.t('title') as string

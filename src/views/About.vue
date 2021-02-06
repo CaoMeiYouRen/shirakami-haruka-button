@@ -84,7 +84,7 @@ Object.keys(dep).forEach((e) => {
 export default defineComponent({
     name: 'About',
     props: {},
-    setup(props, ctx){
+    setup(props, ctx) {
         return {
             useList: [
                 {

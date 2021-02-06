@@ -48,7 +48,7 @@ import { defineComponent } from '@vue/composition-api'
 export default defineComponent({
     name: 'CopyrightFooter',
     props: {},
-    setup(props, ctx){
+    setup(props, ctx) {
         return {
             POLICE: process.env.VUE_APP_POLICE,
             ICP: process.env.VUE_APP_ICP,

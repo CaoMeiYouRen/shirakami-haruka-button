@@ -126,7 +126,7 @@ function useAudioPlay({
     })
     const { voicesPath } = useVoicesPath(path)
 
-    function play(cb?: () => void){
+    function play(cb?: () => void) {
         if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
             return
         }
@@ -236,7 +236,7 @@ export default defineComponent({
             isLoop,
             stopAll,
             path,
-            playCb(){
+            playCb() {
                 ctx.emit('input', false)
             },
         })

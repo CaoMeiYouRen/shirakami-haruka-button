@@ -240,7 +240,7 @@ function useBiliDynamic(uid: number) {
     })
 
     onUnmounted(() => {
-        if (loading.value){ // 组件卸载时如果还在加载则取消请求
+        if (loading.value) { // 组件卸载时如果还在加载则取消请求
             cancel()
         }
     })
@@ -284,9 +284,9 @@ function useLoopAndRandomPlay() {
         await nextTick()
         currentVoice.value.isPlay = true
         currentVoiceIndex.value = 0
-        if (!stop){
+        if (!stop) {
             stop = watch(currentVoice, (val, newVal, onInvalidate) => {
-                if (!val.isPlay){
+                if (!val.isPlay) {
                     currentVoiceIndex.value += 1
                     currentVoiceIndex.value %= _voices.value.length
                     currentVoice.value.isPlay = true
@@ -297,7 +297,7 @@ function useLoopAndRandomPlay() {
         }
     }
     function randomPlay() {
-        if (randomList.value.length <= 0){
+        if (randomList.value.length <= 0) {
             randomList.value = _voices.value.map((e, i) => i)
         }
         const i = Math.floor(Math.random() * randomList.value.length)
@@ -311,9 +311,9 @@ function useLoopAndRandomPlay() {
     function startRandomPlay() {
         stopLoop()
         randomPlay()
-        if (!stop){
+        if (!stop) {
             stop = watch(currentVoice, (val, newVal, onInvalidate) => {
-                if (!val.isPlay){
+                if (!val.isPlay) {
                     randomPlay()
                 }
             }, {
@@ -323,7 +323,7 @@ function useLoopAndRandomPlay() {
     }
 
     async function stopLoop() {
-        if (stop){
+        if (stop) {
             stop()
             stop = null
         }
@@ -347,7 +347,7 @@ function useLoopAndRandomPlay() {
 export default defineComponent({
     name: 'Home',
     props: {},
-    setup(props, ctx){
+    setup(props, ctx) {
         const play = useLoopAndRandomPlay()
         const { dynamic, loading } = useBiliDynamic(477332594)
         return {

@@ -17,12 +17,12 @@
 import { computed, defineComponent, Ref, toRefs } from '@vue/composition-api'
 import i18n from '@/plugins/i18n'
 
-function useCardTitle(tag: Ref<string>, rawTitle?: Ref<string>){
+function useCardTitle(tag: Ref<string>, rawTitle?: Ref<string>) {
     const title = computed(() => {
-        if (rawTitle?.value){
+        if (rawTitle?.value) {
             return rawTitle.value
         }
-        if (!tag.value){
+        if (!tag.value) {
             return ''
         }
         return i18n.t(`tags.${tag.value}`)
@@ -42,7 +42,7 @@ export default defineComponent({
             default: '',
         },
     },
-    setup(props, ctx){
+    setup(props, ctx) {
         const { rawTitle, tag } = toRefs(props)
         const title = useCardTitle(tag, rawTitle)
         return {
