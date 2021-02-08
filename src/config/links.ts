@@ -29,4 +29,9 @@ export const friendshipLinks: Link[] = [
         url: 'https://artia.moe/',
         color: '#ba55d3',
     },
+    {
+        msg: '艾莉欧按钮',
+        url: 'https://hiseki-erio-button.zeronss.vercel.app/',
+        color: '#ca535b',
+    },
 ]
