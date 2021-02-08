@@ -1,5 +1,19 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+# [1.10.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.6...v1.10.0) (2021-02-08)
+
+
+### ✨ 新功能
+
+* 提取自定义配置到环境变量 ([23efd37](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/23efd37)), closes [#27](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/27)
+
+
+### 🐛 Bug 修复
+
+* 优化i18n ([5516a5a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/5516a5a)), closes [#26](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/26)
+* 添加友链 ([33f2e3e](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/33f2e3e)), closes [#25](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/25)
+* 统一主题色 ([d7fa925](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d7fa925))
+
 ## [1.9.6](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.5...v1.9.6) (2021-01-06)
 
 
