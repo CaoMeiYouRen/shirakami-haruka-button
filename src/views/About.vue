@@ -7,20 +7,24 @@
                         <h1>关于</h1>
                         <br>
                         <h3>
-                            本网站由 草梅友仁(
+                            本网站由 {{ AUTHOR }}(
                             <v-icon size="24" color="#000">
                                 iconfont icon-github2
                             </v-icon>
-                            <a target="_blank" href="https://github.com/CaoMeiYouRen">
+                            <a target="_blank" :href="'https://github.com/' + GITHUB_NAME">
                                 github
-                            </a>、
-                            <v-icon size="24" color="#00a1d6">
-                                iconfont icon-bilibili2
-                            </v-icon>
-                            <a target="_blank" href="https://space.bilibili.com/10822025">
-                                bilibili
                             </a>
-                            ) 开发并提供技术支持
+                            <template v-if="AUTHOR_BILI_UID">
+                                、
+                                <v-icon size="24" color="#00a1d6">
+                                    iconfont icon-bilibili2
+                                </v-icon>
+                                <a target="_blank" :href="'https://space.bilibili.com/' + AUTHOR_BILI_UID">
+                                    bilibili
+                                </a>
+                                )
+                            </template>
+                            开发并提供技术支持
                         </h3>
                     </v-card-text>
                     <v-card-text>
@@ -66,6 +70,7 @@
 import { dependencies, devDependencies } from '../../package.json'
 import { defineComponent } from '@vue/composition-api'
 import { friendshipLinks } from '@/config/links'
+import { AUTHOR, AUTHOR_BILI_UID, GITHUB_NAME } from '@/config/env'
 const dep = Object.assign({}, dependencies, devDependencies)
 function verFormat(ver: string) {
     const list = ver.split('.')
@@ -86,6 +91,9 @@ export default defineComponent({
     props: {},
     setup(props, ctx) {
         return {
+            AUTHOR,
+            AUTHOR_BILI_UID,
+            GITHUB_NAME,
             useList: [
                 {
                     msg: `框架：Vue (${dep['vue']})`,

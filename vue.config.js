@@ -2,9 +2,15 @@ const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FileManagerPlugin = require('filemanager-webpack-plugin')
 const WebpackCdnPlugin = require('webpack-cdn-plugin')
+const pkg = require('./package.json')
+const env = process.env
+env.VUE_APP_VERSION = pkg.version
+env.VUE_APP_AUTHOR = env.VUE_APP_AUTHOR || pkg.author
+env.VUE_APP_COPYRIGHT = env.VUE_APP_COPYRIGHT || pkg.author
+env.VUE_APP_GITHUB_NAME = env.VUE_APP_GITHUB_NAME || pkg.author
+env.VUE_APP_GITHUB_REPOSITORIE = env.VUE_APP_GITHUB_REPOSITORIE || pkg.name
 
-process.env.VUE_APP_VERSION = require('./package.json').version
-const __DEV__ = process.env.NODE_ENV === 'development'
+const __DEV__ = env.NODE_ENV === 'development'
 const __PROD__ = !__DEV__
 
 module.exports = {
@@ -28,7 +34,7 @@ module.exports = {
     productionSourceMap: __DEV__, // 移除生产环境的 source map
     chainWebpack: config => {
         config.plugin('html').tap(([options]) => {
-            options.title = '豹按钮 (:3っ)∋'
+            options.title = env.VUE_APP_HTML_TITLE
             options.__DEV__ = __DEV__
             options.__PROD__ = __PROD__
             return [options]

@@ -25,24 +25,24 @@
                             lg="10"
                             class="subtitle-1"
                         >
-                            欢迎来到 “豹按钮(:3っ)∋” 项目，这是一个从
+                            欢迎来到 “{{ HTML_TITLE }}” 项目，这是一个从
                             <a target="_blank" href="https://vtbbtn.org/">https://vtbbtn.org/</a>
                             获得灵感的项目，感觉很有意思。<br>
                             诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来。<br>
                             <b>新增音声</b>：如果会编程的可以直接上
-                            <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">GitHub</a>
+                            <a target="_blank" :href="GITHUB_LINK">GitHub</a>
                             fork，修改完后提 pull request ，不会编程的可以提个 issue<br>
                             <b>使用指南</b>：点击按钮即可播放对应音声；多次点击可以造成相当鬼畜的效果；开启洗脑循环将会一直播放一个音频；
                             同时开启循环播放和洗脑循环将会出现 地 狱 绘 卷。<br>
                             <b>声明</b>：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联<br>
-                            更多内容请参考 <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme" target="_blank">README</a>
+                            更多内容请参考 <a :href="GITHUB_LINK + '#readme'" target="_blank">README</a>
                         </v-col>
                     </v-row>
                 </HarukaCard>
             </v-col>
         </v-row>
         <v-row>
-            <v-col cols="12">
+            <v-col v-if="enableDynamic" cols="12">
                 <HarukaCard :raw-title="$t('dynamic.LatestDynamic')">
                     <v-row v-if="loading">
                         <v-col
@@ -92,7 +92,7 @@
                                     class="haruka-card"
                                 >
                                     <v-card-text class="subtitle-1">
-                                        当前暂无最新动态
+                                        {{ $t('dynamic.NoDynamic') }}
                                     </v-card-text>
                                 </v-card>
                             </v-col>
@@ -209,22 +209,28 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, ref, watch, nextTick, onUnmounted, Ref, unref, onMounted, WatchStopHandle } from '@vue/composition-api'
-import { useAxios } from '@vue-composable/axios'
-import { usePromise } from 'vue-composable'
-import Parser from 'rss-parser'
-import _ from 'lodash'
-import axios from 'axios'
 import shabao from '@/assets/shabao.jpg'
 import shabaoMin from '@/assets/shabao.min.jpg'
-import voices from '@/config/voices'
+import { BILI_UID, RSS_BASE_URL, HTML_TITLE, GITHUB_LINK } from '@/config/env'
 import { friendshipLinks } from '@/config/links'
+import voices from '@/config/voices'
 import { rssParserString } from '@/utils/rssParser'
 import { timeFormat } from '@/utils/time'
+import { useAxios } from '@vue-composable/axios'
+import { computed, defineComponent, nextTick, onUnmounted, ref, watch, WatchStopHandle } from '@vue/composition-api'
+import _ from 'lodash'
+import { usePromise } from 'vue-composable'
 
-function useBiliDynamic(uid: number) {
+function useBiliDynamic(uid: string) {
+    if (!uid) {
+        return {
+            dynamic: [],
+            loading: false,
+            enableDynamic: false,
+        }
+    }
     const { data, loading, cancel } = useAxios(`/bilibili/user/dynamic/${uid}`, {
-        baseURL: process.env.VUE_APP_RSS_URL,
+        baseURL: RSS_BASE_URL,
     })
     const { exec, result: rss } = usePromise(() => rssParserString(data.value), { lazy: true })
     watch(data, () => {
@@ -248,6 +254,7 @@ function useBiliDynamic(uid: number) {
     return {
         dynamic,
         loading,
+        enableDynamic: true,
     }
 }
 
@@ -349,14 +356,15 @@ export default defineComponent({
     props: {},
     setup(props, ctx) {
         const play = useLoopAndRandomPlay()
-        const { dynamic, loading } = useBiliDynamic(477332594)
+        const dynamic = useBiliDynamic(BILI_UID)
         return {
             ...play,
             shabao,
             shabaoMin,
             friendshipLinks,
-            dynamic,
-            loading,
+            ...dynamic,
+            HTML_TITLE,
+            GITHUB_LINK,
         }
     },
 })

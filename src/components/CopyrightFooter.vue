@@ -15,21 +15,27 @@
                 <p title="About">
                     <a @click.prevent="$router.push('/about')">
                         Copyright &copy;2020 - {{ new Date().getFullYear() }}
-                        <strong>CaoMeiYouRen</strong> All Rights Rese.
+                        <strong>{{ COPYRIGHT }}</strong> All Rights Rese.
                     </a>
                 </p>
-                <p>
-                    <a href="http://www.beian.miit.gov.cn/" target="_blank">{{ ICP }}</a> ||
-                    <a href="http://www.beian.gov.cn/" target="_blank">{{ POLICE }}</a>
+                <p v-if="ICP || POLICE">
+                    <template v-if="ICP">
+                        <a href="http://www.beian.miit.gov.cn/" target="_blank">{{ ICP }}</a> ||
+                    </template>
+                    <a
+                        v-if="POLICE"
+                        href="http://www.beian.gov.cn/"
+                        target="_blank"
+                    >{{ POLICE }}</a>
                 </p>
                 <p>
-                    <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">
+                    <a target="_blank" :href="GITHUB_LINK">
                         <v-icon color="primary">iconfont icon-github2</v-icon>
                         {{ $t('ProjectAddress') }}
                     </a>
                 </p>
                 <p class="github-info">
-                    <a target="_blank" href="https://github.com/CaoMeiYouRen/shirakami-haruka-button">
+                    <a target="_blank" :href="GITHUB_LINK">
                         <img
                             v-for="e in githubs"
                             :key="e.src"
@@ -45,29 +51,33 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api'
+import { POLICE, ICP, COPYRIGHT, REPOSITORIE_NAME, GITHUB_LINK } from '@/config/env'
 export default defineComponent({
     name: 'CopyrightFooter',
     props: {},
     setup(props, ctx) {
         return {
-            POLICE: process.env.VUE_APP_POLICE,
-            ICP: process.env.VUE_APP_ICP,
+            POLICE,
+            ICP,
+            COPYRIGHT,
+            REPOSITORIE_NAME,
+            GITHUB_LINK,
             githubs: [
                 {
                     alt: 'GitHub package.json version',
-                    src: 'https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button?color=ffaea6',
+                    src: `https://img.shields.io/github/package-json/v/${REPOSITORIE_NAME}?color=ffaea6`,
                 },
                 {
                     alt: 'GitHub watchers',
-                    src: 'https://img.shields.io/github/watchers/CaoMeiYouRen/shirakami-haruka-button?style=social',
+                    src: `https://img.shields.io/github/watchers/${REPOSITORIE_NAME}?style=social`,
                 },
                 {
                     alt: 'GitHub Repo stars',
-                    src: 'https://img.shields.io/github/stars/CaoMeiYouRen/shirakami-haruka-button?style=social',
+                    src: `https://img.shields.io/github/stars/${REPOSITORIE_NAME}?style=social`,
                 },
                 {
                     alt: 'GitHub forks',
-                    src: 'https://img.shields.io/github/forks/CaoMeiYouRen/shirakami-haruka-button?style=social',
+                    src: `https://img.shields.io/github/forks/${REPOSITORIE_NAME}?style=social`,
                 },
             ],
         }

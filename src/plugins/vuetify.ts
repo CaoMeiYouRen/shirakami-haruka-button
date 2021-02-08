@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import { PRIMARY_COLOR } from '@/config/env'
+
 // import '@mdi/font/css/materialdesignicons.css'
 // import 'material-design-icons-iconfont/dist/material-design-icons.css'
 
@@ -9,7 +11,7 @@ export default new Vuetify({
     theme: {
         themes: {
             light: {
-                primary: '#ffaea6',
+                primary: PRIMARY_COLOR,
             },
         },
     },

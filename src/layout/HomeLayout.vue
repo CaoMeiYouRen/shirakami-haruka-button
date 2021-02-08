@@ -43,7 +43,7 @@
                     <v-btn
                         icon
                         class="white--text"
-                        href="https://github.com/CaoMeiYouRen/shirakami-haruka-button"
+                        :href="GITHUB_LINK"
                         target="_blank"
                         v-on="{...tooltip}"
                     >
@@ -117,13 +117,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onUnmounted, computed, watch, watchEffect, ref } from '@vue/composition-api'
-import { useTitle, useOnScroll } from 'vue-composable'
 import { useOnWindowResize } from '@/composable'
-import vuetify from '@/plugins/vuetify'
-import i18n from '@/plugins/i18n'
+import { BASE_URL, BILI_UID, CDN_PATH, GITHUB_LINK } from '@/config/env'
 import { messages } from '@/locales'
-import { BASE_URL, CDN_PATH } from '@/config/env'
+import i18n from '@/plugins/i18n'
+import vuetify from '@/plugins/vuetify'
+import { computed, defineComponent, onUnmounted } from '@vue/composition-api'
+import { useOnScroll, useTitle } from 'vue-composable'
 
 /**
  * 切换语言
@@ -149,7 +149,7 @@ const menuList = computed(() => [
         icon: 'iconfont icon-bilibili2',
         name: i18n.t('menu.Bilibili'),
         fun() {
-            window.open('https://space.bilibili.com/477332594/')
+            window.open(`https://space.bilibili.com/${BILI_UID}`)
         },
     },
     {
@@ -196,6 +196,7 @@ export default defineComponent({
             remove()
         })
         return {
+            GITHUB_LINK,
             title,
             isShowBackTop,
             drawer: null,

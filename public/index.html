@@ -129,12 +129,12 @@
     </div>
     <!-- built files will be auto injected -->
 </body>
-<% if (htmlWebpackPlugin.options.__PROD__) { %>
+<% if (htmlWebpackPlugin.options.__PROD__ && VUE_APP_BAIDU_STATISTICS) { %>
     <script>
         var _hmt = _hmt || [];
         (function () {
             var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?27d36c660fa5375f9305d89f17686e5a";
+            hm.src = "https://hm.baidu.com/hm.js?<%= VUE_APP_BAIDU_STATISTICS %>";
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(hm, s);
         })();
