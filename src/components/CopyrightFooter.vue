@@ -91,7 +91,7 @@ export default defineComponent({
 .app-footer {
     a,
     p {
-        color: $haruka-primary !important;
+        color: $primary-color !important;
         font-family: '微软雅黑';
         text-decoration: none;
     }

@@ -267,7 +267,7 @@ export default defineComponent({
         text-transform: none;
 
         &.primary {
-            box-shadow: 0px 0px 7px $haruka-primary !important;
+            box-shadow: 0px 0px 7px $primary-color !important;
         }
     }
 }

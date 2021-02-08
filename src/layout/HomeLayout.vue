@@ -218,8 +218,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '@/styles/index.scss';
+
 .haruka-app-bar-boxshadow {
-    box-shadow: 0px 1px 5px #ffaea6 !important;
+    box-shadow: 0px 1px 5px $primary-color !important;
 }
 
 .main {
