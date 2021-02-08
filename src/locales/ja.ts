@@ -37,5 +37,6 @@ export default {
         LatestDynamic: '最新の動き',
         DynamicLink: 'ダイナミックリンク',
         PublishTime: 'リリース時間',
+        NoDynamic: '現在は最新の動きがありません。',
     },
 }

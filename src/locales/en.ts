@@ -37,5 +37,6 @@ export default {
         LatestDynamic: 'LatestDynamic',
         DynamicLink: 'DynamicLink',
         PublishTime: 'PublishTime',
+        NoDynamic: 'There is no latest news at present',
     },
 }

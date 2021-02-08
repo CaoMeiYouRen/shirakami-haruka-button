@@ -37,5 +37,6 @@ export default {
         LatestDynamic: '最新动态',
         DynamicLink: '动态链接',
         PublishTime: '发布时间',
+        NoDynamic: '当前暂无最新动态',
     },
 }
