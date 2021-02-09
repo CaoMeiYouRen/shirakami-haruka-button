@@ -1,5 +1,11 @@
 import _ from 'lodash'
-import { onMounted, onUnmounted, ref } from '@vue/composition-api'
+import { onMounted, onUnmounted, Ref, ref } from '@vue/composition-api'
+
+type OnWindowResizeReturn = {
+    height: Ref<number>
+    width: Ref<number>
+    remove: () => void
+}
 
 /**
  * 返回 window 的大小
@@ -9,8 +15,8 @@ import { onMounted, onUnmounted, ref } from '@vue/composition-api'
  * @export
  * @returns
  */
-export function useOnWindowResize() {
-    function getSize() {
+export function useOnWindowResize(): OnWindowResizeReturn {
+    function getSize(): { height: number, width: number } {
         const height = window.innerHeight || document.documentElement.clientHeight
         const width = window.innerWidth || document.documentElement.clientWidth
         return {
@@ -32,7 +38,7 @@ export function useOnWindowResize() {
     onUnmounted(() => {
         window.removeEventListener('resize', handler)
     })
-    function remove() {
+    function remove(): void {
         window.removeEventListener('resize', handler)
     }
     return {

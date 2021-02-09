@@ -72,7 +72,7 @@ import { defineComponent } from '@vue/composition-api'
 import { friendshipLinks } from '@/config/links'
 import { AUTHOR, AUTHOR_BILI_UID, GITHUB_NAME } from '@/config/env'
 const dep = Object.assign({}, dependencies, devDependencies)
-function verFormat(ver: string) {
+function verFormat(ver: string): string {
     const list = ver.split('.')
     for (let i = 0; i < list.length; i++) {
         list[i] = list[i].replace('^', '').replace('~', '')

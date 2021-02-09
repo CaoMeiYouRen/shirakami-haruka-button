@@ -286,7 +286,7 @@ function useLoopAndRandomPlay() {
     /**
          * 开始循环播放
          */
-    async function startLoop() {
+    async function startLoop(): Promise<void> {
         stopLoop()
         await nextTick()
         currentVoice.value.isPlay = true
@@ -303,7 +303,7 @@ function useLoopAndRandomPlay() {
             })
         }
     }
-    function randomPlay() {
+    function randomPlay(): void {
         if (randomList.value.length <= 0) {
             randomList.value = _voices.value.map((e, i) => i)
         }
@@ -315,7 +315,7 @@ function useLoopAndRandomPlay() {
     /**
          * 开始随机播放
         */
-    function startRandomPlay() {
+    function startRandomPlay(): void {
         stopLoop()
         randomPlay()
         if (!stop) {
@@ -329,7 +329,7 @@ function useLoopAndRandomPlay() {
         }
     }
 
-    async function stopLoop() {
+    async function stopLoop(): Promise<void> {
         if (stop) {
             stop()
             stop = null

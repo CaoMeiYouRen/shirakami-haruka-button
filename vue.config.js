@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires,
+@typescript-eslint/explicit-function-return-type,max-lines-per-function
+*/
+
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FileManagerPlugin = require('filemanager-webpack-plugin')
@@ -32,7 +36,7 @@ module.exports = {
         },
     },
     productionSourceMap: __DEV__, // 移除生产环境的 source map
-    chainWebpack: config => {
+    chainWebpack: (config) => {
         config.plugin('html').tap(([options]) => {
             options.title = env.VUE_APP_HTML_TITLE
             options.__DEV__ = __DEV__
@@ -40,7 +44,7 @@ module.exports = {
             return [options]
         })
     },
-    configureWebpack: config => {
+    configureWebpack: (config) => {
         const jsModules = [
             {
                 name: 'lodash',
@@ -147,6 +151,7 @@ module.exports = {
         })
         const plugins = []
         config.plugins.push(
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore
             new StyleLintPlugin({
                 files: ['src/**/*.{vue,html,css,scss,sass,less}'],

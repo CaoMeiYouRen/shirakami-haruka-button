@@ -9,7 +9,7 @@ import { defineComponent, ref, watchEffect } from '@vue/composition-api'
 import { useLanguage } from 'vue-composable'
 import i18n from '@/plugins/i18n'
 
-function initLanguage() {
+function initLanguage(): void {
     const { language } = useLanguage()
     const locale = ref('zh')
     if (/zh|cn|han/i.test(language.value)) {

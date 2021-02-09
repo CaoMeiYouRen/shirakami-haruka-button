@@ -13,7 +13,7 @@ dayjs.tz.setDefault('Asia/Shanghai')
  * @param {string} [pattern='YYYY-MM-DD HH:mm:ss.SSS']
  * @returns
  */
-export function timeFormat(date: number | string | Date = Date.now(), pattern: string = 'YYYY-MM-DD HH:mm:ss.SSS') {
+export function timeFormat(date: number | string | Date = Date.now(), pattern: string = 'YYYY-MM-DD HH:mm:ss.SSS'): string {
     if (typeof date === 'number' && date.toString().length === 10) {
         if (date < 1e10) {
             date *= 1000

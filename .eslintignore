@@ -1,5 +1,5 @@
 dist
-*.js
+# *.js
 /test/unit/coverage/
 /test/unit/specs/
 /build/

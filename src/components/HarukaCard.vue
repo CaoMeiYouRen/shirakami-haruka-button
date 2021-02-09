@@ -14,10 +14,11 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, Ref, toRefs } from '@vue/composition-api'
+import { computed, ComputedRef, defineComponent, Ref, toRefs } from '@vue/composition-api'
 import i18n from '@/plugins/i18n'
+import VueI18n from 'vue-i18n'
 
-function useCardTitle(tag: Ref<string>, rawTitle?: Ref<string>) {
+function useCardTitle(tag: Ref<string>, rawTitle?: Ref<string>): ComputedRef<VueI18n.TranslateResult> {
     const title = computed(() => {
         if (rawTitle?.value) {
             return rawTitle.value

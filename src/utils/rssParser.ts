@@ -10,7 +10,7 @@ export const rssParser = new Parser()
  * @param {string} xml
  * @returns
  */
-export async function rssParserString(xml: string) {
+export async function rssParserString(xml: string): Promise<{ [key: string]: any } & Parser.Output<{ [key: string]: any }>> {
     const rss = await rssParser.parseString(xml)
     rss.description = rss.description?.trim()
     rss.title = rss.title?.trim()

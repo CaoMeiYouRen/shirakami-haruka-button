@@ -128,7 +128,7 @@ import { useOnScroll, useTitle } from 'vue-composable'
 /**
  * 切换语言
 */
-function switchLang(locale: string) {
+function switchLang(locale: string): void {
     i18n.locale = locale
 }
 
@@ -178,7 +178,7 @@ const menuList = computed(() => [
     },
 ])
 
-function backTop() {
+function backTop(): void {
     vuetify.framework.goTo(0, {
         duration: 500,
     })
@@ -208,7 +208,7 @@ export default defineComponent({
         }
     },
     watch: {
-        $route() {
+        $route(): void {
             if (this.scrollTop > 50) {
                 this.backTop()
             }

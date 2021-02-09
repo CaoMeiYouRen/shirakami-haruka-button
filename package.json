@@ -8,7 +8,7 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "postbuild": "rimraf ./dist/voices.zip && rimraf ./dist/voices",
-    "lint": "cross-env NODE_ENV=production eslint src --fix --ext .js,.ts,.vue && npm run lint:css",
+    "lint": "cross-env NODE_ENV=production eslint *.js src --fix --ext .js,.ts,.vue && npm run lint:css",
     "lint:css": "cross-env NODE_ENV=production stylelint src/**/*.{vue,html,css,scss,sass} --syntax scss --custom-syntax postcss-html --fix",
     "commit": "git add . && git cz",
     "changelog": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",

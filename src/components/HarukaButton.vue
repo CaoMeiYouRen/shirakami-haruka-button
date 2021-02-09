@@ -39,7 +39,7 @@ import { BASE_URL, CDN_PATH } from '@/config/env'
 
 const langs = Object.keys(globalMessages)
 
-function strFix(val: string, max = 16) {
+function strFix(val: string, max = 16): string {
     if (val && val.length > max) {
         return `${val.slice(0, max)}…`
     }
@@ -48,7 +48,11 @@ function strFix(val: string, max = 16) {
 /**
  * 计算按钮标题
 */
-function useButtonTile(messages: Ref<Record<string, string>>) {
+function useButtonTile(messages: Ref<Record<string, string>>): {
+    maxLength: ComputedRef<number>
+    rawTitle: ComputedRef<string>
+    title: ComputedRef<string>
+} {
     const rawTitle = computed(() => {
         const locale = i18n.locale
         let _title = messages.value[locale]
@@ -80,7 +84,10 @@ function useButtonTile(messages: Ref<Record<string, string>>) {
 /**
  * 计算音频路径
 */
-function useVoicesPath(path: Ref<string>) {
+function useVoicesPath(path: Ref<string>): {
+    voicesPath: ComputedRef<string>
+    localVoicesPath: ComputedRef<string>
+} {
     const localVoicesPath = computed(() => `${BASE_URL}voices/${path.value}`)
     const voicesPath = computed(() => {
         if (process.env.NODE_ENV === 'production') {
@@ -94,7 +101,7 @@ function useVoicesPath(path: Ref<string>) {
     }
 }
 
-interface IAudioPlay {
+type IAudioPlay = {
     path: Ref<string>
     /**
      * 是否循环播放单条语音
@@ -111,13 +118,21 @@ interface IAudioPlay {
     playCb?: () => void
 }
 
+type AudioPlayReturn = {
+    play: (cb?: (() => void) | undefined) => void
+    style: Ref<{
+        animation: string
+    }>
+    maskList: Ref<number[]>
+}
+
 function useAudioPlay({
     path,
     isLoop,
     isPlay,
     stopAll,
     playCb,
-}: IAudioPlay) {
+}: IAudioPlay): AudioPlayReturn {
     const playList = ref(new Set<HTMLAudioElement>())
     const disabled = ref(false)
     const maskList = ref<number[]>([])
@@ -126,7 +141,7 @@ function useAudioPlay({
     })
     const { voicesPath } = useVoicesPath(path)
 
-    function play(cb?: () => void) {
+    function play(cb?: () => void): void {
         if (disabled.value) { // 如果当前音频文件还未加载完则跳过本次。
             return
         }
