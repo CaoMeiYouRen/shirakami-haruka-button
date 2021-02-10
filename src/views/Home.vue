@@ -26,7 +26,9 @@
                             class="subtitle-1"
                         >
                             欢迎来到 “{{ HTML_TITLE }}” 项目，这是一个从
-                            <a target="_blank" href="https://vtbbtn.org/">https://vtbbtn.org/</a>
+                            <SafeLink target="_blank" href="https://vtbbtn.org/">
+                                https://vtbbtn.org/
+                            </SafeLink>
                             获得灵感的项目，感觉很有意思。<br>
                             诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来。<br>
                             <b>新增音声</b>：如果会编程的可以直接上

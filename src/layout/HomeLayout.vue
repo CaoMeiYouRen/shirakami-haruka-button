@@ -10,7 +10,7 @@
         >
             <v-list dense>
                 <div v-for="(item,index) in menuList" :key="item.name">
-                    <v-list-item @click="item.fun? item.fun() : $router.push(item.path)">
+                    <v-list-item :title="item.url || item.path" @click="item.fun? item.fun() : $router.push(item.path)">
                         <v-list-item-action>
                             <v-icon :color="item.color || 'primary'">
                                 {{ item.icon }}
@@ -56,7 +56,7 @@
             </v-tooltip>
             <v-menu offset-y>
                 <template #activator="{on: menu}">
-                    <v-tooltip bottom>
+                    <v-tooltip left>
                         <template #activator="{on: tooltip}">
                             <v-btn
                                 icon
@@ -118,13 +118,13 @@
 
 <script lang="ts">
 import { useOnWindowResize } from '@/composable'
-import { BASE_URL, BILI_UID, CDN_PATH, GITHUB_LINK } from '@/config/env'
+import { NODE_ENV, BASE_URL, BILI_UID, CDN_PATH, GITHUB_LINK } from '@/config/env'
 import { messages } from '@/locales'
 import i18n from '@/plugins/i18n'
 import vuetify from '@/plugins/vuetify'
 import { computed, defineComponent, onUnmounted } from '@vue/composition-api'
 import { useOnScroll, useTitle } from 'vue-composable'
-
+import { safeOpenUrl } from '@/utils/helper'
 /**
  * 切换语言
 */
@@ -148,8 +148,9 @@ const menuList = computed(() => [
     {
         icon: 'iconfont icon-bilibili2',
         name: i18n.t('menu.Bilibili'),
+        url: `https://space.bilibili.com/${BILI_UID}`,
         fun() {
-            window.open(`https://space.bilibili.com/${BILI_UID}`)
+            safeOpenUrl(this.url)
         },
     },
     {
@@ -165,18 +166,12 @@ const menuList = computed(() => [
     {
         icon: 'mdi-download',
         name: i18n.t('menu.Download'),
+        url: `${NODE_ENV === 'production' ? CDN_PATH : ''}${BASE_URL}voices.zip`,
         fun() {
-            let url = ''
-            const localZipPath = `${BASE_URL}voices.zip`
-            if (process.env.NODE_ENV === 'production') {
-                url = `${CDN_PATH}${localZipPath}`
-            } else {
-                url = localZipPath
-            }
-            window.open(url)
+            safeOpenUrl(this.url)
         },
     },
-])
+] as const)
 
 function backTop(): void {
     vuetify.framework.goTo(0, {

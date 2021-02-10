@@ -1,5 +1,7 @@
 const env = process.env
 
+export const NODE_ENV = env.NODE_ENV || ''
+
 export const BASE_URL = env.BASE_URL || ''
 
 export const HTML_TITLE = env.VUE_APP_HTML_TITLE || ''
