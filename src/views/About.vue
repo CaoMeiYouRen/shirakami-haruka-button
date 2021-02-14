@@ -135,6 +135,10 @@ export default defineComponent({
                     msg: 'CDN服务：jsdelivr',
                     url: 'https://www.jsdelivr.com/',
                 },
+                {
+                    msg: 'Rss服务：RSSHub',
+                    url: 'https://docs.rsshub.app/',
+                },
             ],
             referList: [
                 {
