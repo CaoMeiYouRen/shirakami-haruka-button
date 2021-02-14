@@ -31,7 +31,7 @@ export const friendshipLinks: Link[] = [
     },
     {
         msg: '艾莉欧按钮',
-        url: 'https://hiseki-erio-button.zeronss.vercel.app/',
+        url: 'https://btn.hisekierio.club/',
         color: '#ca535b',
     },
 ]
