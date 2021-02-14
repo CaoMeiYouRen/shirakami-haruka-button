@@ -57,7 +57,7 @@ npm run dev
 
 文件名称最好为音频内容，如果太长可以简略。
 
-所有音频在 `src\config\voices.ts` 中配置，只要增加符合以下格式的对象即可，相同的 tag 最好放在一起配置
+所有音频在 `src/config/voices.ts` 中配置，只要增加符合以下格式的对象即可，相同的 tag 最好放在一起配置
 
 ```ts
 interface VoiceInfo {
