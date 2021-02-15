@@ -23,6 +23,10 @@
 > 诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来
 >
 > **声明**：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联
+>
+> 如果你更喜欢 SSR 版本的，请参考 [https://github.com/CaoMeiYouRen/shirakami-haruka-button-ssr](https://github.com/CaoMeiYouRen/shirakami-haruka-button-ssr)
+>
+> 关于 SSR 是什么详见：[Vue.js 服务器端渲染指南](https://ssr.vuejs.org/zh/)
 
 ### 🏠 [主页](https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme)
 
