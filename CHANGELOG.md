@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.10.4](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.10.3...v1.10.4) (2021-03-18)
+
+
+### 🐛 Bug 修复
+
+* fix globalThis ([f5073c7](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/f5073c7))
+
 ## [1.10.3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.10.2...v1.10.3) (2021-03-18)
 
 
