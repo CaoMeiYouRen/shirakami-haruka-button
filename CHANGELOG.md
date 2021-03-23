@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.10.5](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.10.4...v1.10.5) (2021-03-23)
+
+
+### 🐛 Bug 修复
+
+* 新增 梦魇按钮 友链 ([8d3419c](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/8d3419c))
+
 ## [1.10.4](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.10.3...v1.10.4) (2021-03-18)
 
 
