@@ -25,9 +25,9 @@ export const friendshipLinks: Link[] = [
         color: '#ffa6c6',
     },
     {
-        msg: '阿媂娅按钮',
-        url: 'https://artia.moe/',
-        color: '#ba55d3',
+        msg: '梦魇按钮',
+        url: 'https://ciyana.moe/',
+        color: '#0d2485',
     },
     {
         msg: '艾莉欧按钮',
