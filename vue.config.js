@@ -6,7 +6,8 @@ const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FileManagerPlugin = require('filemanager-webpack-plugin')
 const WebpackCdnPlugin = require('webpack-cdn-plugin')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const PrerenderSPAPlugin = require('prerender-spa-plugin')
+// const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
 const pkg = require('./package.json')
 const env = process.env
 env.VUE_APP_VERSION = pkg.version
@@ -182,12 +183,16 @@ module.exports = {
                         },
                     },
                 }),
-                new PrerenderSPAPlugin({
-                    // Required - The path to the webpack-outputted app to prerender.
-                    staticDir: path.join(__dirname, 'dist'),
-                    // Required - Routes to render.
-                    routes: ['/', '/about', '/changelog'],
-                }),
+                // new PrerenderSPAPlugin({
+                //     // Required - The path to the webpack-outputted app to prerender.
+                //     staticDir: path.join(__dirname, 'dist'),
+                //     // Required - Routes to render.
+                //     routes: ['/', '/about', '/changelog'],
+                //     renderer: new Renderer({
+                //         headless: true, // 开启无头浏览器
+                //         renderAfterDocumentEvent: 'render-event', // 渲染的事件，只有触发了这个事件，插件才会开始爬取html
+                //     }),
+                // }),
             )
             if (process.env.MODE === 'analyzer') {
                 plugins.push(
