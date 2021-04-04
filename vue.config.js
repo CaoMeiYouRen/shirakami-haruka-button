@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-var-requires,
 @typescript-eslint/explicit-function-return-type,max-lines-per-function
 */
-
+const path = require('path')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FileManagerPlugin = require('filemanager-webpack-plugin')
 const WebpackCdnPlugin = require('webpack-cdn-plugin')
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const pkg = require('./package.json')
 const env = process.env
 env.VUE_APP_VERSION = pkg.version
@@ -180,6 +181,12 @@ module.exports = {
                             ],
                         },
                     },
+                }),
+                new PrerenderSPAPlugin({
+                    // Required - The path to the webpack-outputted app to prerender.
+                    staticDir: path.join(__dirname, 'dist'),
+                    // Required - Routes to render.
+                    routes: ['/', '/about', '/changelog'],
                 }),
             )
             if (process.env.MODE === 'analyzer') {
