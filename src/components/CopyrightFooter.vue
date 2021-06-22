@@ -20,7 +20,7 @@
                 </p>
                 <p v-if="ICP || POLICE">
                     <template v-if="ICP">
-                        <a href="http://www.beian.miit.gov.cn/" target="_blank">{{ ICP }}</a> ||
+                        <a href="https://beian.miit.gov.cn/" target="_blank">{{ ICP }}</a> ||
                     </template>
                     <a
                         v-if="POLICE"
