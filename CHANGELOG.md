@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+# [1.11.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.10.7...v1.11.0) (2021-09-26)
+
+
+### ✨ 新功能
+
+* 新增网站备案标题 ([0f4e82a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/0f4e82a))
+
 ## [1.10.7](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.10.6...v1.10.7) (2021-04-04)
 
 
