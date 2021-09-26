@@ -5,7 +5,7 @@ import readme from '../../README.md'
 export default defineComponent({
     name: 'Readme',
     props: {},
-    setup(props, ctx) {
+    setup() {
         return {
             readme,
         }

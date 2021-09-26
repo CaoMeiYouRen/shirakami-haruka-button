@@ -294,7 +294,7 @@ function useLoopAndRandomPlay() {
         currentVoice.value.isPlay = true
         currentVoiceIndex.value = 0
         if (!stop) {
-            stop = watch(currentVoice, (val, newVal, onInvalidate) => {
+            stop = watch(currentVoice, (val) => {
                 if (!val.isPlay) {
                     currentVoiceIndex.value += 1
                     currentVoiceIndex.value %= _voices.value.length
@@ -321,7 +321,7 @@ function useLoopAndRandomPlay() {
         stopLoop()
         randomPlay()
         if (!stop) {
-            stop = watch(currentVoice, (val, newVal, onInvalidate) => {
+            stop = watch(currentVoice, (val) => {
                 if (!val.isPlay) {
                     randomPlay()
                 }
@@ -356,7 +356,7 @@ function useLoopAndRandomPlay() {
 export default defineComponent({
     name: 'Home',
     props: {},
-    setup(props, ctx) {
+    setup() {
         const play = useLoopAndRandomPlay()
         const dynamic = useBiliDynamic(BILI_UID)
         return {

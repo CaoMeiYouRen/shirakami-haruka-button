@@ -55,7 +55,7 @@ import { POLICE, ICP, COPYRIGHT, REPOSITORIE_NAME, GITHUB_LINK } from '@/config/
 export default defineComponent({
     name: 'CopyrightFooter',
     props: {},
-    setup(props, ctx) {
+    setup() {
         return {
             POLICE,
             ICP,

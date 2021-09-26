@@ -183,7 +183,7 @@ export default defineComponent({
     name: 'HomeLayout',
     props: {},
     setup() {
-        const title = useTitle()
+        const title = computed(() => i18n.t('title') as string)
         const { scrollTop, remove } = useOnScroll()
         const { height } = useOnWindowResize()
         const isShowBackTop = computed(() => scrollTop.value >= (height.value / 3 || 300))

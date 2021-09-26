@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires,
 @typescript-eslint/explicit-function-return-type,max-lines-per-function
 */
-const path = require('path')
 const StyleLintPlugin = require('stylelint-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const FileManagerPlugin = require('filemanager-webpack-plugin')
@@ -40,7 +39,7 @@ module.exports = {
     productionSourceMap: __DEV__, // 移除生产环境的 source map
     chainWebpack: (config) => {
         config.plugin('html').tap(([options]) => {
-            options.title = env.VUE_APP_HTML_TITLE
+            options.title = env.VUE_APP_ICP_TITLE || env.VUE_APP_HTML_TITLE
             options.__DEV__ = __DEV__
             options.__PROD__ = __PROD__
             return [options]

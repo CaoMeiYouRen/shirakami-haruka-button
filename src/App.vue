@@ -8,6 +8,7 @@
 import { defineComponent, ref, watchEffect } from '@vue/composition-api'
 import { useLanguage } from 'vue-composable'
 import i18n from '@/plugins/i18n'
+import { ICP_TITLE } from '@/config/env'
 
 function initLanguage(): void {
     const { language } = useLanguage()
@@ -24,10 +25,10 @@ function initLanguage(): void {
 
 export default defineComponent({
     name: 'App',
-    setup(props, ctx) {
+    setup() {
         initLanguage()
         watchEffect(() => {
-            document.title = i18n.t('title') as string
+            document.title = ICP_TITLE || i18n.t('title') as string
         })
         return {
         }

@@ -153,7 +153,7 @@ function useAudioPlay({
             disabled.value = false
         }, 10 * 1000) // 如果超过 10 秒还未加载成功则允许重新点击
         audio.load()
-        audio.oncanplay = (e) => {
+        audio.oncanplay = () => {
             playList.value.add(audio)
 
             audio.play().then(() => {
@@ -163,7 +163,7 @@ function useAudioPlay({
                 maskList.value.push(Date.now())
             })
         }
-        audio.onended = (e) => {
+        audio.onended = () => {
             playList.value.delete(audio)
             maskList.value.shift()
             if (typeof cb === 'function') {

@@ -5,7 +5,7 @@ import changelog from '../../CHANGELOG.md'
 export default defineComponent({
     name: 'Changelog',
     props: {},
-    setup(props, ctx) {
+    setup() {
         return {
             changelog,
         }
