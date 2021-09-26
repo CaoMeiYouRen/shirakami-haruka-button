@@ -14,9 +14,9 @@
     "changelog": "conventional-changelog -p cmyr-config -i CHANGELOG.md -s -r 0",
     "release": "semantic-release",
     "deploy": "npm run build && node ./deploy",
-    "analyzer": "cross-env MODE=analyzer vue-cli-service build"
+    "analyzer": "cross-env MODE=analyzer vue-cli-service build",
+    "postinstall": "patch-package"
   },
-  "postinstall": "patch-package",
   "engines": {
     "node": ">=12"
   },
