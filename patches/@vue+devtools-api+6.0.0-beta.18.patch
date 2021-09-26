@@ -1,0 +1,13 @@
+diff --git a/node_modules/@vue/devtools-api/lib/esm/api/api.d.ts b/node_modules/@vue/devtools-api/lib/esm/api/api.d.ts
+index 2d38ee3..a424deb 100644
+--- a/node_modules/@vue/devtools-api/lib/esm/api/api.d.ts
++++ b/node_modules/@vue/devtools-api/lib/esm/api/api.d.ts
+@@ -3,7 +3,7 @@ import { Context } from './context';
+ import { ComponentInstance, ComponentState, StateBase } from './component';
+ import { App } from './app';
+ import { ID } from './util';
+-export interface DevtoolsPluginApi<TSettings> {
++export interface DevtoolsPluginApi<TSettings = any> {
+     on: Hookable<Context>;
+     notifyComponentUpdate(instance?: ComponentInstance): void;
+     addTimelineLayer(options: TimelineLayerOptions): void;

@@ -31,6 +31,7 @@ module.exports = {
                     'src',
                     'CHANGELOG.md',
                     'package.json',
+                    'package-lock.json'
                 ],
             },
         ],

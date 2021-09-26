@@ -22,7 +22,7 @@ jobs:
             !~/cache/exclude
             **/node_modules
           key: npm-${{ runner.os }}-${{ hashFiles('package.json') }}
-      - run: yarn
+      - run: npm i
       - run: npm run lint
       - run: npm run build
       - env:
