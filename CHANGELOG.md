@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+# [1.12.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.11.0...v1.12.0) (2021-09-28)
+
+
+### ✨ 新功能
+
+* 新增 收款二维码 ([ed946d5](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/ed946d5))
+
 # [1.11.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.10.7...v1.11.0) (2021-09-26)
 
 
