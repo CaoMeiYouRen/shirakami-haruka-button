@@ -23,6 +23,22 @@
                     <v-divider v-if="index<menuList.length-1" />
                 </div>
             </v-list>
+            <template v-if="ENABLE_QR_CODE">
+                <v-img
+                    class="rounded-lg"
+                    :src="wxImg"
+                    width="220"
+                    contain
+                    title="微信支付"
+                />
+                <v-img
+                    class="rounded-lg"
+                    :src="zfbImg"
+                    width="220"
+                    contain
+                    title="支付宝"
+                />
+            </template>
         </v-navigation-drawer>
         <!-- 顶部导航栏 -->
         <v-app-bar
@@ -118,13 +134,16 @@
 
 <script lang="ts">
 import { useOnWindowResize } from '@/composable'
-import { NODE_ENV, BASE_URL, BILI_UID, CDN_PATH, GITHUB_LINK } from '@/config/env'
+import { NODE_ENV, BASE_URL, BILI_UID, CDN_PATH, GITHUB_LINK, ENABLE_QR_CODE } from '@/config/env'
 import { messages } from '@/locales'
 import i18n from '@/plugins/i18n'
 import vuetify from '@/plugins/vuetify'
 import { computed, defineComponent, onUnmounted } from '@vue/composition-api'
-import { useOnScroll, useTitle } from 'vue-composable'
+import { useOnScroll } from 'vue-composable'
 import { safeOpenUrl } from '@/utils/helper'
+import wxImg from '@/assets/wx.png'
+import zfbImg from '@/assets/zfb.jpg'
+
 /**
  * 切换语言
 */
@@ -199,7 +218,10 @@ export default defineComponent({
             langList,
             menuList,
             backTop,
+            wxImg,
+            zfbImg,
             scrollTop,
+            ENABLE_QR_CODE,
         }
     },
     watch: {

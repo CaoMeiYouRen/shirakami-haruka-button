@@ -1,4 +1,4 @@
-const __PROD__ = process.env.NODE_ENV === 'production' ? 2 : 0
+// const __PROD__ = process.env.NODE_ENV === 'production' ? 2 : 0
 module.exports = {
     root: true,
     env: {

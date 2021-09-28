@@ -33,3 +33,5 @@ export const POLICE = env.VUE_APP_POLICE || ''
 export const ICP = env.VUE_APP_ICP || ''
 
 export const ICP_TITLE = env.VUE_APP_ICP_TITLE || ''
+
+export const ENABLE_QR_CODE = env.VUE_APP_ENABLE_QR_CODE === 'true'
