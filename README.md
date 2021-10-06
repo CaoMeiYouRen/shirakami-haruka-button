@@ -32,7 +32,7 @@
 
 ## 演示页面
 
-[https://haruka.fun/](https://haruka.fun/)
+[https://haruka.cmyr.ltd/](https://haruka.cmyr.ltd/)
 
 **使用指南**：点击按钮即可播放对应音声；多次点击可以造成相当鬼畜的效果；开启洗脑循环将会一直播放一个音频； 同时开启循环播放和洗脑循环将会出现 地 狱 绘 卷。
 
@@ -105,7 +105,7 @@ interface VoiceInfo {
 1.  修改环境变量：修改根目录 `.env` 即可，已经提取了大部分配置，具体说明见注释。
 2.  修改主题色：除了修改 `.env` 文件中的变量外，还需修改 `src/styles/index.scss` 文件下的 `$primary-color` 变量。
 3.  修改 `Home.vue` 文件：`Home.vue` 中含有一部分项目说明，请自行改动。
-4.  修改 `src/components `下的组件名称：由于设计上的问题，组件名称是带了 vup 的名字，所以请自行修改为不带名字的组件或改成对应的 vup。
+4.  修改 `src/components` 下的组件名称：由于设计上的问题，组件名称是带了 vup 的名字，所以请自行修改为不带名字的组件或改成对应的 vup。
 5.  其他细节上的问题请自行调整~
 
 ## Pull Request

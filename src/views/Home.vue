@@ -38,9 +38,30 @@
                             同时开启循环播放和洗脑循环将会出现 地 狱 绘 卷。<br>
                             <b>声明</b>：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联<br>
                             更多内容请参考 <a :href="GITHUB_LINK + '#readme'" target="_blank">README</a><br>
+
+                            <template v-if="ENABLE_NOTICE">
+                                <v-alert
+                                    type="warning"
+                                >
+                                    <b>迁移公告</b>：本网站未来将迁移到 <a
+                                        :style="{color: '#fff'}"
+                                        href="https://haruka.cmyr.ltd"
+                                        target="_blank"
+                                    >haruka.cmyr.ltd</a>，届时请访问新域名
+                                </v-alert>
+                            </template>
                             <template v-if="ENABLE_QR_CODE">
-                                <v-divider />
-                                欢迎赞助本项目！赞助资金将用于本网站的日常运营！也将为草梅继续维护项目提供信心~
+                                <v-alert
+                                    dark
+                                    color="primary"
+                                >
+                                    <v-icon
+                                        dark
+                                    >
+                                        mdi-credit-card-outline
+                                    </v-icon>
+                                    欢迎赞助本项目！赞助资金将用于本网站的日常运营！也将为草梅继续维护项目提供信心~
+                                </v-alert>
                             </template>
                         </v-col>
                     </v-row>
@@ -217,7 +238,7 @@
 <script lang="ts">
 import shabao from '@/assets/shabao.jpg'
 import shabaoMin from '@/assets/shabao.min.jpg'
-import { BILI_UID, RSS_BASE_URL, HTML_TITLE, GITHUB_LINK, ENABLE_QR_CODE } from '@/config/env'
+import { BILI_UID, RSS_BASE_URL, HTML_TITLE, GITHUB_LINK, ENABLE_QR_CODE, ENABLE_NOTICE } from '@/config/env'
 import { friendshipLinks } from '@/config/links'
 import voices from '@/config/voices'
 import { rssParserString } from '@/utils/rssParser'
@@ -372,6 +393,7 @@ export default defineComponent({
             HTML_TITLE,
             GITHUB_LINK,
             ENABLE_QR_CODE,
+            ENABLE_NOTICE,
         }
     },
 })
