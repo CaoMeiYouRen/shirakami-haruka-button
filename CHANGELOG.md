@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.12.2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.1...v1.12.2) (2021-11-03)
+
+
+### 🐛 Bug 修复
+
+* 新增 虚研社按钮 ([192374d](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/192374d))
+
 ## [1.12.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.0...v1.12.1) (2021-10-06)
 
 
