@@ -34,4 +34,9 @@ export const friendshipLinks: Link[] = [
         url: 'https://btn.hisekierio.club/',
         color: '#ca535b',
     },
+    {
+        msg: '虚研社按钮',
+        url: 'https://xysbtn.xiaoblogs.cn/xx',
+        color: '#d96c7f',
+    },
 ]
