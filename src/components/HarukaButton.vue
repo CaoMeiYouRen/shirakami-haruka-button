@@ -146,7 +146,7 @@ function useAudioPlay({
             return
         }
         const audio = new Audio()
-        audio.preload = 'meta'
+        audio.preload = 'metadata'
         audio.src = voicesPath.value
         disabled.value = true
         const timer = setTimeout(() => {

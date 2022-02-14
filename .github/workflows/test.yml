@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v2
         with:
           node-version: "14"
       - name: Cache multiple paths
@@ -19,6 +19,6 @@ jobs:
             !~/cache/exclude
             **/node_modules
           key: npm-${{ runner.os }}-${{ hashFiles('package.json') }}
-      - run: yarn
+      - run: npm i
       - run: npm run lint
       - run: npm run build
