@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+# [1.13.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.4...v1.13.0) (2022-05-18)
+
+
+### ✨ 新功能
+
+* 优化 音声 载入方式；不再自动设置 CDN_PATH；移除 cdn.jsdelivr.net ([2301ea3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/2301ea3))
+
 ## [1.12.4](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.3...v1.12.4) (2022-05-18)
 
 
