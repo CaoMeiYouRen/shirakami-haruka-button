@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.12.3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.2...v1.12.3) (2022-02-14)
+
+
+### 🐛 Bug 修复
+
+* 修复 audio.preload 类型错误 ([840377a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/840377a))
+
 ## [1.12.2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.1...v1.12.2) (2021-11-03)
 
 
