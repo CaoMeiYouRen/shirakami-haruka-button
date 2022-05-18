@@ -1,5 +1,12 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.12.4](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.3...v1.12.4) (2022-05-18)
+
+
+### 🐛 Bug 修复
+
+* 替换 cdn.jsdelivr.net 为 unpkg.com ([c8af9dc](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/c8af9dc))
+
 ## [1.12.3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.2...v1.12.3) (2022-02-14)
 
 
