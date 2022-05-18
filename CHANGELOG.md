@@ -94,7 +94,7 @@
 
 ### 🐛 Bug 修复
 
-* 优化i18n ([5516a5a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/5516a5a)), closes [#26](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/26)
+* 优化 i18n ([5516a5a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/5516a5a)), closes [#26](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/26)
 * 添加友链 ([33f2e3e](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/33f2e3e)), closes [#25](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/25)
 * 统一主题色 ([d7fa925](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d7fa925))
 
@@ -117,14 +117,14 @@
 
 ### 🐛 Bug 修复
 
-* 新增 loading; 优化图片加载；scss格式化 ([1e4506d](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/1e4506d))
+* 新增 loading; 优化图片加载；scss 格式化 ([1e4506d](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/1e4506d))
 
 ## [1.9.3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.2...v1.9.3) (2020-12-30)
 
 
 ### 🐛 Bug 修复
 
-* 移除query-string包; 修改动态获取 ([46e087a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/46e087a)), closes [#22](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/22) [#23](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/23)
+* 移除 query-string 包; 修改动态获取 ([46e087a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/46e087a)), closes [#22](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/22) [#23](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/23)
 
 ## [1.9.2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.9.1...v1.9.2) (2020-12-30)
 
@@ -159,8 +159,8 @@
 ### 🐛 Bug 修复
 
 * 优化 最新动态 部分翻译 ([6f97655](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/6f97655))
-* 优化setup 部分 ([4586340](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/4586340)), closes [#15](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/15)
-* 修改HarukaCard的title部分逻辑 ([6668501](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/6668501)), closes [#16](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/16)
+* 优化 setup 部分 ([4586340](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/4586340)), closes [#15](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/15)
+* 修改 HarukaCard 的 title 部分逻辑 ([6668501](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/6668501)), closes [#16](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/16)
 
 # [1.8.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.7.1...v1.8.0) (2020-11-18)
 
@@ -179,7 +179,7 @@
 
 ### 🐛 Bug 修复
 
-* 修复底部github图标在手机端的显示，即修复 f648e79 的bug ([a63e73a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/a63e73a)), closes [#13](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/13)
+* 修复底部 github 图标在手机端的显示，即修复 f648e79 的 bug ([a63e73a](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/a63e73a)), closes [#13](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/13)
 
 # [1.7.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.6.1...v1.7.0) (2020-11-10)
 
@@ -242,7 +242,7 @@
 
 ### 🐛 Bug 修复
 
-* 修复停止播放bug；关于页面新增更新日志链接；更新日志新增用户名；优化按钮样式 ([daf77f3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/daf77f3)), closes [#4](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/4)
+* 修复停止播放 bug；关于页面新增更新日志链接；更新日志新增用户名；优化按钮样式 ([daf77f3](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/daf77f3)), closes [#4](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/4)
 
 ## [1.2.2](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.2.1...v1.2.2) (2020-10-18)
 
@@ -270,7 +270,7 @@
 
 ### 🐛 Bug 修复
 
-* 优化播放控制国际化；优化循环播放和暂停；优化footer ([9ff6c4d](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/9ff6c4d))
+* 优化播放控制国际化；优化循环播放和暂停；优化 footer ([9ff6c4d](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/9ff6c4d))
 
 # [1.1.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.0.3...v1.1.0) (2020-10-17)
 
@@ -313,7 +313,7 @@
 * 新增 音声；优化按钮动画；优化 Home 页面；重写 README ([d51af3b](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d51af3b))
 * 新增音声；优化按钮最大字数限制；优化部分文档 ([192d1d7](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/192d1d7))
 * 新增音声；新增日文翻译 ([e8a6913](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/e8a6913))
-* 采用组合式api改造部分组件；优化代码逻辑 ([0c11fbe](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/0c11fbe))
+* 采用组合式 api 改造部分组件；优化代码逻辑 ([0c11fbe](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/0c11fbe))
 
 
 ### 🐛 Bug 修复

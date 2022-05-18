@@ -9,8 +9,14 @@
             must-sort
         >
             <v-list dense>
-                <div v-for="(item,index) in menuList" :key="item.name">
-                    <v-list-item :title="item.url || item.path" @click="item.fun? item.fun() : $router.push(item.path)">
+                <div
+                    v-for="(item,index) in menuList"
+                    :key="item.name"
+                >
+                    <v-list-item
+                        :title="item.url || item.path"
+                        @click="item.fun? item.fun() : $router.push(item.path)"
+                    >
                         <v-list-item-action>
                             <v-icon :color="item.color || 'primary'">
                                 {{ item.icon }}

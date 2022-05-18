@@ -4,7 +4,10 @@
         rounded="xl"
         class="haruka-card"
     >
-        <v-card-title v-if="title" primary-title>
+        <v-card-title
+            v-if="title"
+            primary-title
+        >
             {{ title }}
         </v-card-title>
         <v-card-text>

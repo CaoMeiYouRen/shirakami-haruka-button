@@ -18,15 +18,17 @@
   </a>
 </p>
 
-> 欢迎来到 “豹按钮(:3っ)∋” 项目，这是一个从 https://vtbbtn.org/ 获得灵感的项目，是为 [白神遥Haruka](https://space.bilibili.com/477332594/) 制作的音声按钮网站。
+> 欢迎来到 “豹按钮(:3っ)∋” 项目，这是一个从 https://vtbbtn.org/ 获得灵感的项目，是为 [白神遥 Haruka](https://space.bilibili.com/477332594/) 制作的音声按钮网站。
 >
-> 诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来
+> 诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑 man，一个人实在剪辑不过来
 >
-> **声明**：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联
+> **声明**：本项目仅为 DD 作品，和 白神遥 Haruka、P-SP 官方没有关联
 >
 > 如果你更喜欢 SSR 版本的，请参考 [https://github.com/CaoMeiYouRen/shirakami-haruka-button-ssr](https://github.com/CaoMeiYouRen/shirakami-haruka-button-ssr)
 >
 > 关于 SSR 是什么详见：[Vue.js 服务器端渲染指南](https://ssr.vuejs.org/zh/)
+>
+> **温馨提示**：由于 `cdn.jsdelivr.net` 在中国大陆地区已无法访问，故移除了自动设置的 `CDN_PATH`，现在的音声会默认从本地加载。如有 CDN 加速需求请自行设置 `CDN_PATH`
 
 ### 🏠 [主页](https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme)
 
@@ -120,7 +122,7 @@ npm run build
 
 ## Lint
 
-```
+```plain
 npm run lint
 ```
 
@@ -138,10 +140,10 @@ npm run commit
 
 关于选项，参考 [semantic-release](https://github.com/semantic-release/semantic-release) 的文档
 
--   若为BUG修复，则选择 `fix`
+-   若为 BUG 修复，则选择 `fix`
 -   若为新增功能，则选择 `feat`，新增音声可以按这个提交。
 -   若为移除某些功能，则选择 `perf`  或填写 `BREAKING CHANGE`
-    -    `perf` 和其他破坏性更新，若不是为了修复BUG，原则上将拒绝该PR
+    -    `perf` 和其他破坏性更新，若不是为了修复 BUG，原则上将拒绝该 PR
 
 ## 友链
 
@@ -157,7 +159,7 @@ npm run commit
 
 ## 🤝贡献
 
-欢迎Contributions, issues and feature!<br />如有问题请查看 [issues page](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues).
+欢迎 Contributions, issues and feature!<br />如有问题请查看 [issues page](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues).
 
 ## 支持
 

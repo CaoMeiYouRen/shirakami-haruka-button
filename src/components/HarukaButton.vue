@@ -6,7 +6,10 @@
             rounded
             @click="play"
         >{{ title }}</v-btn>
-        <v-tooltip v-else top>
+        <v-tooltip
+            v-else
+            top
+        >
             <template #activator="{on, attrs}">
                 <v-btn
                     color="primary"
@@ -90,7 +93,7 @@ function useVoicesPath(path: Ref<string>): {
 } {
     const localVoicesPath = computed(() => `${BASE_URL}voices/${path.value}`)
     const voicesPath = computed(() => {
-        if (process.env.NODE_ENV === 'production') {
+        if (process.env.NODE_ENV === 'production' && CDN_PATH) {
             return `${CDN_PATH}${localVoicesPath.value}`
         }
         return localVoicesPath.value
@@ -176,7 +179,8 @@ function useAudioPlay({
         audio.onerror = (e) => {
             console.error(e)
             // 音频资源加载优化，若 CDN 加载失败则从本地加载
-            // audio.src = localVoicesPath
+            // audio.src = localVoicesPath.value
+            // audio.load()
         }
     }
 

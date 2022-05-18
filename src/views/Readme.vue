@@ -20,7 +20,10 @@ export default defineComponent({
             justify="center"
         >
             <v-col cols="10">
-                <div v-highlight v-html="readme" />
+                <div
+                    v-highlight
+                    v-html="readme"
+                />
             </v-col>
         </v-row>
     </v-container>

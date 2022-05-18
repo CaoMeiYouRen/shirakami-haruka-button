@@ -3,7 +3,10 @@
         <v-row>
             <v-col cols="12">
                 <HarukaCard>
-                    <v-row algin="start" justify="start">
+                    <v-row
+                        algin="start"
+                        justify="start"
+                    >
                         <v-col
                             cols="12"
                             sm="4"
@@ -26,18 +29,27 @@
                             class="subtitle-1"
                         >
                             欢迎来到 “{{ HTML_TITLE }}” 项目，这是一个从
-                            <SafeLink target="_blank" href="https://vtbbtn.org/">
+                            <SafeLink
+                                target="_blank"
+                                href="https://vtbbtn.org/"
+                            >
                                 https://vtbbtn.org/
                             </SafeLink>
                             获得灵感的项目，感觉很有意思。<br>
                             诚邀日语、英语翻译，本人日语、英语本当锤子，全靠机翻；诚邀剪辑man，一个人实在剪辑不过来。<br>
                             <b>新增音声</b>：如果会编程的可以直接上
-                            <a target="_blank" :href="GITHUB_LINK">GitHub</a>
+                            <a
+                                target="_blank"
+                                :href="GITHUB_LINK"
+                            >GitHub</a>
                             fork，修改完后提 pull request ，不会编程的可以提个 issue<br>
                             <b>使用指南</b>：点击按钮即可播放对应音声；多次点击可以造成相当鬼畜的效果；开启洗脑循环将会一直播放一个音频；
                             同时开启循环播放和洗脑循环将会出现 地 狱 绘 卷。<br>
                             <b>声明</b>：本项目仅为 DD 作品，和 白神遥Haruka、P-SP 官方没有关联<br>
-                            更多内容请参考 <a :href="GITHUB_LINK + '#readme'" target="_blank">README</a><br>
+                            更多内容请参考 <a
+                                :href="GITHUB_LINK + '#readme'"
+                                target="_blank"
+                            >README</a><br>
 
                             <template v-if="ENABLE_NOTICE">
                                 <v-alert
@@ -69,7 +81,10 @@
             </v-col>
         </v-row>
         <v-row>
-            <v-col v-if="enableDynamic" cols="12">
+            <v-col
+                v-if="enableDynamic"
+                cols="12"
+            >
                 <HarukaCard :raw-title="$t('dynamic.LatestDynamic')">
                     <v-row v-if="loading">
                         <v-col
@@ -100,7 +115,10 @@
                                     <v-card-text class="subtitle-1">
                                         {{ item.contentSnippet }}
                                         <br>
-                                        <span>{{ $t('dynamic.DynamicLink') }}：<a target="_blank" :href="item.link">{{ item.link }}</a> </span><br>
+                                        <span>{{ $t('dynamic.DynamicLink') }}：<a
+                                            target="_blank"
+                                            :href="item.link"
+                                        >{{ item.link }}</a> </span><br>
                                         {{ $t('dynamic.PublishTime') }}：{{ item.isoDate }}
                                     </v-card-text>
                                 </v-card>
@@ -192,7 +210,10 @@
                 </HarukaCard>
             </v-col>
         </v-row>
-        <v-row algin="start" justify="start">
+        <v-row
+            algin="start"
+            justify="start"
+        >
             <v-col
                 v-for="(item,tag) in voicesGroup"
                 :key="tag"
@@ -213,7 +234,10 @@
                 </HarukaCard>
             </v-col>
         </v-row>
-        <v-row algin="start" justify="start">
+        <v-row
+            algin="start"
+            justify="start"
+        >
             <v-col
                 cols="12"
             >

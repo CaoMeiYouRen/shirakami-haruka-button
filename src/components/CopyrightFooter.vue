@@ -20,7 +20,10 @@
                 </p>
                 <p v-if="ICP || POLICE">
                     <template v-if="ICP">
-                        <a href="https://beian.miit.gov.cn/" target="_blank">{{ ICP }}</a> ||
+                        <a
+                            href="https://beian.miit.gov.cn/"
+                            target="_blank"
+                        >{{ ICP }}</a> ||
                     </template>
                     <a
                         v-if="POLICE"
@@ -29,13 +32,19 @@
                     >{{ POLICE }}</a>
                 </p>
                 <p>
-                    <a target="_blank" :href="GITHUB_LINK">
+                    <a
+                        target="_blank"
+                        :href="GITHUB_LINK"
+                    >
                         <v-icon color="primary">iconfont icon-github2</v-icon>
                         {{ $t('ProjectAddress') }}
                     </a>
                 </p>
                 <p class="github-info">
-                    <a target="_blank" :href="GITHUB_LINK">
+                    <a
+                        target="_blank"
+                        :href="GITHUB_LINK"
+                    >
                         <img
                             v-for="e in githubs"
                             :key="e.src"
