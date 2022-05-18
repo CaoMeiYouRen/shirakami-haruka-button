@@ -111,27 +111,27 @@ module.exports = {
         const cssModules = [
             {
                 name: 'normalize.css',
-                style: 'normalize.min.css',
+                style: 'normalize.css',
                 cssOnly: true,
             },
             {
                 name: 'animate.css',
-                style: 'animate.min.css',
+                style: 'animate.css',
                 cssOnly: true,
             },
             {
                 name: '@mdi/font',
-                style: 'css/materialdesignicons.min.css',
+                style: 'css/materialdesignicons.css',
                 cssOnly: true,
             },
             {
                 name: 'material-design-icons-iconfont',
-                style: 'dist/material-design-icons.min.css',
+                style: 'dist/material-design-icons.css',
                 cssOnly: true,
             },
             {
                 name: 'vuetify',
-                style: 'dist/vuetify.min.css',
+                style: 'dist/vuetify.css',
                 cssOnly: true,
             },
         ]
@@ -163,7 +163,7 @@ module.exports = {
             new WebpackCdnPlugin({
                 publicPath: '/node_modules',
                 prod: true, // 生产环境使用 cdn
-                prodUrl: 'https://cdn.jsdelivr.net/npm/:name@:version/:path',
+                prodUrl: 'https://unpkg.com/:name@:version/:path',
                 modules: __DEV__ ? cssModules : [].concat(cssModules, jsModules), // 开发环境仅注入 css ，生产环境注入 js、css
             }),
         )
