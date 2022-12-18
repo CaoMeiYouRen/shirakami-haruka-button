@@ -4,7 +4,7 @@
     <img alt="Version" src="https://img.shields.io/github/package-json/v/CaoMeiYouRen/shirakami-haruka-button">
   </a>
   <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button/actions?query=workflow%3ARelease" target="_blank">
-    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/CaoMeiYouRen/shirakami-haruka-button/Release">
+    <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/CaoMeiYouRen/shirakami-haruka-button/release.yml?branch=master">
   </a>
   <img src="https://img.shields.io/badge/node-%3E%3D12-blue.svg" />
   <a href="https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme" target="_blank">
