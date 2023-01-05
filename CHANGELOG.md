@@ -1,5 +1,13 @@
 # shirakami-haruka-button(豹按钮(:3っ)∋)
 
+## [1.13.1](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.13.0...v1.13.1) (2023-01-05)
+
+
+### 🐛 Bug 修复
+
+* 修改 VTuber按钮合集 链接 ([d2a1285](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/d2a1285)), closes [#61](https://github.com/CaoMeiYouRen/shirakami-haruka-button/issues/61)
+* 更新 @vue/cli-plugin-* 版本 ([4bf7290](https://github.com/CaoMeiYouRen/shirakami-haruka-button/commit/4bf7290))
+
 # [1.13.0](https://github.com/CaoMeiYouRen/shirakami-haruka-button/compare/v1.12.4...v1.13.0) (2022-05-18)
 
 
