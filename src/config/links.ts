@@ -6,7 +6,7 @@ export interface Link {
 export const friendshipLinks: Link[] = [
     {
         msg: 'VTuber按钮合集',
-        url: 'https://vtbbtn.org/',
+        url: 'https://vbup-osc.github.io/vtuber-voice-button-collection/',
         color: '#00ceff',
     },
     {
