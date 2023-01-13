@@ -51,8 +51,8 @@
     "xml2js": "^0.4.23"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^5.0.1",
-    "@semantic-release/git": "^9.0.0",
+    "@semantic-release/changelog": "^6.0.2",
+    "@semantic-release/git": "^10.0.1",
     "@types/lodash": "^4.14.168",
     "@types/markdown-it": "^12.0.1",
     "@types/xml2js": "^0.4.11",
@@ -85,7 +85,7 @@
     "sass": "^1.32.6",
     "sass-loader": "^10.1.1",
     "scp2": "^0.5.0",
-    "semantic-release": "^17.3.7",
+    "semantic-release": "^20.0.2",
     "stylelint": "^13.9.0",
     "stylelint-config-cmyr": "^0.2.1",
     "stylelint-config-rational-order": "^0.1.2",
