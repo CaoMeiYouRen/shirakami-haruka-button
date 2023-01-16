@@ -34,7 +34,7 @@
     "@vue/composition-api": "^1.2.2",
     "animate.css": "^4.1.1",
     "axios": "^1.2.2",
-    "core-js": "^3.8.3",
+    "core-js": "^3.27.1",
     "dayjs": "^1.11.7",
     "highlight.js": "^11.0.1",
     "lodash": "^4.17.20",
