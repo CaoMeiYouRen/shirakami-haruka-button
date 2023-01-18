@@ -60,7 +60,7 @@
     "@typescript-eslint/parser": "^4.33.0",
     "@vue/cli-plugin-babel": "^4.5.19",
     "@vue/cli-plugin-eslint": "^5.0.8",
-    "@vue/cli-plugin-router": "^4.5.19",
+    "@vue/cli-plugin-router": "^5.0.8",
     "@vue/cli-plugin-typescript": "^5.0.8",
     "@vue/cli-plugin-vuex": "^4.5.19",
     "@vue/cli-service": "^4.5.19",
