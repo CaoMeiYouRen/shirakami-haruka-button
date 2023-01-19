@@ -29,7 +29,7 @@
   },
   "homepage": "https://github.com/CaoMeiYouRen/shirakami-haruka-button#readme",
   "dependencies": {
-    "@mdi/font": "^6.1.95",
+    "@mdi/font": "^7.1.96",
     "@vue-composable/axios": "^1.0.0-beta.24",
     "@vue/composition-api": "^1.6.3",
     "animate.css": "^4.1.1",
