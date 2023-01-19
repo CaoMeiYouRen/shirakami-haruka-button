@@ -36,7 +36,7 @@
     "axios": "^1.2.2",
     "core-js": "^3.27.1",
     "dayjs": "^1.11.7",
-    "highlight.js": "^11.0.1",
+    "highlight.js": "^11.7.0",
     "lodash": "^4.17.20",
     "material-design-icons-iconfont": "^6.7.0",
     "normalize.css": "^8.0.1",
