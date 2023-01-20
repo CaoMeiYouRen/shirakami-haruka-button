@@ -67,7 +67,7 @@
     "@vue/eslint-config-airbnb": "^5.3.0",
     "@vue/eslint-config-typescript": "^7.0.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
-    "commitizen": "^4.2.3",
+    "commitizen": "^4.3.0",
     "conventional-changelog-cli": "^2.2.2",
     "conventional-changelog-cmyr-config": "^2.0.4",
     "cross-env": "^7.0.3",
