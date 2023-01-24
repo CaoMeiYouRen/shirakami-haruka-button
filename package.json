@@ -85,7 +85,7 @@
     "sass": "^1.57.1",
     "sass-loader": "^10.1.1",
     "scp2": "^0.5.0",
-    "semantic-release": "^20.0.2",
+    "semantic-release": "^20.0.4",
     "stylelint": "^13.9.0",
     "stylelint-config-cmyr": "^0.2.1",
     "stylelint-config-rational-order": "^0.1.2",
