@@ -78,7 +78,7 @@
     "filemanager-webpack-plugin": "^8.0.0",
     "html-loader": "^1.3.2",
     "husky": "^8.0.3",
-    "lint-staged": "^13.2.0",
+    "lint-staged": "^13.2.1",
     "markdown-it": "^13.0.1",
     "markdown-it-loader": "^0.7.0",
     "patch-package": "^6.5.1",
