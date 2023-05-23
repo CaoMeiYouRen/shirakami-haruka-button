@@ -36,7 +36,7 @@ export const friendshipLinks: Link[] = [
     },
     {
         msg: '虚研社按钮',
-        url: 'https://xysbtn.xiaoblogs.cn/xx',
+        url: 'https://voice.xuyanshe.club/',
         color: '#d96c7f',
     },
 ]
