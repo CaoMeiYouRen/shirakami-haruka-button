@@ -48,7 +48,7 @@
     "vue-router": "^3.6.5",
     "vuetify": "^2.6.15",
     "vuex": "^3.6.2",
-    "xml2js": "^0.5.0"
+    "xml2js": "^0.6.0"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
