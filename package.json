@@ -68,7 +68,7 @@
     "@vue/eslint-config-typescript": "^7.0.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "commitizen": "^4.3.0",
-    "conventional-changelog-cli": "^2.2.2",
+    "conventional-changelog-cli": "^3.0.0",
     "conventional-changelog-cmyr-config": "^2.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.19.0",
