@@ -43,7 +43,7 @@
     "query-string": "^8.1.0",
     "rss-parser": "^3.13.0",
     "vue": "^2.7.14",
-    "vue-composable": "^1.0.0-beta.23",
+    "vue-composable": "^1.0.0-beta.24",
     "vue-i18n": "^8.28.2",
     "vue-router": "^3.6.5",
     "vuetify": "^2.6.15",
